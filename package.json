@@ -1,6 +1,6 @@
 {
   "name": "airpower",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "admin@hamm.cn",
   "description": "AirPower, 一个基于TypeScript的开发工具包, 内置了数据转换、装饰器、时间日期处理、加解密与散列、文件处理、常用枚举和字典、常见数据结构处理等工具。",
   "scripts": {
