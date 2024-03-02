@@ -21,6 +21,7 @@
     "ts-node": "^10.9.2",
     "typescript": "~5.3.3"
   },
+  "main": "src/index.ts",
   "directories": {
     "doc": "docs",
     "test": "tests"
