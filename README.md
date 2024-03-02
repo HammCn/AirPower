@@ -49,13 +49,13 @@ cnpm install airpower
   }
   ```
   此时，下面的JSON就可以直接转为目标类的实例了：
-  ```json
+  ```typescript
   JSON {
     "username": "Hamm"
   }
   ```
   转换后:
-  ```json
+  ```typescript
   User {
     nickname: "Hamm"
   }
