@@ -17,11 +17,11 @@
 ## 💻 如何使用(初始化)?
 
 ```shell
-npm install airtool
+npm install airpower
 # or
-yarn add airtool
+yarn add airpower
 # or
-cnpm install airtool
+cnpm install airpower
 # or ...
 ```
 
