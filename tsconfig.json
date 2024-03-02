@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true, //严格模式
+        "removeComments": true, //自动删除注释
+        "noImplicitAny": true, //不允许隐式的any
+        "target": "ESNext", //编译目标
+        "module": "CommonJS", //使用module目标
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": [
+            "node"
+        ],
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "tests/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
