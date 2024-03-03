@@ -1,1 +1,1 @@
-export * from './AirClassConstructor'
+export { AirClassConstructor } from './AirClassConstructor'
