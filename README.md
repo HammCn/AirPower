@@ -6,7 +6,7 @@
 </p>
 
 
-[Gitee](https://gitee.com/hamm/AirPower) / [Github](https://github.com/HammCn/AirPower) / [CHANGELOG](./CHANGELOG.md)
+[Gitee](https://gitee.com/air-power/AirPower) / [Github](https://github.com/HammCn/AirPower) / [CHANGELOG](./CHANGELOG.md)
 
 
 ## 🎉 这是个什么项目
