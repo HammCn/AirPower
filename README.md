@@ -123,8 +123,32 @@ cnpm install airpower
 
 - #### @Dictionary
   
-  > Comming soom...
+  前端可以通过 `AirDictionaryArray.create()` 创建一个字典，然后将字典传入到 `@Dictionary` 的参数中，其他地方则可获取此属性配置的字典，然后做一些其他的操作（如渲染）。
 
+  ```typescript
+  enum UserStatus {
+    ENABLED = 1,
+    DISABLED = 2,
+    UNVALID = 3
+  }
+  const UserStatusDictionary = AirDictionaryArray.create([
+    {key: UserStatus.ENABLED, label: "已启用"},
+    {key: UserStatus.DISABLED, label: "已禁用"},
+    {key: UserStatus.UNVALID, label: "待验证"},
+  ])
+
+  class User extends AirModel{
+    nickname!: string
+
+    @Dictionary(UserStatus)
+    status!: UserStatus
+  }
+
+  // 在其他的组件中，即可通过下面的方式来获取指定属性配置的字典
+
+  const dict = getDictionary(User, "status")
+  ```
+  
 - #### @FieldPrefix 标记类所有属性的前缀
   
   如果后端在某些规范下，习惯给字段加上统一的前缀，如 `用户信息` 都带上了 `user_` 的前缀：
