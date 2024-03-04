@@ -400,6 +400,21 @@ cnpm install airpower
   // 获取大小写字母加数字随机字符串
   AirRand.getRandNumberAndMixedCharString()
   ```
+
+- #### AirString 字符串常见处理
+
+  提供了一些字符串处理的常见方法
+
+  ```typescript
+  // 获取字符串可视化长度
+  AirString.getLength()
+  
+  // 获取字符串可视化位置的内容
+  AirString.get()
+
+  // 字符串可视化截取
+  AirString.slice()
+  ```
   
 ### 三、 内置接口
 
