@@ -33,7 +33,7 @@
     "type": "git",
     "url": "git+https://github.com/HammCn/airpower.git"
   },
-  "keywords": ["AirPower", "TypeScript", "Transform"],
+  "keywords": ["AirPower", "TypeScript", "Transform", "OOP"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HammCn/airpower/issues"
