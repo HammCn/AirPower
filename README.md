@@ -2,12 +2,12 @@
   .
 </p>
 <p align="center">
-  <img width="300" src="./assets/airpower.svg"/>
+  <img width="300" src="./assets/airpower.svg"/><br>
 </p>
 
-
-[Gitee](https://gitee.com/air-power/AirPower) / [Github](https://github.com/HammCn/AirPower) / [CHANGELOG](./CHANGELOG.md)
-
+<p align="center">
+<a href="https://gitee.com/air-power/AirPower">Gitee</a> / <a href="https://github.com/HammCn/AirPower">Github</a> / <a href="./CHANGELOG.md">CHANGELOG</a> / <a href="https://www.npmjs.com/package/airpower">NPM</a>
+</p>
 
 ## 🎉 这是个什么项目
 
@@ -561,3 +561,10 @@ cnpm install airpower
 ### 五、 写在后面
 
 如果有更多的需求和建议，欢迎通过本仓库的 `Issues` 提出，也欢迎加入 QQ群 555156313 与我们及时反馈。
+
+
+---
+
+<p align="center">
+ATTENTION: Contributor list is just for fun!!!
+</p>
