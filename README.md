@@ -236,7 +236,7 @@ cnpm install airpower
    ```typescript
   
   class User extends AirModel{
-    @ToModel((user: User)=>{ // 参数为类的实例对象
+    @ToJson((user: User)=>{ // 参数为类的实例对象
       return AirDateTime.getMilTimeStamp(user.lastLoginTime)
     })
     lastLoginTime!: number
