@@ -1,6 +1,4 @@
-<p align="center">
-  .
-</p>
+
 <p align="center">
   <img width="300" src="./assets/airpower.svg"/><br>
 </p>
