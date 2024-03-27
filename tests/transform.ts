@@ -61,8 +61,6 @@ export function transform() {
   role.name = DEFAULT_ROLE_NAME
   userModel.roleList = [role]
 
-  log(userModel)
-
   // tojson
   const userJson = userModel.toJson()
   AirAssert.when(userJson.user_phoneNumber !== userModel.phone, 'tranform alias faild')
@@ -72,15 +70,17 @@ export function transform() {
 
   // change age to string
   userJson.user_age = userJson.user_age.toString()
-  log(userJson)
 
   // toModel
-  const newUserModel = UserModel.fromJson(userJson)
-  log(newUserModel)
+  let newUserModel = UserModel.fromJson(userJson)
 
   AirAssert.when(userJson.user_roleList[0].roleName !== DEFAULT_ROLE_NAME, 'tranform model props error')
 
-  AirAssert.when(newUserModel.weight !== DEFAULT_WEIGHT, 'transform default value faild')
+  AirAssert.when(newUserModel.weight !== DEFAULT_WEIGHT, `transform 1 default value faild ${newUserModel.weight} ${userJson.weight}`)
+  userJson.user_weight = 200
+  newUserModel = UserModel.fromJson(userJson)
+
+  AirAssert.when(newUserModel.weight !== 200, `transform 2 default value faild ${newUserModel.weight} ${userJson.user_weight}`)
 
   AirAssert.when(newUserModel.regTime !== userModel.regTime, 'tranform toModel faild')
   AirAssert.when(newUserModel.age !== userModel.age, 'transform type faild')
