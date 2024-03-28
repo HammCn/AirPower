@@ -47,7 +47,7 @@ class UserModel extends BaseModel {
   @FieldName(DEFAULT_FIELD_NAME) regTime!: number
 }
 
-export function transform() {
+export function testTransform() {
   clear()
   const userModel = new UserModel()
   userModel.id = 1

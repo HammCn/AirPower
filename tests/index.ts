@@ -1,3 +1,5 @@
-import { transform } from './transform'
+import { testDictionary } from './dictionary'
+import { testTransform } from './transform'
 
-transform()
+testTransform()
+testDictionary()

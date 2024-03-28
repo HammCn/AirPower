@@ -70,6 +70,10 @@ cnpm install airpower
       password!: string
       // more...
   }
+
+  // 返回 “账号”
+  const className = Account.getClassName()
+  const className = getClassName(Account)
   ```
 
   然后通过 ```getClassName()``` 方法来获取配置的名称。
@@ -90,6 +94,9 @@ cnpm install airpower
       password!: string
       // more...
   }
+  // 返回 “用户名”
+  const fieldName = Account.getFieldName('username')
+  const fieldName = getFieldName(Account, 'username')
   ```
 
   > 当需要将 `密码` 修改为 `口令` 时，我们也只需要去修改为 `@FieldName('口令')` 即可。
@@ -106,6 +113,8 @@ cnpm install airpower
       bio!: string
       // more...
   }
+
+  const defaultBio = getDefault(User, "bio")
   ```
   后端传递来的用户JSON格式如下：
   
@@ -138,13 +147,14 @@ cnpm install airpower
   class User extends AirModel{
     nickname!: string
 
-    @Dictionary(UserStatus)
+    @Dictionary(UserStatusDictionary)
     status!: UserStatus
   }
 
   // 在其他的组件中，即可通过下面的方式来获取指定属性配置的字典
 
   const dict = getDictionary(User, "status")
+  const dict = User.getDictionary("status")
   ```
   
 - #### @FieldPrefix 标记类所有属性的前缀

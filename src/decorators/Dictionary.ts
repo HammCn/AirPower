@@ -23,10 +23,10 @@ export function Dictionary(dictionary: AirDictionaryArray<IDictionary>): Functio
  * @param target 目标类
  * @param key 属性名
  */
-export function getDictionary(target: any, key: string): AirDictionaryArray<IDictionary> | undefined {
+export function getDictionary<T extends IDictionary>(target: any, key: string): AirDictionaryArray<T> | undefined {
   const config = AirDecorator.getFieldConfig(target, key, DICTIONARY_KEY)
   if (config) {
-    return AirDictionaryArray.create(config)
+    return AirDictionaryArray.createCustom<T>(config)
   }
   return undefined
 }
