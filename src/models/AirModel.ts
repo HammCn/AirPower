@@ -1,10 +1,12 @@
 /* eslint-disable no-continue */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { IDictionary } from 'src/interfaces'
 import {
-  getIsArray, getAlias, getIgnorePrefix, getFieldPrefix, getToJson, getDefault, getType, getToModel, getClassName, getFieldName,
+  getIsArray, getAlias, getIgnorePrefix, getFieldPrefix, getToJson, getDefault, getType, getToModel, getClassName, getFieldName, getDictionary,
 } from '../decorators'
 import { IJson } from '../interfaces/IJson'
+import { AirDictionaryArray } from './AirDictionaryArray'
 
 /**
  * # 模型超类
@@ -264,6 +266,10 @@ export class AirModel {
    */
   static getFieldName(fieldKey: string): string {
     return this.newInstance().getFieldName(fieldKey)
+  }
+
+  static getDictionary<T extends IDictionary>(fieldKey: string): AirDictionaryArray<T> {
+    return getDictionary(this.newInstance(), fieldKey)
   }
 
   /**
