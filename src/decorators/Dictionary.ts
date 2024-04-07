@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { AirDecorator } from '../helpers/AirDecorator'
-import { IDictionary } from '../interfaces/IDictionary'
-import { AirDictionaryArray } from '../models/AirDictionaryArray'
+import { AirDecorator } from '../helpers'
+import { IDictionary } from '../interfaces'
+import { AirDictionaryArray } from '../models'
 
 /**
  * # 字典配置Key
@@ -14,7 +13,7 @@ const DICTIONARY_KEY = 'Dictionary'
  * # 标记属性的枚举字典
  * @param dictionary 字典数组
  */
-export function Dictionary(dictionary: AirDictionaryArray<IDictionary>): Function {
+export function Dictionary(dictionary: AirDictionaryArray): Function {
   return (target: any, key: string) => AirDecorator.setFieldConfig(target, key, DICTIONARY_KEY, dictionary)
 }
 

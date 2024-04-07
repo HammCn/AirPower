@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IDictionary } from '../interfaces/IDictionary'
+import { IDictionary } from '../interfaces'
 
 /**
  * # 标准字典实现类
@@ -36,9 +36,9 @@ export class AirDictionary implements IDictionary {
   }
 
   /**
-    * # 设置常量描述
-    * @param label 常量的描述
-    */
+   * # 设置常量描述
+   * @param label 常量的描述
+   */
   setLabel(label: any): this {
     this.label = label
     return this

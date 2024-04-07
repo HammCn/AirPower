@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 
-import { AirDateTimeFormatter } from '../enums/AirDateTimeFormatter'
-import { IJson } from '../interfaces/IJson'
+import { AirDateTimeFormatter } from '../enums'
+import { IJson } from '../interfaces'
 
 /**
  * # 时间日期时间戳格式化类
@@ -55,29 +55,29 @@ export class AirDateTime {
   /**
    * # 从秒时间戳格式化时间
    * @param timeStamp 秒时间戳
-   * @param formateString (可选)格式化模板 默认为`AirConfig.dateTimeFormatter`
+   * @param formatString (可选)格式化模板 默认为`AirConfig.dateTimeFormatter`
    */
-  static formatFromSecond(timeStamp: number, formateString?: AirDateTimeFormatter | string): string {
-    return this.formatFromDate(new Date(timeStamp * 1000), formateString)
+  static formatFromSecond(timeStamp: number, formatString?: AirDateTimeFormatter | string): string {
+    return this.formatFromDate(new Date(timeStamp * 1000), formatString)
   }
 
   /**
    * # 从毫秒时间戳格式化时间
    * @param timeStamp 毫秒时间戳
-   * @param formateString (可选)格式化模板 默认为`AirConfig.dateTimeFormatter`
+   * @param formatString (可选)格式化模板 默认为`AirConfig.dateTimeFormatter`
    */
-  static formatFromMilliSecond(timeStamp: number, formateString?: AirDateTimeFormatter | string): string {
-    return this.formatFromDate(new Date(timeStamp), formateString)
+  static formatFromMilliSecond(timeStamp: number, formatString?: AirDateTimeFormatter | string): string {
+    return this.formatFromDate(new Date(timeStamp), formatString)
   }
 
   /**
    * # 从字符串或对象格式化时间
    * @param date Date对象或字符串
-   * @param formateString (可选)格式化模板 默认为`AirConfig.dateTimeFormatter`
+   * @param formatString (可选)格式化模板 默认为`AirConfig.dateTimeFormatter`
    */
-  static formatFromDate(date: Date | string, formateString?: AirDateTimeFormatter | string): string {
-    if (!formateString) {
-      formateString = AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss
+  static formatFromDate(date: Date | string, formatString?: AirDateTimeFormatter | string): string {
+    if (!formatString) {
+      formatString = AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss
     }
     switch (typeof date) {
       case 'string':
@@ -103,7 +103,7 @@ export class AirDateTime {
       mm: (`${date.getMinutes() + 100}`).substring(1),
       ss: (`${date.getSeconds() + 100}`).substring(1),
     }
-    return formateString.replace(/(YYYY|MM|DD|HH|ss|mm)/g, (arg) => dict[arg].toString())
+    return formatString.replace(/(YYYY|MM|DD|HH|ss|mm)/g, (arg) => dict[arg].toString())
   }
 
   /**

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import CryptoJS from 'crypto-js'
 import { Base64 } from 'js-base64'
-import { AirConfig } from '../configs/AirConfig'
+import { AirConfig } from '../configs'
 
 /**
  * # 加解密和散列摘要算法助手类

@@ -63,10 +63,10 @@ export function testTransform() {
 
   // tojson
   const userJson = userModel.toJson()
-  AirAssert.when(userJson.user_phoneNumber !== userModel.phone, 'tranform alias faild')
-  AirAssert.when(userJson.idcard !== userModel.idcard, 'tranform prefix faild')
-  AirAssert.when(userJson.user_idcard === userModel.idcard, 'transform prefix faild')
-  AirAssert.when(userJson.user_regTime !== AirDateTime.formatFromSecond(userModel.regTime), 'tranform toJson faild')
+  AirAssert.when(userJson.user_phoneNumber !== userModel.phone, 'transform alias failed')
+  AirAssert.when(userJson.idcard !== userModel.idcard, 'transform prefix failed')
+  AirAssert.when(userJson.user_idcard === userModel.idcard, 'transform prefix failed')
+  AirAssert.when(userJson.user_regTime !== AirDateTime.formatFromSecond(userModel.regTime), 'transform toJson failed')
 
   // change age to string
   userJson.user_age = userJson.user_age.toString()
@@ -74,19 +74,19 @@ export function testTransform() {
   // toModel
   let newUserModel = UserModel.fromJson(userJson)
 
-  AirAssert.when(userJson.user_roleList[0].roleName !== DEFAULT_ROLE_NAME, 'tranform model props error')
+  AirAssert.when(userJson.user_roleList[0].roleName !== DEFAULT_ROLE_NAME, 'transform model props error')
 
-  AirAssert.when(newUserModel.weight !== DEFAULT_WEIGHT, `transform 1 default value faild ${newUserModel.weight} ${userJson.weight}`)
+  AirAssert.when(newUserModel.weight !== DEFAULT_WEIGHT, `transform 1 default value failed ${newUserModel.weight} ${userJson.weight}`)
   userJson.user_weight = 200
   newUserModel = UserModel.fromJson(userJson)
 
-  AirAssert.when(newUserModel.weight !== 200, `transform 2 default value faild ${newUserModel.weight} ${userJson.user_weight}`)
+  AirAssert.when(newUserModel.weight !== 200, `transform 2 default value failed ${newUserModel.weight} ${userJson.user_weight}`)
 
-  AirAssert.when(newUserModel.regTime !== userModel.regTime, 'tranform toModel faild')
-  AirAssert.when(newUserModel.age !== userModel.age, 'transform type faild')
+  AirAssert.when(newUserModel.regTime !== userModel.regTime, 'transform toModel failed')
+  AirAssert.when(newUserModel.age !== userModel.age, 'transform type failed')
 
   AirAssert.when(UserModel.getClassName() !== DEFAULT_CLASS_NAME, 'decorator class name error!')
   AirAssert.when(UserModel.getFieldName('regTime') !== DEFAULT_FIELD_NAME, 'decorator field name error!')
-  AirAssert.when(userModel.roleList[0].name !== newUserModel.roleList[0].name, 'tranform model props error')
+  AirAssert.when(userModel.roleList[0].name !== newUserModel.roleList[0].name, 'transform model props error')
   log('Transform test success!')
 }

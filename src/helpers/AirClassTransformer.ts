@@ -1,7 +1,6 @@
-import { IJson } from '../interfaces/IJson'
-import { ITree } from '../interfaces/ITree'
-import { AirModel } from '../models/AirModel'
-import { AirClassConstructor } from '../types/AirClassConstructor'
+import { IJson, ITree } from '../interfaces'
+import { AirModel } from '../models'
+import { AirClassConstructor } from '../types'
 
 /**
  * # 转换类型助手

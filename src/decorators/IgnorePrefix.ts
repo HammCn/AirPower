@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { AirDecorator } from '../helpers/AirDecorator'
+import { AirDecorator } from '../helpers'
 
 /**
  * # 忽略字段前缀Key

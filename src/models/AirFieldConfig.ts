@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IFieldConfig } from '../interfaces/IFieldConfig'
+import { IFieldConfig } from '../interfaces'
 
 /**
  * # 字段配置基类

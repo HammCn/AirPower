@@ -1,30 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { IJson } from '../interfaces/IJson'
+import { IFieldConfig, IJson } from '../interfaces'
 import { AirClassTransformer } from './AirClassTransformer'
-import { AirClassConstructor } from '../types/AirClassConstructor'
-import { IFieldConfig } from '../interfaces/IFieldConfig'
+import { AirClassConstructor } from '../types'
 
 /**
  * # 装饰器助手类
  * @author Hamm
  */
 export class AirDecorator {
-  /**
-   * # 反射添加属性
-   * @param target 目标类
-   * @param key 配置key
-   * @param value 配置值
-   */
-  private static setProperty(target: any, key: string, value: any) {
-    Reflect.defineProperty(target, key, {
-      enumerable: false,
-      value,
-      writable: false,
-      configurable: true,
-    })
-  }
-
   /**
    * # 设置一个类配置项
    * @param target 目标实体类
@@ -79,18 +63,6 @@ export class AirDecorator {
       this.setFieldDecoration(target, key, fieldListKey)
     }
     this.setProperty(target, `${fieldConfigKey}[${key}]`, fieldConfig)
-  }
-
-  /**
-   *
-   * @param target 目标类
-   * @param key 字段
-   * @param fieldListKey 类配置项列表索引值
-   */
-  private static setFieldDecoration(target: any, key: string, fieldListKey: string) {
-    const list: string[] = Reflect.get(target, fieldListKey) || []
-    list.push(key)
-    this.setProperty(target, fieldListKey, list)
   }
 
   /**
@@ -162,11 +134,15 @@ export class AirDecorator {
       if (config) {
         const defaultConfig = new FieldConfigClass()
         const result: IJson = {}
-        Object.keys({ ...defaultConfig, config }).forEach((configKey) => {
-          if (configKey !== 'key') {
-            result[configKey] = this.getFieldConfigValue(target, fieldConfigKey, config.key, configKey) ?? (defaultConfig as IJson)[configKey]
-          }
+        Object.keys({
+          ...defaultConfig,
+          config,
         })
+          .forEach((configKey) => {
+            if (configKey !== 'key') {
+              result[configKey] = this.getFieldConfigValue(target, fieldConfigKey, config.key, configKey) ?? (defaultConfig as IJson)[configKey]
+            }
+          })
         result.key = config.key
         result.label = config.label
         fieldConfigList.push(result as T)
@@ -192,5 +168,32 @@ export class AirDecorator {
       return undefined
     }
     return this.getFieldConfigValue(superClass, fieldConfigKey, key, configKey)
+  }
+
+  /**
+   * # 反射添加属性
+   * @param target 目标类
+   * @param key 配置key
+   * @param value 配置值
+   */
+  private static setProperty(target: any, key: string, value: any) {
+    Reflect.defineProperty(target, key, {
+      enumerable: false,
+      value,
+      writable: false,
+      configurable: true,
+    })
+  }
+
+  /**
+   *
+   * @param target 目标类
+   * @param key 字段
+   * @param fieldListKey 类配置项列表索引值
+   */
+  private static setFieldDecoration(target: any, key: string, fieldListKey: string) {
+    const list: string[] = Reflect.get(target, fieldListKey) || []
+    list.push(key)
+    this.setProperty(target, fieldListKey, list)
   }
 }

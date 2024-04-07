@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { AirDecorator } from '../helpers/AirDecorator'
-import { AirClassConstructor } from '../types/AirClassConstructor'
+import { AirDecorator } from '../helpers'
+import { AirClassConstructor } from '../types'
 
 /**
  * # 强制类型配置Key

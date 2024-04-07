@@ -1,4 +1,4 @@
-import { AirConfig } from '../configs/AirConfig'
+import { AirConfig } from '../configs'
 
 /**
  * # 文件助手类

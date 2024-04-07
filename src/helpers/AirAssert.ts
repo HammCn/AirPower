@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 /**
  * # 断言判断提示
  * @author Hamm
@@ -13,7 +12,7 @@ export class AirAssert {
    */
   static when(condition: boolean, message: string, title?: string) {
     if (condition) {
-      throw new Error(`\n\n[AirAssert Faild]: ${title || ''}\n${message}\n\n\n`)
+      throw new Error(`\n\n[AirAssert Failed]: ${title || ''}\n${message}\n\n\n`)
     }
   }
 
