@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { IFieldConfig, IJson } from '../interfaces'
+import { IJson } from '../interfaces'
 import { AirClassTransformer } from './AirClassTransformer'
 import { AirClassConstructor } from '../types'
+import { AirFieldConfig } from '../models'
 
 /**
  * # 装饰器助手类
@@ -124,7 +125,7 @@ export class AirDecorator {
    * @param keyList 指定的字段数组
    * @param FieldConfigClass 指定的返回类
    */
-  static getFieldConfigList<T extends IFieldConfig>(target: any, fieldListKey: string, fieldConfigKey: string, keyList: string[], FieldConfigClass: AirClassConstructor<T>) {
+  static getFieldConfigList<T extends AirFieldConfig>(target: any, fieldListKey: string, fieldConfigKey: string, keyList: string[], FieldConfigClass: AirClassConstructor<T>) {
     const fieldConfigList: T[] = []
     if (keyList.length === 0) {
       keyList = this.getFieldList(target, fieldListKey)
