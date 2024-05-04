@@ -11,7 +11,7 @@ export class AirConfig {
   static absoluteUrl = ''
 
   /**
-   * # AES加解密使用的key
+   * # AES加解密使用默认向量
    */
-  static aesCryptoKey = 'abcdef0123456789'
+  static aesCbcIvString = '0000000000000000'
 }
