@@ -25,7 +25,7 @@ export function getNoPrefix(target: any, key: string): boolean {
 
 /**
  * @deprecated
- * @see NoPrefix
+ * @see NoPrefix()
  */
 export function IgnorePrefix(): Function {
   return NoPrefix()
@@ -33,7 +33,7 @@ export function IgnorePrefix(): Function {
 
 /**
  * @deprecated
- * @see getNoPrefix
+ * @see getNoPrefix()
  */
 export function getIgnorePrefix(target: any, key: string): boolean {
   return getNoPrefix(target, key)

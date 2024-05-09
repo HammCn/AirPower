@@ -37,7 +37,7 @@ export function List(): Function {
 
 /**
  * @deprecated
- * @see List
+ * @see List()
  */
 export function IsArray(): Function {
   return List()
@@ -63,7 +63,7 @@ export function getIsList(target: any, key: string): boolean {
 
 /**
  * @deprecated
- * @see getIsList
+ * @see getIsList()
  */
 export function getIsArray(target: any, key: string): boolean {
   return getIsList(target, key)

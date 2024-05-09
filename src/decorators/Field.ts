@@ -26,7 +26,7 @@ export function getFieldName(target: any, key: string): string {
 
 /**
  * @deprecated
- * @see Field
+ * @see Field()
  */
 export function FieldName(fieldName: string): Function {
   return Field(fieldName)
