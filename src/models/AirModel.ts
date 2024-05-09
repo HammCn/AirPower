@@ -3,13 +3,13 @@
 import { IDictionary, IJson } from '../interfaces'
 import {
   getAlias,
-  getClassName,
   getDefault,
   getDictionary,
   getFieldName,
   getFieldPrefix,
-  getIgnorePrefix,
-  getIsArray,
+  getIsList,
+  getModelName,
+  getNoPrefix,
   getToJson,
   getToModel,
   getType,
@@ -66,7 +66,7 @@ export class AirModel {
       const FieldTypeClass = getType(instance, fieldKey)
       const fieldAliasName = getAlias(instance, fieldKey)
       let fieldData = json[
-        (!getIgnorePrefix(instance, fieldKey)
+        (!getNoPrefix(instance, fieldKey)
           ? getFieldPrefix(instance)
           : ''
         )
@@ -88,7 +88,7 @@ export class AirModel {
           continue
         }
       }
-      if (getIsArray(instance, fieldKey)) {
+      if (getIsList(instance, fieldKey)) {
         // 是数组 循环转换
         const fieldValueList: any = []
         if (typeof fieldData === 'object' && Array.isArray(fieldData)) {
@@ -162,12 +162,20 @@ export class AirModel {
   }
 
   /**
-   * # 获取类的可阅读名字
-   * 可使用 @ClassName 装饰器修饰 如无修饰 则直接返回类名
+   * # 获取模型名称
+   * 可使用 @Model 装饰器修饰 如无修饰 则直接返回类名
+   */
+  static getModelName() {
+    return this.newInstance()
+      .getModelName()
+  }
+
+  /**
+   * @deprecated
+   * @see getModelName
    */
   static getClassName() {
-    return this.newInstance()
-      .getClassName()
+    return this.getModelName()
   }
 
   /**
@@ -241,7 +249,7 @@ export class AirModel {
     for (const fieldKey of fieldKeyList) {
       const fieldData = (this as any)[fieldKey]
       let fieldAliasName = getAlias(this, fieldKey) || fieldKey
-      if (!getIgnorePrefix(this, fieldKey) && getFieldPrefix(this)) {
+      if (!getNoPrefix(this, fieldKey) && getFieldPrefix(this)) {
         // 按忽略前缀规则获取别名
         fieldAliasName = getFieldPrefix(this) + fieldAliasName
       }
@@ -287,8 +295,8 @@ export class AirModel {
    * ! 内部使用的保留方法
    * @deprecated
    */
-  getClassName(): string {
-    return getClassName(this) || this.constructor.name
+  getModelName(): string {
+    return getModelName(this) || this.constructor.name
   }
 
   /**

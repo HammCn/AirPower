@@ -29,10 +29,18 @@ export function Type(Clazz: AirClassConstructor<any>, isArray = false): Function
  * # 标记是数组
  * 可在此配置，但更建议在Type中直接配置第二个参数
  */
-export function IsArray(): Function {
+export function List(): Function {
   return (target: any, key: string) => {
     AirDecorator.setFieldConfig(target, key, IS_ARRAY_KEY, true)
   }
+}
+
+/**
+ * @deprecated
+ * @see List
+ */
+export function IsArray(): Function {
+  return List()
 }
 
 /**
@@ -49,6 +57,14 @@ export function getType(target: any, key: string): AirClassConstructor<unknown> 
  * @param target 目标类
  * @param key 属性名
  */
-export function getIsArray(target: any, key: string): boolean {
+export function getIsList(target: any, key: string): boolean {
   return AirDecorator.getFieldConfig(target, key, IS_ARRAY_KEY)
+}
+
+/**
+ * @deprecated
+ * @see getIsList
+ */
+export function getIsArray(target: any, key: string): boolean {
+  return getIsList(target, key)
 }

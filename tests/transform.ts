@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 import { clear, log } from 'console'
 import {
-  Alias, ClassName, Default, FieldName, FieldPrefix, IgnorePrefix, ToJson, ToModel, Type,
+  Alias, Default, Field, FieldPrefix, Model, NoPrefix, ToJson, ToModel, Type,
 } from 'src/decorators'
 import { AirAssert } from 'src/helpers/AirAssert'
 import { AirDateTime } from 'src/helpers/AirDateTime'
@@ -28,7 +28,7 @@ class RoleModel extends BaseModel {
 }
 
 @FieldPrefix('user_')
-@ClassName(DEFAULT_CLASS_NAME)
+@Model(DEFAULT_CLASS_NAME)
 class UserModel extends BaseModel {
   nickname!: string
 
@@ -38,13 +38,13 @@ class UserModel extends BaseModel {
 
   @Type(RoleModel, true) roleList: RoleModel[]
 
-  @IgnorePrefix() idcard!: string
+  @NoPrefix() idcard!: string
 
   @Default(DEFAULT_WEIGHT) weight!: number
 
   @ToJson((user: UserModel) => AirDateTime.formatFromSecond(user.regTime))
   @ToModel((user: IJson) => AirDateTime.getUnixTimeStamps(user.regTime as unknown as string))
-  @FieldName(DEFAULT_FIELD_NAME) regTime!: number
+  @Field(DEFAULT_FIELD_NAME) regTime!: number
 }
 
 export function testTransform() {
@@ -85,7 +85,7 @@ export function testTransform() {
   AirAssert.when(newUserModel.regTime !== userModel.regTime, 'transform toModel failed')
   AirAssert.when(newUserModel.age !== userModel.age, 'transform type failed')
 
-  AirAssert.when(UserModel.getClassName() !== DEFAULT_CLASS_NAME, 'decorator class name error!')
+  AirAssert.when(UserModel.getModelName() !== DEFAULT_CLASS_NAME, 'decorator class name error!')
   AirAssert.when(UserModel.getFieldName('regTime') !== DEFAULT_FIELD_NAME, 'decorator field name error!')
   AirAssert.when(userModel.roleList[0].name !== newUserModel.roleList[0].name, 'transform model props error')
   log('Transform test success!')

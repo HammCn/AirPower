@@ -9,10 +9,10 @@ const FIELD_NAME_KEY = 'FieldName'
 
 /**
  * # 为属性标记可读名称
- * @param fieldName 属性的可读名称
+ * @param name 属性的可读名称
  */
-export function FieldName(fieldName: string): Function {
-  return (target: any, key: string) => AirDecorator.setFieldConfig(target, key, FIELD_NAME_KEY, fieldName)
+export function Field(name: string): Function {
+  return (target: any, key: string) => AirDecorator.setFieldConfig(target, key, FIELD_NAME_KEY, name)
 }
 
 /**
@@ -22,4 +22,12 @@ export function FieldName(fieldName: string): Function {
  */
 export function getFieldName(target: any, key: string): string {
   return AirDecorator.getFieldConfig(target, key, FIELD_NAME_KEY) || key
+}
+
+/**
+ * @deprecated
+ * @see Field
+ */
+export function FieldName(fieldName: string): Function {
+  return Field(fieldName)
 }
