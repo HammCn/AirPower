@@ -64,7 +64,7 @@ cnpm install airpower
   日常开发中，我们一般会声明一个 `Account` 类作为账号信息的数据结构载体，使用 `账号` 作为文案在系统里显示，所以我们使用下面的方式来声明：
 
   ```typescript
-  @ClassName('账号')
+  @Model('账号')
   class Account extends AirModel{
       username!: string
       password!: string
@@ -72,25 +72,25 @@ cnpm install airpower
   }
 
   // 返回 “账号”
-  const className = Account.getClassName()
-  const className = getClassName(Account)
+  const className = Account.getModelName()
+  const className = getModelName(Account)
   ```
 
-  然后通过 ```getClassName()``` 方法来获取配置的名称。
+  然后通过 ```getModelName()``` 方法来获取配置的名称。
 
-  >  但可能因为需求原因，需要将系统里显示的 `账号` 全局修改为 `账户`。传统方式我们会全局的搜索替换，但很容易造成过度替换后的其他问题。于是我们只需要修改为 `@ClassName("账户")` 即可。
+  >  但可能因为需求原因，需要将系统里显示的 `账号` 全局修改为 `账户`。传统方式我们会全局的搜索替换，但很容易造成过度替换后的其他问题。于是我们只需要修改为 `@Model("账户")` 即可。
 
 - #### @FieldName 属性的文案
 
   与上面的 `@ClassName` 类似的需求，我们将 `username` 作为 `用户名` 的字段：
 
   ```typescript
-  @ClassName('账号')
+  @Model('账号')
   class Account extends AirModel{
-      @FieldName('用户名') 
+      @Field('用户名') 
       username!: string
 
-      @FieldName('密码') 
+      @Field('密码') 
       password!: string
       // more...
   }
@@ -99,7 +99,7 @@ cnpm install airpower
   const fieldName = getFieldName(Account, 'username')
   ```
 
-  > 当需要将 `密码` 修改为 `口令` 时，我们也只需要去修改为 `@FieldName('口令')` 即可。
+  > 当需要将 `密码` 修改为 `口令` 时，我们也只需要去修改为 `@Field('口令')` 即可。
 
 - #### @Default 属性默认值
   
@@ -185,7 +185,7 @@ cnpm install airpower
   
   于是我们的代码中就不会出现大量的 `user_` 前缀了（不因为后端的规范，让前端代码看着拉垮）
 
-- #### @IgnorePrefix 属性忽略类配置的前缀
+- #### @NoPrefix 属性忽略类配置的前缀
   
   在上面的示例中，后端某一天不按照规范加了个新的字段 `registerIp`:
 
@@ -204,7 +204,7 @@ cnpm install airpower
     age!: number
     bio!: string
 
-    @IgnorePrefix() // 忽略前缀
+    @NoPrefix() // 忽略前缀
     registerIp!: string
   }
   
@@ -479,9 +479,9 @@ cnpm install airpower
   如声明了一个用户模型 `UserModel`
 
   ```typescript
-  @ClassName("用户")
+  @Model("用户")
   class UserModel extends AirModel{
-      @FieldName("昵称")
+      @Field("昵称")
       nickname!: string
   }
   
@@ -503,7 +503,7 @@ cnpm install airpower
   UserModel.newInstance() 
 
   // 获取类的可阅读名字
-  UserModel.getClassName() // 用户
+  UserModel.getModelName() // 用户
 
   // 获取属性的可阅读名字
   UserModel.getFieldName("nickname") // 昵称
