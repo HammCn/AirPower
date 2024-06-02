@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { AirClassConstructor, AirEnumKey } from '../types'
+import { AirEnum, AirDictionaryArray } from '../models'
 import { AirDecorator } from '../helpers'
 import { IDictionary } from '../interfaces'
-import { AirDictionaryArray } from '../models'
 
 /**
  * # 字典配置Key
@@ -12,9 +13,17 @@ const DICTIONARY_KEY = 'Dictionary'
 /**
  * # 标记属性的枚举字典
  * @param dictionary 字典数组
+ * ---
+ * ### 💡 如直接传入枚举类，该属性的类型则必须为对应枚举类`Key`的类型
  */
-export function Dictionary(dictionary: AirDictionaryArray): Function {
-  return (target: any, key: string) => AirDecorator.setFieldConfig(target, key, DICTIONARY_KEY, dictionary)
+export function Dictionary<K extends AirEnumKey, E extends AirEnum<K>>(dictionary: AirDictionaryArray | AirClassConstructor<E>): Function {
+  return (target: any, key: string) => {
+    if (!(dictionary instanceof AirDictionaryArray)) {
+      // 如果不是字典 转为字典
+      dictionary = AirDictionaryArray.create((dictionary as any).toDictionary())
+    }
+    AirDecorator.setFieldConfig(target, key, DICTIONARY_KEY, dictionary)
+  }
 }
 
 /**
