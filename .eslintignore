@@ -3,5 +3,8 @@ dist
 yarn.lock
 package.json
 package-lock.json
+pnpm-lock.yaml
 .gitignore
+.gitattributes
 .eslintignore
+example
