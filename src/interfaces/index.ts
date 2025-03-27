@@ -1,4 +1,4 @@
-export { IDictionary } from './IDictionary'
-export { IFieldConfig } from './IFieldConfig'
-export { IJson } from './IJson'
-export { ITree } from './ITree'
+export type { IDictionary } from './IDictionary'
+export type { IFieldConfig } from './IFieldConfig'
+export type { IJson } from './IJson'
+export type { ITree } from './ITree'

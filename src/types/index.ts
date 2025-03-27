@@ -1,2 +1,2 @@
-export { AirClassConstructor } from './AirClassConstructor'
-export { AirEnumKey } from './AirEnumKey'
+export type { AirClassConstructor } from './AirClassConstructor'
+export type { AirEnumKey } from './AirEnumKey'
