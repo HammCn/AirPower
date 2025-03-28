@@ -31,8 +31,8 @@ export class AirDictionary implements IDictionary {
   }
 
   /**
-   * ### 设置常量值
-   * @param key 常量值
+   * ### 设置字典的属性值
+   * @param key 属性值
    */
   setKey(key: AirEnumKey): this {
     this.key = key;
@@ -40,8 +40,8 @@ export class AirDictionary implements IDictionary {
   }
 
   /**
-   * ### 设置常量描述
-   * @param label 常量的描述
+   * ### 设置字典的描述
+   * @param label 字典的描述
    */
   setLabel(label: string): this {
     this.label = label;
@@ -49,7 +49,7 @@ export class AirDictionary implements IDictionary {
   }
 
   /**
-   * ### 设置枚举值是否被禁用
+   * ### 设置字典是否被禁用
    * @param disabled `可选` 是否禁用
    */
   setDisabled(disabled = true): this {

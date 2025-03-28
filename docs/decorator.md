@@ -7,7 +7,6 @@
 可以使用 `@Model()` 为类标记可读的 `label` 以及数据转换时候的统一前缀 `fieldPrefix`：
 
 ```typescript
-
 @Model({
   label: "用户",
   fieldPrefix: "user_"
