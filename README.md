@@ -26,7 +26,7 @@ cnpm install airpower
 
 ## 📖 参考文档
 
-**我们提供了一系列的使用文档，你可以 [点击这里阅读](/docs/README.md)**
+**我们提供了一系列的使用文档，你可以 [点击这里阅读](docs/README.md)**
 
 ## ⏰ 欢迎反馈
 
