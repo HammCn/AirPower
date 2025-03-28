@@ -33,8 +33,6 @@ console.log(config);
 - **label**: 类的标签，如 `用户`
 - **fieldPrefix**: 统一属性的前缀，如 `user_`，将在 [数据转换](./transformer.md) 中使用到。
 
-
-
 ### @Field 属性配置
 
 可以使用 `@Field` 对类的属性进行配置：

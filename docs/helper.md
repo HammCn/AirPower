@@ -71,7 +71,6 @@ AirDecorator.getFieldConfigList()
 AirDecorator.getFieldConfigValue()
 ```
 
-
 ### AirFile 文件
 
 提供了一些常用文件处理方法

@@ -52,7 +52,7 @@
 #### 声明枚举
 
 ```typescript
-export class UserGenderEnum extends  AirEnum{
+export class UserGenderEnum extends AirEnum {
   static MALE = new UserGenderEnum(1, '男');
   static FEMALE = new UserGenderEnum(2, '女');
 }
