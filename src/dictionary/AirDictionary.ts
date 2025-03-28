@@ -1,20 +1,20 @@
-import { AirColorString, AirEnumKey } from "../type";
-import { IDictionary } from "./IDictionary";
+import { AirColorString, AirEnumKey } from '../type'
+import { IDictionary } from './IDictionary'
 
 /**
  * # 标准字典实现类
  * @author Hamm.cn
  */
 export class AirDictionary implements IDictionary {
-  key!: AirEnumKey;
+  key!: AirEnumKey
 
-  label!: string;
+  label!: string
 
-  color?: AirColorString;
+  color?: AirColorString
 
-  disabled?: boolean = false;
+  disabled?: boolean = false
 
-  children?: this[];
+  children?: this[]
 
   /**
    * ### 实例化一个标准字典选项
@@ -23,10 +23,10 @@ export class AirDictionary implements IDictionary {
    */
   constructor(key?: AirEnumKey, label?: string) {
     if (key) {
-      this.key = key;
+      this.key = key
     }
     if (label) {
-      this.label = label;
+      this.label = label
     }
   }
 
@@ -35,8 +35,8 @@ export class AirDictionary implements IDictionary {
    * @param key 常量值
    */
   setKey(key: AirEnumKey): this {
-    this.key = key;
-    return this;
+    this.key = key
+    return this
   }
 
   /**
@@ -44,8 +44,8 @@ export class AirDictionary implements IDictionary {
    * @param label 常量的描述
    */
   setLabel(label: string): this {
-    this.label = label;
-    return this;
+    this.label = label
+    return this
   }
 
   /**
@@ -53,8 +53,8 @@ export class AirDictionary implements IDictionary {
    * @param disabled `可选` 是否禁用
    */
   setDisabled(disabled = true): this {
-    this.disabled = disabled;
-    return this;
+    this.disabled = disabled
+    return this
   }
 
   /**
@@ -62,7 +62,7 @@ export class AirDictionary implements IDictionary {
    * @param children 子集
    */
   setChildren(children: this[]): this {
-    this.children = children;
-    return this;
+    this.children = children
+    return this
   }
 }

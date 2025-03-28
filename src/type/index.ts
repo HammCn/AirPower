@@ -1,1 +1,1 @@
-export * from './AirType';
+export * from './AirType'

@@ -1,6 +1,6 @@
-import { AirModel } from "./AirModel";
-import { Field } from "../decorator";
-import { AirConstant } from "../config";
+import { AirModel } from './AirModel'
+import { Field } from '../decorator'
+import { AirConstant } from '../config'
 
 /**
  * # 实体超类
@@ -11,19 +11,19 @@ export class AirEntity extends AirModel {
    * ### 主键 `ID`
    */
   @Field({
-    label: "ID",
+    label: 'ID',
     type: Number,
   })
-  id!: number;
+  id!: number
 
   /**
    * ### 实例化一个实体
    * @param id `可选` 主键 `ID`
    */
   constructor(id?: number) {
-    super();
+    super()
     if (id) {
-      this.id = id;
+      this.id = id
     }
   }
 
@@ -32,20 +32,20 @@ export class AirEntity extends AirModel {
    * @returns 仅包含ID的实体
    */
   copyExposeId(): this {
-    return this.copy().exposeId();
+    return this.copy().exposeId()
   }
 
   /**
    * ### 只暴露 `ID`
    */
   exposeId(): this {
-    return this.expose(AirConstant.STRING_ID);
+    return this.expose(AirConstant.STRING_ID)
   }
 
   /**
    * ### 排除 `ID`
    */
   excludeId(): this {
-    return this.exclude(AirConstant.STRING_ID);
+    return this.exclude(AirConstant.STRING_ID)
   }
 }

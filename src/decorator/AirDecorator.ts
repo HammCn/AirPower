@@ -1,14 +1,8 @@
-import {
-  AirAny,
-  AirDecoratorData,
-  AirDecoratorTarget,
-  AirEnumKey,
-  ClassConstructor,
-} from "../type";
-import { AirDictionaryArray, AirEnum } from "../dictionary";
-import { AirConstant } from "../config";
-import { AirFieldConfig } from "./AirFieldConfig";
-import { AirClassTransformer, IJson } from "../transformer";
+import { AirAny, AirDecoratorData, AirDecoratorTarget, AirEnumKey, ClassConstructor } from '../type'
+import { AirDictionaryArray, AirEnum } from '../dictionary'
+import { AirConstant } from '../config'
+import { AirFieldConfig } from './AirFieldConfig'
+import { AirClassTransformer, IJson } from '../transformer'
 
 /**
  * # 装饰器助手类
@@ -20,18 +14,15 @@ export class AirDecorator {
    * @param dictionary
    */
   static getDictionary(
-    dictionary:
-      | ClassConstructor<AirEnum<AirEnumKey>>
-      | AirDictionaryArray
-      | undefined,
+    dictionary: ClassConstructor<AirEnum<AirEnumKey>> | AirDictionaryArray | undefined,
   ): AirDictionaryArray | undefined {
     if (!dictionary) {
-      return dictionary;
+      return dictionary
     }
     if (dictionary instanceof AirDictionaryArray) {
-      return dictionary;
+      return dictionary
     }
-    return (dictionary as AirAny).toDictionary();
+    return (dictionary as AirAny).toDictionary()
   }
 
   /**
@@ -40,12 +31,8 @@ export class AirDecorator {
    * @param classConfigKey 配置项索引键值
    * @param classConfig 配置的参数
    */
-  static setClassConfig(
-    target: AirDecoratorTarget,
-    classConfigKey: string,
-    classConfig: unknown,
-  ) {
-    this.setProperty(target.prototype, classConfigKey, classConfig);
+  static setClassConfig(target: AirDecoratorTarget, classConfigKey: string, classConfig: unknown) {
+    this.setProperty(target.prototype, classConfigKey, classConfig)
   }
 
   /**
@@ -61,38 +48,30 @@ export class AirDecorator {
     defaultValue: unknown = undefined,
     isObject = false,
   ): AirDecoratorData {
-    let classConfig = Reflect.get(target, classConfigKey);
+    let classConfig = Reflect.get(target, classConfigKey)
     if (!isObject) {
       // 普通配置
       if (classConfig) {
-        return classConfig;
+        return classConfig
       }
-      const superClass = Reflect.getPrototypeOf(target);
-      if (
-        !superClass ||
-        superClass.constructor.name === AirConstant.AIR_MODEL
-      ) {
-        return undefined;
+      const superClass = Reflect.getPrototypeOf(target)
+      if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
+        return undefined
       }
-      return this.getClassConfig(superClass, classConfigKey);
+      return this.getClassConfig(superClass, classConfigKey)
     }
 
-    classConfig = classConfig || {};
+    classConfig = classConfig || {}
     // 对象配置
-    const superClass = Reflect.getPrototypeOf(target);
+    const superClass = Reflect.getPrototypeOf(target)
     if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
-      return defaultValue;
+      return defaultValue
     }
 
     return {
-      ...this.getClassConfig(
-        superClass,
-        classConfigKey,
-        defaultValue,
-        isObject,
-      ),
+      ...this.getClassConfig(superClass, classConfigKey, defaultValue, isObject),
       ...classConfig,
-    };
+    }
   }
 
   /**
@@ -111,9 +90,9 @@ export class AirDecorator {
     fieldListKey?: string,
   ) {
     if (fieldListKey) {
-      this.addFieldDecoratorKey(target, key, fieldListKey);
+      this.addFieldDecoratorKey(target, key, fieldListKey)
     }
-    this.setProperty(target, `${fieldConfigKey}[${key}]`, fieldConfig);
+    this.setProperty(target, `${fieldConfigKey}[${key}]`, fieldConfig)
   }
 
   /**
@@ -129,37 +108,34 @@ export class AirDecorator {
     fieldConfigKey: string,
     isObject = false,
   ): AirDecoratorData {
-    if (typeof target !== "object") {
-      target = target.prototype;
+    if (typeof target !== 'object') {
+      target = target.prototype
     }
-    let fieldConfig = Reflect.get(target, `${fieldConfigKey}[${key}]`);
+    let fieldConfig = Reflect.get(target, `${fieldConfigKey}[${key}]`)
     if (!isObject) {
       // 普通配置
       if (fieldConfig !== undefined) {
-        return fieldConfig;
+        return fieldConfig
       }
       // 没有查询到配置
-      const superClass = Reflect.getPrototypeOf(target);
-      if (
-        !superClass ||
-        superClass.constructor.name === AirConstant.AIR_MODEL
-      ) {
-        return undefined;
+      const superClass = Reflect.getPrototypeOf(target)
+      if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
+        return undefined
       }
-      return this.getFieldConfig(superClass, key, fieldConfigKey);
+      return this.getFieldConfig(superClass, key, fieldConfigKey)
     }
 
     // 对象配置
-    fieldConfig = fieldConfig || {};
+    fieldConfig = fieldConfig || {}
     // 没有查询到配置
-    const superClass = Reflect.getPrototypeOf(target);
+    const superClass = Reflect.getPrototypeOf(target)
     if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
-      return {};
+      return {}
     }
     return {
       ...this.getFieldConfig(superClass, key, fieldConfigKey, true),
       ...fieldConfig,
-    };
+    }
   }
 
   /**
@@ -168,18 +144,14 @@ export class AirDecorator {
    * @param fieldConfigKey FieldConfigKey
    * @param list `递归参数` 无需传入
    */
-  static getFieldList(
-    target: AirDecoratorTarget,
-    fieldConfigKey: string,
-    list: string[] = [],
-  ): string[] {
-    const fieldList: string[] = Reflect.get(target, fieldConfigKey) || [];
-    fieldList.forEach((item) => list.includes(item) || list.push(item));
-    const superClass = Reflect.getPrototypeOf(target);
+  static getFieldList(target: AirDecoratorTarget, fieldConfigKey: string, list: string[] = []): string[] {
+    const fieldList: string[] = Reflect.get(target, fieldConfigKey) || []
+    fieldList.forEach((item) => list.includes(item) || list.push(item))
+    const superClass = Reflect.getPrototypeOf(target)
     if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
-      return list;
+      return list
     }
-    return this.getFieldList(superClass, fieldConfigKey, list);
+    return this.getFieldList(superClass, fieldConfigKey, list)
   }
 
   /**
@@ -197,44 +169,38 @@ export class AirDecorator {
     keyList: string[],
     FieldConfigClass: ClassConstructor<T>,
   ): T[] {
-    const fieldConfigList: T[] = [];
+    const fieldConfigList: T[] = []
     if (keyList.length === 0) {
-      keyList = this.getFieldList(target, fieldListKey);
+      keyList = this.getFieldList(target, fieldListKey)
     }
     for (const fieldName of keyList) {
-      const config = this.getFieldConfig(target, fieldName, fieldConfigKey);
+      const config = this.getFieldConfig(target, fieldName, fieldConfigKey)
       if (!config) {
-        // eslint-disable-next-line no-continue
-        continue;
+        continue
       }
-      const defaultConfig = new FieldConfigClass();
-      const result: IJson = {};
+      const defaultConfig = new FieldConfigClass()
+      const result: IJson = {}
       const configKeyList = Object.keys({
         ...defaultConfig,
         config,
-      });
+      })
       configKeyList.forEach((configKey) => {
-        if (configKey === "key") {
-          return;
+        if (configKey === 'key') {
+          return
         }
-        const fieldConfigValue = this.getFieldConfigValue(
-          target,
-          fieldConfigKey,
-          config.key,
-          configKey,
-        );
+        const fieldConfigValue = this.getFieldConfigValue(target, fieldConfigKey, config.key, configKey)
         if (fieldConfigValue === null || fieldConfigValue === undefined) {
-          result[configKey] = (defaultConfig as IJson)[configKey];
-          return;
+          result[configKey] = (defaultConfig as IJson)[configKey]
+          return
         }
-        result[configKey] = fieldConfigValue;
-      });
-      result.key = config.key;
-      result.label = config.label;
-      fieldConfigList.push(result as T);
+        result[configKey] = fieldConfigValue
+      })
+      result.key = config.key
+      result.label = config.label
+      fieldConfigList.push(result as T)
     }
 
-    return fieldConfigList;
+    return fieldConfigList
   }
 
   /**
@@ -250,17 +216,15 @@ export class AirDecorator {
     key: string,
     configKey: string,
   ): AirDecoratorData {
-    const fieldConfig = AirClassTransformer.copyJson(
-      Reflect.get(target, `${fieldConfigKey}[${key}]`),
-    );
+    const fieldConfig = AirClassTransformer.copyJson(Reflect.get(target, `${fieldConfigKey}[${key}]`))
     if (fieldConfig && fieldConfig[configKey] !== undefined) {
-      return fieldConfig[configKey];
+      return fieldConfig[configKey]
     }
-    const superClass = Object.getPrototypeOf(target);
+    const superClass = Object.getPrototypeOf(target)
     if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
-      return undefined;
+      return undefined
     }
-    return this.getFieldConfigValue(superClass, fieldConfigKey, key, configKey);
+    return this.getFieldConfigValue(superClass, fieldConfigKey, key, configKey)
   }
 
   /**
@@ -269,17 +233,13 @@ export class AirDecorator {
    * @param key 配置key
    * @param value 配置值
    */
-  private static setProperty(
-    target: AirDecoratorTarget,
-    key: string,
-    value: unknown,
-  ) {
+  private static setProperty(target: AirDecoratorTarget, key: string, value: unknown) {
     Reflect.defineProperty(target, key, {
       enumerable: false,
       value,
       writable: false,
       configurable: true,
-    });
+    })
   }
 
   /**
@@ -288,13 +248,9 @@ export class AirDecorator {
    * @param key 字段
    * @param fieldListKey 类配置项列表索引值
    */
-  private static addFieldDecoratorKey(
-    target: AirDecoratorTarget,
-    key: string,
-    fieldListKey: string,
-  ) {
-    const list: string[] = Reflect.get(target, fieldListKey) || [];
-    list.push(key);
-    this.setProperty(target, fieldListKey, list);
+  private static addFieldDecoratorKey(target: AirDecoratorTarget, key: string, fieldListKey: string) {
+    const list: string[] = Reflect.get(target, fieldListKey) || []
+    list.push(key)
+    this.setProperty(target, fieldListKey, list)
   }
 }

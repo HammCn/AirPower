@@ -1,17 +1,17 @@
-import { IField } from "./interface";
+import { IField } from './interface'
 
 /**
  * # 字段配置基类
  * @author Hamm.cn
  */
 export class AirFieldConfig implements IField {
-  key!: string;
+  key!: string
 
-  label!: string;
+  label!: string
 
   constructor(key?: string) {
     if (key) {
-      this.key = key;
+      this.key = key
     }
   }
 }
