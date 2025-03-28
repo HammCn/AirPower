@@ -1,5 +1,5 @@
-import { AirConstant } from "../config";
-import { AirRegExp } from "./AirRegExp";
+import { AirConstant } from '../config'
+import { AirRegExp } from './AirRegExp'
 
 /**
  * # 表单验证工具
@@ -11,7 +11,7 @@ export class AirValidator {
    * @param phoneNumber 号码
    */
   static isTelephoneOrMobilePhone(phoneNumber: string): boolean {
-    return this.isMobilePhone(phoneNumber) || this.isTelephone(phoneNumber);
+    return this.isMobilePhone(phoneNumber) || this.isTelephone(phoneNumber)
   }
 
   /**
@@ -19,9 +19,7 @@ export class AirValidator {
    * @param email
    */
   static isEmail(email: string): boolean {
-    return /^[a-zA-Z0-9]+(\.([a-zA-Z0-9]+))*@[a-zA-Z0-9]+(\.([a-zA-Z0-9]+))+$/.test(
-      email,
-    );
+    return /^[a-zA-Z0-9]+(\.([a-zA-Z0-9]+))*@[a-zA-Z0-9]+(\.([a-zA-Z0-9]+))+$/.test(email)
   }
 
   /**
@@ -29,7 +27,7 @@ export class AirValidator {
    * @param num 号码
    */
   static isMobilePhone(num: string): boolean {
-    return /^(\+(\d{1,4}))?1[3-9](\d{9})$/.test(num);
+    return /^(\+(\d{1,4}))?1[3-9](\d{9})$/.test(num)
   }
 
   /**
@@ -37,9 +35,7 @@ export class AirValidator {
    * @param num 号码
    */
   static isTelephone(num: string): boolean {
-    return /^(((0\d{2,3})-)?((\d{7,8})|(400\d{7})|(800\d{7}))(-(\d{1,4}))?)$/.test(
-      num,
-    );
+    return /^(((0\d{2,3})-)?((\d{7,8})|(400\d{7})|(800\d{7}))(-(\d{1,4}))?)$/.test(num)
   }
 
   /**
@@ -48,7 +44,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isChinese(str: string): boolean {
-    return new RegExp(String.raw`^[${AirRegExp.CHINESE}]+$`).test(str);
+    return new RegExp(String.raw`^[${AirRegExp.CHINESE}]+$`).test(str)
   }
 
   /**
@@ -56,7 +52,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isOnlyLetter(str: string): boolean {
-    return new RegExp(String.raw`^[${AirRegExp.LETTER}]+$`).test(str);
+    return new RegExp(String.raw`^[${AirRegExp.LETTER}]+$`).test(str)
   }
 
   /**
@@ -64,9 +60,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isOnlyNumberAndLetter(str: string): boolean {
-    return new RegExp(
-      String.raw`^[${AirRegExp.LETTER + AirRegExp.NUMBER}]+$`,
-    ).test(str);
+    return new RegExp(String.raw`^[${AirRegExp.LETTER + AirRegExp.NUMBER}]+$`).test(str)
   }
 
   /**
@@ -74,7 +68,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isNumber(str: string): boolean {
-    return /^(-)?[0-9]+((.)[0-9]+)?$/.test(str);
+    return /^(-)?[0-9]+((.)[0-9]+)?$/.test(str)
   }
 
   /**
@@ -82,7 +76,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isInteger(str: string): boolean {
-    return /^(-)?[0-9]+$/.test(str);
+    return /^(-)?[0-9]+$/.test(str)
   }
 
   /**
@@ -90,7 +84,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isNaturalNumber(str: string): boolean {
-    return /^[0-9]+((.)[0-9]+)?$/.test(str);
+    return /^[0-9]+((.)[0-9]+)?$/.test(str)
   }
 
   /**
@@ -98,7 +92,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isNaturalInteger(str: string): boolean {
-    return /^[0-9]+$/.test(str);
+    return /^[0-9]+$/.test(str)
   }
 
   /**
@@ -107,44 +101,43 @@ export class AirValidator {
    */
   static isChineseIdCard(str: string): boolean {
     if (str.length !== 18 && str.length !== 15) {
-      return false;
+      return false
     }
 
-    const validArray: Array<Array<number | "X">> = [
+    const validArray: Array<Array<number | 'X'>> = [
       [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
-      [1, 0, "X", 9, 8, 7, 6, 5, 4, 3, 2],
-    ];
+      [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2],
+    ]
 
     if (str.length === 15) {
       // 15位身份证校验
       return /^[1-9]\d{5}((\d{2}(((0[13578]|1[02])(0[1-9]|[12][0-9]|3[01]))|((0[13456789]|1[012])(0[1-9]|[12][0-9]|30))|(02(0[1-9]|1[0-9]|2[0-8]))))|(((0[48]|[2468][048]|[13579][26])|(00))0229))\d{2}[0-9Xx]$/.test(
         str,
-      );
+      )
     }
     if (str.length !== 18) {
-      return false;
+      return false
     }
 
-    const year = parseInt(str.substring(6), AirConstant.DEFAULT_RADIX);
+    const year = parseInt(str.substring(6), AirConstant.DEFAULT_RADIX)
     if (year > new Date().getFullYear() || year < 1900) {
-      return false;
+      return false
     }
-    const month = parseInt(str.substring(10, 12), AirConstant.DEFAULT_RADIX);
+    const month = parseInt(str.substring(10, 12), AirConstant.DEFAULT_RADIX)
     if (month > 12 || month < 1) {
-      return false;
+      return false
     }
-    const day = parseInt(str.substring(12, 14), AirConstant.DEFAULT_RADIX);
+    const day = parseInt(str.substring(12, 14), AirConstant.DEFAULT_RADIX)
     if (day > 31 || month < 1) {
-      return false;
+      return false
     }
-    let sum = 0;
+    let sum = 0
     for (let i = 0; i < 17; i += 1) {
-      sum +=
-        parseInt(str[i], AirConstant.DEFAULT_RADIX) *
-        (validArray[0][i] as number);
+      sum += parseInt(str[i], AirConstant.DEFAULT_RADIX) * (validArray[0][i] as number)
     }
+
     // eslint-disable-next-line eqeqeq
-    return validArray[1][sum % 11] == str[17];
+    return validArray[1][sum % 11] == str[17]
   }
 
   /**
@@ -153,15 +146,16 @@ export class AirValidator {
    * @param list 验证器
    */
   static validate(str: string, ...list: AirRegExp[]) {
-    let regString = AirConstant.STRING_EMPTY;
+    let regString = AirConstant.STRING_EMPTY
     for (let i = 0; i < list.length; i += 1) {
-      regString += list[i];
+      regString += list[i]
     }
     try {
-      return new RegExp(String.raw`^[${regString}]+$`).test(str);
+      return new RegExp(String.raw`^[${regString}]+$`).test(str)
     } catch (e) {
+      console.log(e)
       // 抛出错误的正则表达式
-      throw new Error("What the fuck your regexp is?");
+      throw new Error('What the fuck your regexp is?')
     }
   }
 }

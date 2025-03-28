@@ -1,4 +1,4 @@
-import { AirConstant } from "../config";
+import { AirConstant } from '../config'
 
 /**
  * # 字符串处理工具类
@@ -8,19 +8,19 @@ export class AirString {
   /**
    * ### 单码元长度
    */
-  private static SINGLE_POINT_LENGTH = 65535;
+  private static SINGLE_POINT_LENGTH = 65535
 
   /**
    * ### 获取字符串可视化长度
    */
   static getLength(str: string): number {
-    let len = 0;
+    let len = 0
     for (let i = 0; i < str.length; ) {
-      const codePoint = str.codePointAt(i)!;
-      i += codePoint > this.SINGLE_POINT_LENGTH ? 2 : 1;
-      len += 1;
+      const codePoint = str.codePointAt(i)!
+      i += codePoint > this.SINGLE_POINT_LENGTH ? 2 : 1
+      len += 1
     }
-    return len;
+    return len
   }
 
   /**
@@ -30,19 +30,19 @@ export class AirString {
    * @returns 字符串
    */
   static get(str: string, index: number): string {
-    let current = 0;
+    let current = 0
     if (index < 0) {
-      throw new Error("AirString.get() Error: index error");
+      throw new Error('AirString.get() Error: index error')
     }
     for (let i = 0; i < str.length; ) {
-      const codePoint = str.codePointAt(i)!;
+      const codePoint = str.codePointAt(i)!
       if (current === index) {
-        return String.fromCodePoint(codePoint);
+        return String.fromCodePoint(codePoint)
       }
-      i += codePoint > this.SINGLE_POINT_LENGTH ? 2 : 1;
-      current += 1;
+      i += codePoint > this.SINGLE_POINT_LENGTH ? 2 : 1
+      current += 1
     }
-    throw new Error("AirString.get() Error: index out of range");
+    throw new Error('AirString.get() Error: index out of range')
   }
 
   /**
@@ -52,22 +52,22 @@ export class AirString {
    * @param to 截取结束位置
    */
   static slice(str: string, from = 0, to = this.getLength(str) - 1): string {
-    let s = AirConstant.STRING_EMPTY;
+    let s = AirConstant.STRING_EMPTY
     if (from < 0) {
-      throw new Error("AirString.get() Error: from error");
+      throw new Error('AirString.get() Error: from error')
     }
     if (to < 0) {
-      throw new Error("AirString.get() Error: to error");
+      throw new Error('AirString.get() Error: to error')
     }
     if (from > this.getLength(str) - 1) {
-      throw new Error("AirString.get() Error: from out of range");
+      throw new Error('AirString.get() Error: from out of range')
     }
     if (to > this.getLength(str) - 1) {
-      throw new Error("AirString.get() Error: to out of range");
+      throw new Error('AirString.get() Error: to out of range')
     }
     for (let i = from; i <= to; i += 1) {
-      s += this.get(str, i);
+      s += this.get(str, i)
     }
-    return s;
+    return s
   }
 }

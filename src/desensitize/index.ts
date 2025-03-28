@@ -1,2 +1,2 @@
-export * from './AirDesensitize';
-export * from './AirDesensitizeType';
+export * from './AirDesensitize'
+export * from './AirDesensitizeType'

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import { AirAny } from "../type";
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
+import { AirAny } from '../type'
 
 /**
  * # 事件
@@ -9,15 +9,15 @@ class AirEvent {
   /**
    * ### 监听者
    */
-  private listeners: Map<string, Array<Function>> = new Map();
+  private listeners: Map<string, Array<Function>> = new Map()
 
   /**
    * ### 监听多个事件
    */
   onAll(types: Array<string>, callback: Function) {
     types.forEach((type) => {
-      this.on(type, callback);
-    });
+      this.on(type, callback)
+    })
   }
 
   /**
@@ -26,9 +26,9 @@ class AirEvent {
    * @param callback 回调方法
    */
   on(type: string, callback: Function) {
-    const callbacks = this.listeners.get(type) || [];
-    callbacks.push(callback);
-    this.listeners.set(type, callbacks);
+    const callbacks = this.listeners.get(type) || []
+    callbacks.push(callback)
+    this.listeners.set(type, callbacks)
   }
 
   /**
@@ -38,10 +38,10 @@ class AirEvent {
    */
   once(type: string, callback: Function) {
     const onceCallback = (...args: AirAny[]) => {
-      callback(...args);
-      this.off(type, onceCallback);
-    };
-    this.on(type, onceCallback);
+      callback(...args)
+      this.off(type, onceCallback)
+    }
+    this.on(type, onceCallback)
   }
 
   /**
@@ -50,10 +50,10 @@ class AirEvent {
    * @param args 参数
    */
   emit(type: string, ...args: AirAny[]) {
-    const callbacks = this.listeners.get(type) || [];
+    const callbacks = this.listeners.get(type) || []
     callbacks.forEach((callback) => {
-      callback(...args);
-    });
+      callback(...args)
+    })
   }
 
   /**
@@ -62,12 +62,12 @@ class AirEvent {
    * @param callback 回调方法
    */
   off(type: string, callback: Function) {
-    const callbacks = this.listeners.get(type) || [];
-    const index = callbacks.indexOf(callback);
+    const callbacks = this.listeners.get(type) || []
+    const index = callbacks.indexOf(callback)
     if (index !== -1) {
-      callbacks.splice(index, 1);
+      callbacks.splice(index, 1)
     }
   }
 }
 
-export default new AirEvent();
+export default new AirEvent()

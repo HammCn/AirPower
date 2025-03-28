@@ -8,9 +8,9 @@ export class AirConsole {
    * @param title 分组标题
    */
   static title(title: string): void {
-    const content = `%c${title}`;
-    const css = "font-size:14px;color:#333333;font-weight:bold;";
-    this.show(content, css);
+    const content = `%c${title}`
+    const css = 'font-size:14px;color:#333333;font-weight:bold;'
+    this.show(content, css)
   }
 
   /**
@@ -18,9 +18,9 @@ export class AirConsole {
    * @param message
    */
   static success(message: string): void {
-    const content = `%cSUCCESS\t\t${message}`;
-    const css = "color:darkgreen;";
-    this.show(content, css);
+    const content = `%cSUCCESS\t\t${message}`
+    const css = 'color:darkgreen;'
+    this.show(content, css)
   }
 
   /**
@@ -28,9 +28,9 @@ export class AirConsole {
    * @param message
    */
   static warning(message: string): void {
-    const content = `%cWARNING\t\t${message}`;
-    const css = "color:orange;";
-    this.show(content, css);
+    const content = `%cWARNING\t\t${message}`
+    const css = 'color:orange;'
+    this.show(content, css)
   }
 
   /**
@@ -38,9 +38,9 @@ export class AirConsole {
    * @param message
    */
   static error(message: string): void {
-    const content = `%cERROR\t\t${message}`;
-    const css = "color:red;";
-    this.show(content, css);
+    const content = `%cERROR\t\t${message}`
+    const css = 'color:red;'
+    this.show(content, css)
   }
 
   /**
@@ -48,9 +48,9 @@ export class AirConsole {
    * @param message
    */
   static info(message: string): void {
-    const content = `%cINFO\t\t${message}`;
-    const css = "color:#333;";
-    this.show(content, css);
+    const content = `%cINFO\t\t${message}`
+    const css = 'color:#333;'
+    this.show(content, css)
   }
 
   /**
@@ -58,9 +58,9 @@ export class AirConsole {
    * @param message
    */
   static log(message: string): void {
-    const content = `%cLOG\t\t\t${message}`;
-    const css = "color:#aaa;";
-    this.show(content, css);
+    const content = `%cLOG\t\t\t${message}`
+    const css = 'color:#aaa;'
+    this.show(content, css)
   }
 
   /**
@@ -69,7 +69,6 @@ export class AirConsole {
    * @param css `可选` 样式
    */
   private static show(content: string, css?: string) {
-    // eslint-disable-next-line no-console
-    console.log(content, css);
+    console.log(content, css)
   }
 }

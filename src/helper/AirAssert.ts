@@ -11,9 +11,7 @@ export class AirAssert {
    */
   static when(condition: boolean, message: string, description?: string) {
     if (condition) {
-      throw new Error(
-        `\n\n[AirAssert Failed]: ${message || ""}\n${description}\n\n\n`,
-      );
+      throw new Error(`\n\n[AirAssert Failed]: ${message || ''}\n${description}\n\n\n`)
     }
   }
 
@@ -24,7 +22,7 @@ export class AirAssert {
    * @param description `可选` 错误描述
    */
   static whenNull(value: unknown, message: string, description?: string) {
-    return this.when(value === null, message, description);
+    return this.when(value === null, message, description)
   }
 
   /**
@@ -34,6 +32,6 @@ export class AirAssert {
    * @param description `可选` 错误描述
    */
   static whenUndefined(value: unknown, message: string, description?: string) {
-    return this.when(value === undefined, message, description);
+    return this.when(value === undefined, message, description)
   }
 }

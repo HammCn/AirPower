@@ -1,2 +1,2 @@
-export * from './AirRegExp';
-export * from './AirValidator';
+export * from './AirRegExp'
+export * from './AirValidator'

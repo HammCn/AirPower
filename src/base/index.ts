@@ -1,2 +1,2 @@
-export * from './AirEntity';
-export * from './AirModel';
+export * from './AirEntity'
+export * from './AirModel'

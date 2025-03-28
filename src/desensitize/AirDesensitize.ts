@@ -1,5 +1,5 @@
-import { AirConstant } from "../config";
-import { AirDesensitizeType } from "./AirDesensitizeType";
+import { AirConstant } from '../config'
+import { AirDesensitizeType } from './AirDesensitizeType'
 
 /**
  * # 脱敏助手类
@@ -10,7 +10,7 @@ export class AirDesensitize {
   /**
    * ### `IPv4` 的块长度
    */
-  private static readonly IP_V4_PART_COUNT = 4;
+  private static readonly IP_V4_PART_COUNT = 4
 
   /**
    * ### 字符串替换
@@ -21,24 +21,19 @@ export class AirDesensitize {
    * @param symbol 中间替换的单个符号
    * @return 替换后的字符串
    */
-  public static replace(
-    text: string,
-    head: number,
-    tail: number,
-    symbol: string,
-  ): string {
+  public static replace(text: string, head: number, tail: number, symbol: string): string {
     if (head < 0 || tail < 0 || head + tail >= text.length) {
-      return text;
+      return text
     }
-    let str = "";
+    let str = ''
     for (let i = 0; i < text.length; i += 1) {
       if (i >= head && i <= text.length - tail - 1) {
-        str += symbol;
+        str += symbol
       } else {
-        str += text[i];
+        str += text[i]
       }
     }
-    return str;
+    return str
   }
 
   /**
@@ -48,18 +43,15 @@ export class AirDesensitize {
    * @param symbol `可选` 脱敏符号
    * @return 脱敏后的 `IPv4` 地址
    */
-  public static desensitizeIpv4Address(
-    ipv4: string,
-    symbol = AirConstant.STRING_ASTERISK,
-  ): string {
-    const strings = ipv4.split(AirConstant.STRING_DOT);
-    if (strings.length != AirDesensitize.IP_V4_PART_COUNT) {
-      return ipv4;
+  public static desensitizeIpv4Address(ipv4: string, symbol = AirConstant.STRING_ASTERISK): string {
+    const strings = ipv4.split(AirConstant.STRING_DOT)
+    if (strings.length !== AirDesensitize.IP_V4_PART_COUNT) {
+      return ipv4
     }
-    const temp = symbol + symbol + symbol;
-    strings[1] = temp;
-    strings[2] = temp;
-    return strings.join(AirConstant.STRING_DOT);
+    const temp = symbol + symbol + symbol
+    strings[1] = temp
+    strings[2] = temp
+    return strings.join(AirConstant.STRING_DOT)
   }
 
   /**
@@ -80,27 +72,27 @@ export class AirDesensitize {
     symbol = AirConstant.STRING_ASTERISK,
   ): string {
     if (!source) {
-      return AirConstant.STRING_EMPTY;
+      return AirConstant.STRING_EMPTY
     }
-    head = head <= 0 ? type.head : head;
-    tail = tail <= 0 ? type.tail : tail;
+    head = head <= 0 ? type.head : head
+    tail = tail <= 0 ? type.tail : tail
     switch (type.key) {
       case AirDesensitizeType.IP_V4.key:
-        return AirDesensitize.desensitizeIpv4Address(source, symbol);
+        return AirDesensitize.desensitizeIpv4Address(source, symbol)
       case AirDesensitizeType.CHINESE_NAME.key:
         if (source.length <= head + tail) {
-          tail = 0;
+          tail = 0
         }
-        break;
+        break
       case AirDesensitizeType.TELEPHONE.key:
         // 包含区号 前后各留4 不包含则各留2
         // eslint-disable-next-line no-case-declarations
-        const isContainRegionCode = source.length > 8 ? 4 : 2;
-        head = isContainRegionCode;
-        tail = isContainRegionCode;
-        break;
+        const isContainRegionCode = source.length > 8 ? 4 : 2
+        head = isContainRegionCode
+        tail = isContainRegionCode
+        break
       default:
     }
-    return this.replace(source, head, tail, symbol);
+    return this.replace(source, head, tail, symbol)
   }
 }

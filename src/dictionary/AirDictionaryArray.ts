@@ -1,22 +1,20 @@
-import { AirColorString, AirEnumKey } from "../type";
-import { AirDictionary } from "./AirDictionary";
-import { AirConstant } from "../config";
-import { IDictionary } from "./IDictionary";
-import { AirColor } from "./AirColor";
+import { AirColorString, AirEnumKey } from '../type'
+import { AirDictionary } from './AirDictionary'
+import { AirConstant } from '../config'
+import { IDictionary } from './IDictionary'
+import { AirColor } from './AirColor'
 
 /**
  * # 字典数组
  * @author Hamm.cn
  */
-export class AirDictionaryArray<
-  T extends IDictionary = IDictionary,
-> extends Array<T> {
+export class AirDictionaryArray<T extends IDictionary = IDictionary> extends Array<T> {
   /**
    * ### 创建字典
    * @param list 字典数组
    */
   static create(list: IDictionary[]): AirDictionaryArray {
-    return this.createCustom<IDictionary>(list);
+    return this.createCustom<IDictionary>(list)
   }
 
   /**
@@ -24,12 +22,12 @@ export class AirDictionaryArray<
    * @param list 字典数组
    */
   static createCustom<T extends IDictionary>(list: T[]): AirDictionaryArray<T> {
-    const dictionary = new AirDictionaryArray<T>();
+    const dictionary = new AirDictionaryArray<T>()
     list.forEach((json: T) => {
-      const item = Object.assign(new AirDictionary(), json);
-      dictionary.push(item);
-    });
-    return dictionary;
+      const item = Object.assign(new AirDictionary(), json)
+      dictionary.push(item)
+    })
+    return dictionary
   }
 
   /**
@@ -38,7 +36,7 @@ export class AirDictionaryArray<
    * @param defaultLabel 默认Label
    */
   getLabel(key: AirEnumKey, defaultLabel = AirConstant.STRING_LINE): string {
-    return this.get(key).label || defaultLabel;
+    return this.get(key).label || defaultLabel
   }
 
   /**
@@ -46,11 +44,8 @@ export class AirDictionaryArray<
    * @param key Key
    * @param defaultColor 默认Color
    */
-  getColor(
-    key: AirEnumKey,
-    defaultColor: AirColorString = AirColor.NORMAL,
-  ): AirColorString {
-    return this.get(key).color || defaultColor;
+  getColor(key: AirEnumKey, defaultColor: AirColorString = AirColor.NORMAL): AirColorString {
+    return this.get(key).color || defaultColor
   }
 
   /**
@@ -59,7 +54,7 @@ export class AirDictionaryArray<
    * @param key Key
    */
   get(key: AirEnumKey): T {
-    return (this.findByKey(key) as T) || {};
+    return (this.findByKey(key) as T) || {}
   }
 
   /**
@@ -68,6 +63,6 @@ export class AirDictionaryArray<
    * @param key Key
    */
   findByKey(key: AirEnumKey): T | undefined {
-    return this.find((item) => item.key === key);
+    return this.find((item) => item.key === key)
   }
 }
