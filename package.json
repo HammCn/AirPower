@@ -1,6 +1,6 @@
 {
   "name": "airpower",
-  "version": "1.1.18",
+  "version": "2.0.0",
   "type": "module",
   "main": "dist/airpower.umd.js",
   "module": "dist/airpower.es.js",
@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
+    "lint": "eslint src --ext .ts",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -31,5 +32,24 @@
   "dependencies": {
     "@types/crypto-js": "^4.2.2",
     "crypto-js": "^4.2.0"
-  }
+  },
+  "repository": "https://github.com/HammCn/AirPower",
+  "license": "MIT",
+  "author": {
+    "name": "Hamm",
+    "email": "admin@hamm.cn",
+    "url": "https://github.com/HammCn"
+  },
+  "description": "AirPower, 一个基于TypeScript的开发工具包, 内置了数据转换、装饰器、时间日期处理、加解密与散列、文件处理、常用枚举和字典、常见数据结构处理等工具。",
+  "bugs": {
+    "url": "https://github.com/HammCn/airpower/issues"
+  },
+  "keywords": [
+    "AirPower",
+    "class-transformer",
+    "typescript",
+    "oop",
+    "class"
+  ],
+  "homepage": "https://github.com/HammCn/airpower#readme"
 }
