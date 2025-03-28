@@ -5,7 +5,7 @@
 
 import { IModelConfig } from "./interface";
 import { AirDecoratorTarget } from "../type";
-import { AirDecorator } from "./AirDecorator.ts";
+import { AirDecorator } from "./AirDecorator";
 
 /**
  * ### 类名称 `Key`

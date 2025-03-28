@@ -1,6 +1,6 @@
 import { AirModel } from "../base";
 import { AirAny, AirDecoratorTarget } from "../type";
-import { AirDecorator } from "./AirDecorator.ts";
+import { AirDecorator } from "./AirDecorator";
 import { IFieldConfig } from "./interface";
 import { IJson } from "../transformer";
 

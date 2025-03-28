@@ -1,5 +1,5 @@
 import { AirConstant } from "../config";
-import { AirDesensitizeType } from "./AirDesensitizeType.ts";
+import { AirDesensitizeType } from "./AirDesensitizeType";
 
 /**
  * # 脱敏助手类

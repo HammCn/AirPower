@@ -1,5 +1,5 @@
 import { AirConstant } from "../config";
-import { ITree } from "./ITree.ts";
+import { ITree } from "./ITree";
 
 /**
  * # 树结构工具类

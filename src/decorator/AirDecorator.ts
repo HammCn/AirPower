@@ -7,7 +7,7 @@ import {
 } from "../type";
 import { AirDictionaryArray, AirEnum } from "../dictionary";
 import { AirConstant } from "../config";
-import { AirFieldConfig } from "./AirFieldConfig.ts";
+import { AirFieldConfig } from "./AirFieldConfig";
 import { AirClassTransformer, IJson } from "../transformer";
 
 /**

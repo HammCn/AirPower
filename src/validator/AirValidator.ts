@@ -1,5 +1,5 @@
 import { AirConstant } from "../config";
-import { AirRegExp } from "./AirRegExp.ts";
+import { AirRegExp } from "./AirRegExp";
 
 /**
  * # 表单验证工具

@@ -1,8 +1,8 @@
 import { AirColorString, AirEnumKey } from "../type";
-import { AirDictionary } from "./AirDictionary.ts";
+import { AirDictionary } from "./AirDictionary";
 import { AirConstant } from "../config";
-import { IDictionary } from "./IDictionary.ts";
-import { AirColor } from "./AirColor.ts";
+import { IDictionary } from "./IDictionary";
+import { AirColor } from "./AirColor";
 
 /**
  * # 字典数组

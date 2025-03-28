@@ -1,5 +1,5 @@
-import { AirI18nDefault } from "./AirI18nDefault.ts";
-import { AirLanguage } from "./AirLanguage.ts";
+import { AirI18nDefault } from "./AirI18nDefault";
+import { AirLanguage } from "./AirLanguage";
 
 /**
  * # I18n工具库

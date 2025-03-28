@@ -1,8 +1,8 @@
 import { AirConstant } from "../config";
-import { AirDictionaryArray } from "./AirDictionaryArray.ts";
+import { AirDictionaryArray } from "./AirDictionaryArray";
 import { AirColorString, AirEnumKey, ClassConstructor } from "../type";
-import { IDictionary } from "./IDictionary.ts";
-import { AirColor } from "./AirColor.ts";
+import { IDictionary } from "./IDictionary";
+import { AirColor } from "./AirColor";
 import { IJson } from "../transformer";
 
 /**

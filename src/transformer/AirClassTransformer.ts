@@ -1,6 +1,6 @@
 import { AirModel } from "../base";
 import { ClassConstructor } from "../type";
-import { IJson } from "./IJson.ts";
+import { IJson } from "./IJson";
 import { ITree } from "../tree";
 
 /**

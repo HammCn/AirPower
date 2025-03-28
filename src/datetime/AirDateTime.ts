@@ -1,5 +1,5 @@
 import { AirConstant } from "../config";
-import { AirDateTimeFormatter } from "./AirDateTimeFormatter.ts";
+import { AirDateTimeFormatter } from "./AirDateTimeFormatter";
 import { IJson } from "../transformer";
 import { IDictionary } from "../dictionary";
 

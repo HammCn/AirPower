@@ -1,4 +1,4 @@
-import { AirLanguage } from "./AirLanguage.ts";
+import { AirLanguage } from "./AirLanguage";
 
 /**
  * # 内置的一些 `i18n` 文案

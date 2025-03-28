@@ -1,6 +1,6 @@
 import { AirAny, ClassConstructor } from "../../type";
 import { AirDictionaryArray, AirEnum } from "../../dictionary";
-import { IField } from "./IField.ts";
+import { IField } from "./IField";
 
 /**
  * # 字段配置
