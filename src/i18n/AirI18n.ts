@@ -1,5 +1,5 @@
-import { AirI18nDefault } from "./AirI18nDefault";
-import { AirLanguage } from "./AirLanguage";
+import { AirI18nDefault } from './AirI18nDefault'
+import { AirLanguage } from './AirLanguage'
 
 /**
  * # I18n工具库
@@ -31,26 +31,26 @@ export class AirI18n extends AirI18nDefault {
   /**
    * ### 当前使用的语言
    */
-  private static currentLanguage = AirLanguage.ChineseSimplified;
+  private static currentLanguage = AirLanguage.ChineseSimplified
 
   /**
    * ### 当前使用的语言包
    */
-  // eslint-disable-next-line no-use-before-define
-  private static currentLanguagePackage?: AirI18n;
+
+  private static currentLanguagePackage?: AirI18n
 
   /**
    * ### 语言列表
    */
-  // eslint-disable-next-line no-use-before-define
-  private static languages: AirI18n[] = [];
+
+  private static languages: AirI18n[] = []
 
   /**
    * ### 获取当前使用的语言
    * @returns 当前使用的语言
    */
   static getCurrentLanguage(): AirLanguage {
-    return this.currentLanguage;
+    return this.currentLanguage
   }
 
   /**
@@ -58,7 +58,7 @@ export class AirI18n extends AirI18nDefault {
    * @returns 语言列表
    */
   static getLanguages() {
-    return this.languages;
+    return this.languages
   }
 
   /**
@@ -66,7 +66,7 @@ export class AirI18n extends AirI18nDefault {
    * @returns 翻译后的字符串
    */
   static get(): AirI18n {
-    return this.currentLanguagePackage || new AirI18n();
+    return this.currentLanguagePackage || new AirI18n()
   }
 
   /**
@@ -75,10 +75,8 @@ export class AirI18n extends AirI18nDefault {
    */
   static init(...languages: AirI18n[]): void {
     if (languages.length > 0) {
-      this.languages = languages;
-      this.currentLanguagePackage = this.languages.find(
-        (item) => item.language === this.currentLanguage,
-      );
+      this.languages = languages
+      this.currentLanguagePackage = this.languages.find((item) => item.language === this.currentLanguage)
     }
   }
 
@@ -87,9 +85,7 @@ export class AirI18n extends AirI18nDefault {
    * @param language 语言
    */
   static setCurrentLanguage(language: AirLanguage): void {
-    this.currentLanguage = language;
-    this.currentLanguagePackage = this.languages.find(
-      (item) => item.language === this.currentLanguage,
-    );
+    this.currentLanguage = language
+    this.currentLanguagePackage = this.languages.find((item) => item.language === this.currentLanguage)
   }
 }

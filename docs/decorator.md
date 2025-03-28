@@ -7,7 +7,6 @@
 可以使用 `@Model()` 为类标记可读的 `label` 以及数据转换时候的统一前缀 `fieldPrefix`：
 
 ```typescript
-
 @Model({
   label: "用户",
   fieldPrefix: "user_"
@@ -33,8 +32,6 @@ console.log(config);
 
 - **label**: 类的标签，如 `用户`
 - **fieldPrefix**: 统一属性的前缀，如 `user_`，将在 [数据转换](./transformer.md) 中使用到。
-
-
 
 ### @Field 属性配置
 

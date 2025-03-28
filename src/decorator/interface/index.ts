@@ -1,3 +1,3 @@
-export * from './IField';
-export * from './IFieldConfig';
-export * from './IModelConfig';
+export * from './IField'
+export * from './IFieldConfig'
+export * from './IModelConfig'

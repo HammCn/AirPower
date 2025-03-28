@@ -1,1 +1,1 @@
-export * from './AirEvent';
+export * from './AirEvent'

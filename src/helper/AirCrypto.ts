@@ -1,4 +1,4 @@
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js'
 
 /**
  * # 加解密和散列摘要算法助手类
@@ -8,7 +8,7 @@ export class AirCrypto {
   /**
    * ### AES加解密使用默认向量
    */
-  static aesCbcIvString = "0000000000000000";
+  static aesCbcIvString = '0000000000000000'
 
   /**
    * ### `AES` 加密方法
@@ -29,7 +29,7 @@ export class AirCrypto {
       iv: CryptoJS.enc.Utf8.parse(iv),
       mode,
       padding,
-    }).toString();
+    }).toString()
   }
 
   /**
@@ -51,7 +51,7 @@ export class AirCrypto {
       iv: CryptoJS.enc.Utf8.parse(iv),
       mode,
       padding,
-    }).toString(CryptoJS.enc.Utf8);
+    }).toString(CryptoJS.enc.Utf8)
   }
 
   /**
@@ -59,7 +59,7 @@ export class AirCrypto {
    * @param data 源字符串
    */
   static sha1(data: string): string {
-    return CryptoJS.SHA1(data).toString();
+    return CryptoJS.SHA1(data).toString()
   }
 
   /**
@@ -67,7 +67,7 @@ export class AirCrypto {
    * @param data 源字符串
    */
   static md5(data: string): string {
-    return CryptoJS.MD5(data).toString();
+    return CryptoJS.MD5(data).toString()
   }
 
   /**
@@ -75,7 +75,7 @@ export class AirCrypto {
    * @param data
    */
   static base64Encode(data: string): string {
-    return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(data));
+    return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(data))
   }
 
   /**
@@ -83,6 +83,6 @@ export class AirCrypto {
    * @param data
    */
   static base64Decode(data: string): string {
-    return CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc.Utf8);
+    return CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc.Utf8)
   }
 }

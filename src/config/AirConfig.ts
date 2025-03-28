@@ -7,5 +7,5 @@ export class AirConfig {
    * ### 静态资源根路径
    * 以 `/` 结尾
    */
-  static staticUrl = "";
+  static staticUrl = ''
 }

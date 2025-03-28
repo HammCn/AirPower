@@ -1,2 +1,2 @@
-export * from './AirConfig';
-export * from './AirConstant';
+export * from './AirConfig'
+export * from './AirConstant'
