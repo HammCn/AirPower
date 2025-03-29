@@ -3,7 +3,7 @@
 我们为 `AirPower` 内置了一个 `Event` 事件处理类：
 
 ```typescript
-import airEvent from "./event/AirEvent";
+import airEvent from './event/AirEvent'
 
 airEvent.on() // 监听事件
 airEvent.off() // 取消监听事件

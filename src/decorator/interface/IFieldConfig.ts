@@ -1,6 +1,6 @@
-import { AirAny, ClassConstructor } from '../../type'
-import { AirDictionaryArray, AirEnum } from '../../dictionary'
-import { IField } from './IField'
+import type { AirDictionaryArray, AirEnum } from '../../dictionary'
+import type { AirAny, ClassConstructor } from '../../type'
+import type { IField } from './IField'
 
 /**
  * # 字段配置

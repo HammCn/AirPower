@@ -76,7 +76,7 @@ export class AirI18n extends AirI18nDefault {
   static init(...languages: AirI18n[]): void {
     if (languages.length > 0) {
       this.languages = languages
-      this.currentLanguagePackage = this.languages.find((item) => item.language === this.currentLanguage)
+      this.currentLanguagePackage = this.languages.find(item => item.language === this.currentLanguage)
     }
   }
 
@@ -86,6 +86,6 @@ export class AirI18n extends AirI18nDefault {
    */
   static setCurrentLanguage(language: AirLanguage): void {
     this.currentLanguage = language
-    this.currentLanguagePackage = this.languages.find((item) => item.language === this.currentLanguage)
+    this.currentLanguagePackage = this.languages.find(item => item.language === this.currentLanguage)
   }
 }

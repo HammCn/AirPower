@@ -1,6 +1,6 @@
-import { AirModel } from './AirModel'
-import { Field } from '../decorator'
 import { AirConstant } from '../config'
+import { Field } from '../decorator'
+import { AirModel } from './AirModel'
 
 /**
  * # 实体超类

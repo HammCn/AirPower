@@ -1,4 +1,4 @@
-import { IField } from './interface'
+import type { IField } from './interface'
 
 /**
  * # 字段配置基类

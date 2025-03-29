@@ -18,7 +18,7 @@ export enum AirRegExp {
   /**
    * ### 汉字
    */
-  CHINESE = '\u4e00-\u9fa5',
+  CHINESE = '\u4E00-\u9FA5',
 
   /**
    * ### 常见全角符号

@@ -1,7 +1,7 @@
+import type { ITree } from '../tree'
+import type { ClassConstructor } from '../type'
+import type { IJson } from './IJson'
 import { AirModel } from '../base'
-import { ClassConstructor } from '../type'
-import { IJson } from './IJson'
-import { ITree } from '../tree'
 
 /**
  * # 转换类型助手
@@ -49,7 +49,7 @@ export class AirClassTransformer {
    * @param TargetClass 目标类
    */
   static parseArray<T extends AirModel>(jsonArray: IJson[], TargetClass: ClassConstructor<T>): T[] {
-    return jsonArray.map((json) => this.parse(json, TargetClass))
+    return jsonArray.map(json => this.parse(json, TargetClass))
   }
 
   /**

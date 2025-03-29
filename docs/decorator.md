@@ -8,17 +8,17 @@
 
 ```typescript
 @Model({
-  label: "用户",
-  fieldPrefix: "user_"
+  label: '用户',
+  fieldPrefix: 'user_'
 })
 class User extends AirModel {
-  nickname!: string;
+  nickname!: string
 
-  age!: number;
+  age!: number
 }
 
-const config = User.getModelConfig();
-console.log(config);
+const config = User.getModelConfig()
+console.log(config)
 ```
 
 将正常打印配置的 `label` 和 `fieldPrefix`：
@@ -40,19 +40,19 @@ console.log(config);
 ```typescript
 class User extends AirModel {
   @Field({
-    label: "昵称",
-    alias: "name",
+    label: '昵称',
+    alias: 'name',
   })
-  nickname!: string;
+  nickname!: string
 
   @Field({
     type: Number,
   })
-  age!: number;
+  age!: number
 }
 
-const config = User.getFieldConfig("nickname");
-console.log(config);
+const config = User.getFieldConfig('nickname')
+console.log(config)
 ```
 
 将正常打印：
@@ -72,4 +72,3 @@ console.log(config);
 - **array**: 是否是数组类型，将强制转换为数组类型
 - **ignorePrefix**: 这个属性是否忽略类标记的 `fieldPrefix`
 - **dictionary**: 字典配置，用于数据转换时候的映射
-

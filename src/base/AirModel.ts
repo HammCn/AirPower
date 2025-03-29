@@ -1,6 +1,7 @@
-import { getFieldConfig, getModelConfig, getToJson, getToModel, IFieldConfig, IModelConfig } from '../decorator'
-import { ClassConstructor } from '../type'
-import { IJson } from '../transformer'
+import type { IFieldConfig, IModelConfig } from '../decorator'
+import type { IJson } from '../transformer'
+import type { ClassConstructor } from '../type'
+import { getFieldConfig, getModelConfig, getToJson, getToModel } from '../decorator'
 
 /**
  * # 模型超类
@@ -29,7 +30,8 @@ export class AirModel {
         const instance: T = Object.assign(new this()) as T
         instanceList.push(AirModel.parse(instance, jsonArray[i]))
       }
-    } else {
+    }
+    else {
       const instance: T = Object.assign(new this()) as T
       instanceList.push(AirModel.parse(instance, jsonArray))
     }
@@ -60,7 +62,8 @@ export class AirModel {
         // 标记了手动转换到模型的自定义方法
         try {
           ;(instance as IJson)[fieldKey] = toModelFunction(json as IJson)
-        } catch (e) {
+        }
+        catch (e) {
           console.warn('ToModel Function Error', e)
           continue
         }
@@ -96,7 +99,7 @@ export class AirModel {
           break
         case 'Number':
           // 强制转换为Number, 但如果不是标准的Number, 则忽略掉值
-          ;(instance as IJson)[fieldKey] = Number.isNaN(parseFloat(fieldData)) ? undefined : parseFloat(fieldData)
+          ;(instance as IJson)[fieldKey] = Number.isNaN(Number.parseFloat(fieldData)) ? undefined : Number.parseFloat(fieldData)
           break
         case 'Boolean':
           // 强制转换为布尔型
@@ -157,8 +160,6 @@ export class AirModel {
    */
 
   static newInstance<T extends AirModel>(this: ClassConstructor<T>, recoverBy?: IJson): T {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const instance = Object.assign(new this(), null) as T
     if (recoverBy) {
       return instance.recoverBy(recoverBy)
@@ -238,7 +239,8 @@ export class AirModel {
         // 如果标记了自定义转换JSON的方法
         try {
           json[fieldAliasName || fieldKey] = toJsonFunction(this)
-        } catch (e) {
+        }
+        catch (e) {
           console.warn('ToJson Function Error', e)
         }
         continue

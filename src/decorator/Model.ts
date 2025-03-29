@@ -3,8 +3,8 @@
  * @author Hamm.cn
  */
 
-import { IModelConfig } from './interface'
-import { AirDecoratorTarget } from '../type'
+import type { AirDecoratorTarget } from '../type'
+import type { IModelConfig } from './interface'
 import { AirDecorator } from './AirDecorator'
 
 /**

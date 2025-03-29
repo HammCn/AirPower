@@ -1,8 +1,10 @@
-import { AirAny, AirDecoratorData, AirDecoratorTarget, AirEnumKey, ClassConstructor } from '../type'
-import { AirDictionaryArray, AirEnum } from '../dictionary'
+import type { AirEnum } from '../dictionary'
+import type { IJson } from '../transformer'
+import type { AirAny, AirDecoratorData, AirDecoratorTarget, AirEnumKey, ClassConstructor } from '../type'
+import type { AirFieldConfig } from './AirFieldConfig'
 import { AirConstant } from '../config'
-import { AirFieldConfig } from './AirFieldConfig'
-import { AirClassTransformer, IJson } from '../transformer'
+import { AirDictionaryArray } from '../dictionary'
+import { AirClassTransformer } from '../transformer'
 
 /**
  * # 装饰器助手类
@@ -146,7 +148,7 @@ export class AirDecorator {
    */
   static getFieldList(target: AirDecoratorTarget, fieldConfigKey: string, list: string[] = []): string[] {
     const fieldList: string[] = Reflect.get(target, fieldConfigKey) || []
-    fieldList.forEach((item) => list.includes(item) || list.push(item))
+    fieldList.forEach(item => list.includes(item) || list.push(item))
     const superClass = Reflect.getPrototypeOf(target)
     if (!superClass || superClass.constructor.name === AirConstant.AIR_MODEL) {
       return list
