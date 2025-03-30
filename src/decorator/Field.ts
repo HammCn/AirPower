@@ -1,8 +1,8 @@
-import { AirModel } from '../base'
-import { AirAny, AirDecoratorTarget } from '../type'
+import type { AirModel } from '../base'
+import type { IJson } from '../transformer'
+import type { AirAny, AirDecoratorTarget } from '../type'
+import type { IFieldConfig } from './interface'
 import { AirDecorator } from './AirDecorator'
-import { IFieldConfig } from './interface'
-import { IJson } from '../transformer'
 
 /**
  * ### 属性参数配置

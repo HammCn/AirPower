@@ -22,10 +22,10 @@ AirCrypto.base64Decode()
 await AirDateTime.sleep(3000)
 
 // 格式化到Unix秒时间戳(默认当前时间)
-AirDateTime.getUnixTimeStamps("2022-02-02 23:59:59")
+AirDateTime.getUnixTimeStamps('2022-02-02 23:59:59')
 
 // 格式化到毫秒时间戳(默认当前时间)
-AirDateTime.getMilliTimeStamps("2022-02-02 23:59:59")
+AirDateTime.getMilliTimeStamps('2022-02-02 23:59:59')
 
 // 从秒时间戳格式化时间
 AirDateTime.formatFromSecond(12312314, AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss)
@@ -34,11 +34,10 @@ AirDateTime.formatFromSecond(12312314, AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss)
 AirDateTime.formatFromMilliSecond(12312311234, AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss)
 
 // 从字符串或对象格式化时间
-AirDateTime.formatFromDate("2022-02-02 23:59:59", AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss)
+AirDateTime.formatFromDate('2022-02-02 23:59:59', AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss)
 
 // 格式化到友好字符串显示
-AirDateTime.getFriendlyDateTime("2022-02-02 23:59:59") // 三天前
-
+AirDateTime.getFriendlyDateTime('2022-02-02 23:59:59') // 三天前
 ```
 
 ### AirDecorator 装饰器

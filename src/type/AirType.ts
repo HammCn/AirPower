@@ -1,10 +1,9 @@
-import { AirColor } from '../dictionary'
+import type { AirColor } from '../dictionary'
 
 /**
  * ### 😡 慎用 Any
  * @deprecated
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AirAny = any
 
 /**
@@ -31,6 +30,6 @@ export type AirDecoratorData = AirAny
  * ### 类包装
  * @author Hamm.cn
  */
-export type ClassConstructor<T = AirAny> = {
-  new (...args: AirAny[]): T
+export interface ClassConstructor<T = AirAny> {
+  new(...args: AirAny[]): T
 }

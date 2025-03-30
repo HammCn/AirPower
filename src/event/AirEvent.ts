@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-function-type */
-import { AirAny } from '../type'
+/* eslint-disable ts/no-unsafe-function-type */
+import type { AirAny } from '../type'
 
 /**
  * # 事件

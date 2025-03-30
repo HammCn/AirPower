@@ -30,4 +30,4 @@
 
 ### `AirEntity`
 
-`AirEntity` 指定包含 `id` 属性，继承来自 `AirModel`。 
+`AirEntity` 指定包含 `id` 属性，继承来自 `AirModel`。

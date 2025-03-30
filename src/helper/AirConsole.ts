@@ -69,6 +69,7 @@ export class AirConsole {
    * @param css `可选` 样式
    */
   private static show(content: string, css?: string) {
+    // eslint-disable-next-line no-console
     console.log(content, css)
   }
 }

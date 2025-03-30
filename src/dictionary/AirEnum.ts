@@ -1,9 +1,9 @@
+import type { IJson } from '../transformer'
+import type { AirColorString, AirEnumKey, ClassConstructor } from '../type'
+import type { IDictionary } from './IDictionary'
 import { AirConstant } from '../config'
-import { AirDictionaryArray } from './AirDictionaryArray'
-import { AirColorString, AirEnumKey, ClassConstructor } from '../type'
-import { IDictionary } from './IDictionary'
 import { AirColor } from './AirColor'
-import { IJson } from '../transformer'
+import { AirDictionaryArray } from './AirDictionaryArray'
 
 /**
  * # 枚举基类
@@ -86,7 +86,7 @@ export class AirEnum<K extends AirEnumKey = number> implements IDictionary {
    */
 
   static toArray<K extends AirEnumKey, E extends AirEnum<K>>(this: ClassConstructor<E>): E[] {
-    return Object.values(this).filter((item) => item instanceof this)
+    return Object.values(this).filter(item => item instanceof this)
   }
 
   /**
@@ -95,7 +95,7 @@ export class AirEnum<K extends AirEnumKey = number> implements IDictionary {
    */
 
   static toDictionary<D extends IDictionary>(this: ClassConstructor<D>): AirDictionaryArray<D> {
-    return AirDictionaryArray.createCustom<D>(Object.values(this).filter((item) => item instanceof this))
+    return AirDictionaryArray.createCustom<D>(Object.values(this).filter(item => item instanceof this))
   }
 
   /**

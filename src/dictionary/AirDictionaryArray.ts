@@ -1,8 +1,8 @@
-import { AirColorString, AirEnumKey } from '../type'
-import { AirDictionary } from './AirDictionary'
+import type { AirColorString, AirEnumKey } from '../type'
+import type { IDictionary } from './IDictionary'
 import { AirConstant } from '../config'
-import { IDictionary } from './IDictionary'
 import { AirColor } from './AirColor'
+import { AirDictionary } from './AirDictionary'
 
 /**
  * # 字典数组
@@ -63,6 +63,6 @@ export class AirDictionaryArray<T extends IDictionary = IDictionary> extends Arr
    * @param key Key
    */
   findByKey(key: AirEnumKey): T | undefined {
-    return this.find((item) => item.key === key)
+    return this.find(item => item.key === key)
   }
 }

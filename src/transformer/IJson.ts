@@ -1,4 +1,4 @@
-import { AirAny } from '../type'
+import type { AirAny } from '../type'
 
 /**
  * # 标准的 `JSON` 数据

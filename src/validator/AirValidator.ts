@@ -1,10 +1,11 @@
+/* eslint-disable regexp/no-unused-capturing-group,regexp/no-super-linear-backtracking */
 import { AirConstant } from '../config'
 import { AirRegExp } from './AirRegExp'
 
 /**
  * # 表单验证工具
  * @author Hamm.cn
- * */
+ */
 export class AirValidator {
   /**
    * ### 验证是否手机号或座机号
@@ -19,7 +20,7 @@ export class AirValidator {
    * @param email
    */
   static isEmail(email: string): boolean {
-    return /^[a-zA-Z0-9]+(\.([a-zA-Z0-9]+))*@[a-zA-Z0-9]+(\.([a-zA-Z0-9]+))+$/.test(email)
+    return /^[a-z0-9]+(\.([a-z0-9]+))*@[a-z0-9]+(\.([a-z0-9]+))+$/i.test(email)
   }
 
   /**
@@ -68,7 +69,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isNumber(str: string): boolean {
-    return /^(-)?[0-9]+((.)[0-9]+)?$/.test(str)
+    return /^(-)?\d+((.)\d+)?$/.test(str)
   }
 
   /**
@@ -76,7 +77,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isInteger(str: string): boolean {
-    return /^(-)?[0-9]+$/.test(str)
+    return /^(-)?\d+$/.test(str)
   }
 
   /**
@@ -84,7 +85,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isNaturalNumber(str: string): boolean {
-    return /^[0-9]+((.)[0-9]+)?$/.test(str)
+    return /^\d+((.)\d+)?$/.test(str)
   }
 
   /**
@@ -92,7 +93,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isNaturalInteger(str: string): boolean {
-    return /^[0-9]+$/.test(str)
+    return /^\d+$/.test(str)
   }
 
   /**
@@ -111,7 +112,8 @@ export class AirValidator {
 
     if (str.length === 15) {
       // 15位身份证校验
-      return /^[1-9]\d{5}((\d{2}(((0[13578]|1[02])(0[1-9]|[12][0-9]|3[01]))|((0[13456789]|1[012])(0[1-9]|[12][0-9]|30))|(02(0[1-9]|1[0-9]|2[0-8]))))|(((0[48]|[2468][048]|[13579][26])|(00))0229))\d{2}[0-9Xx]$/.test(
+      // eslint-disable-next-line regexp/no-dupe-disjunctions
+      return /^[1-9]\d{5}((\d{2}(((0[13578]|1[02])(0[1-9]|[12]\d|3[01]))|((0[13-9]|1[012])(0[1-9]|[12]\d|30))|(02(0[1-9]|1\d|2[0-8]))))|(((0[48]|[2468][048]|[13579][26])|(00))0229))\d{2}[0-9X]$/i.test(
         str,
       )
     }
@@ -119,21 +121,21 @@ export class AirValidator {
       return false
     }
 
-    const year = parseInt(str.substring(6), AirConstant.DEFAULT_RADIX)
+    const year = Number.parseInt(str.substring(6), AirConstant.DEFAULT_RADIX)
     if (year > new Date().getFullYear() || year < 1900) {
       return false
     }
-    const month = parseInt(str.substring(10, 12), AirConstant.DEFAULT_RADIX)
+    const month = Number.parseInt(str.substring(10, 12), AirConstant.DEFAULT_RADIX)
     if (month > 12 || month < 1) {
       return false
     }
-    const day = parseInt(str.substring(12, 14), AirConstant.DEFAULT_RADIX)
+    const day = Number.parseInt(str.substring(12, 14), AirConstant.DEFAULT_RADIX)
     if (day > 31 || month < 1) {
       return false
     }
     let sum = 0
     for (let i = 0; i < 17; i += 1) {
-      sum += parseInt(str[i], AirConstant.DEFAULT_RADIX) * (validArray[0][i] as number)
+      sum += Number.parseInt(str[i], AirConstant.DEFAULT_RADIX) * (validArray[0][i] as number)
     }
 
     // eslint-disable-next-line eqeqeq
@@ -152,8 +154,9 @@ export class AirValidator {
     }
     try {
       return new RegExp(String.raw`^[${regString}]+$`).test(str)
-    } catch (e) {
-      console.log(e)
+    }
+    catch (e) {
+      console.error(e)
       // 抛出错误的正则表达式
       throw new Error('What the fuck your regexp is?')
     }
