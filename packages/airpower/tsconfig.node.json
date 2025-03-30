@@ -1,0 +1,8 @@
+{
+  "extends": "@airpower/config/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist"
+  },
+  "include": ["vite.config.ts"]
+}

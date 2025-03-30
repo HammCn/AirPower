@@ -8,6 +8,6 @@ export default config({
   },
   typescript: true,
   gitignore: false,
-  ignores: ['dist', '.idea', '.vscode'],
+  ignores: ['**/dist', '**/.idea', '**/.vscode', '**/node_modules'],
   vue: false,
 })

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "NodeJS",
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "incremental": true,
+    "composite": true,
+    "lib": ["ESNext"],
+    "module": "CommonJS",
+    "declaration": true,
+    "declarationMap": true
+  }
+}
