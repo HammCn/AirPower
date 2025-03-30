@@ -19,7 +19,7 @@ export class AirDecorator {
     dictionary: ClassConstructor<AirEnum<AirEnumKey>> | AirDictionaryArray | undefined,
   ): AirDictionaryArray | undefined {
     if (!dictionary) {
-      return dictionary as undefined
+      return dictionary
     }
     if (dictionary instanceof AirDictionaryArray) {
       return dictionary

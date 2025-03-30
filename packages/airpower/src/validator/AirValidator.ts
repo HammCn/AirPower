@@ -105,10 +105,10 @@ export class AirValidator {
       return false
     }
 
-    const validArray: Array<Array<number | 'X'>> = [
+    const validArray = [
       [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
       [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2],
-    ]
+    ] as const
 
     if (str.length === 15) {
       // 15位身份证校验
@@ -135,7 +135,11 @@ export class AirValidator {
     }
     let sum = 0
     for (let i = 0; i < 17; i += 1) {
-      sum += Number.parseInt(str[i], AirConstant.DEFAULT_RADIX) * (validArray[0][i] as number)
+      const character = str[i]
+      if (!character)
+        return false
+
+      sum += Number.parseInt(character, AirConstant.DEFAULT_RADIX) * validArray[0][i]!
     }
 
     // eslint-disable-next-line eqeqeq

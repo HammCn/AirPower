@@ -137,7 +137,7 @@ export class AirDateTime {
       },
     ]
     for (let i = stepDictionary.length - 1; i >= 0; i -= 1) {
-      const step = stepDictionary[i]
+      const step = stepDictionary[i]!
       if (timestamp <= currentTimestamp && diff < AirConstant.SECOND_PER_MINUTE) {
         // 过去时间，且小于60s
         return '刚刚'

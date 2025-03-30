@@ -15,7 +15,7 @@ export class AirTree {
   static list2treeList<E extends ITree>(list: E[], parentId: number | null = 0): E[] {
     const treeList = list.filter(item => item.parentId === parentId)
     for (let i = 0; i < treeList.length; i += 1) {
-      treeList[i].children = this.list2treeList(list, treeList[i].id)
+      treeList[i]!.children = this.list2treeList(list, treeList[i]!.id)
     }
     return treeList
   }
