@@ -5,6 +5,5 @@
 - [装饰器](./decorator.md)
 - [工具类](./helper.md)
 - [枚举和字典](./dictionary.md)
-- [事件处理](./event.md)
 - [i18n](./i18n.md)
 - [数据转换](./transformer.md)
