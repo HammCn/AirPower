@@ -9,7 +9,7 @@ class AirEvent {
   /**
    * ### 监听者
    */
-  private static listeners: Map<string, Array<Function>> = new Map()
+  public static listeners: Map<string, Array<Function>> = new Map()
 
   /**
    * ### 发出事件
