@@ -9,7 +9,7 @@ class AirEvent {
   /**
    * ### 监听者
    */
-  private listeners: Map<string, Array<Function>> = new Map()
+  private static listeners: Map<string, Array<Function>> = new Map()
 
   /**
    * ### 发出事件
@@ -17,7 +17,7 @@ class AirEvent {
    * @param args 参数
    */
   emit(type: string, ...args: AirAny[]) {
-    const callbacks = this.listeners.get(type) || []
+    const callbacks = AirEvent.listeners.get(type) || []
     callbacks.forEach((callback) => {
       callback(...args)
     })
@@ -29,7 +29,7 @@ class AirEvent {
    * @param callback 回调方法
    */
   off(type: string, callback: Function) {
-    const callbacks = this.listeners.get(type) || []
+    const callbacks = AirEvent.listeners.get(type) || []
     const index = callbacks.indexOf(callback)
     if (index !== -1) {
       callbacks.splice(index, 1)
@@ -51,9 +51,9 @@ class AirEvent {
    * @param callback 回调方法
    */
   on(type: string, callback: Function) {
-    const callbacks = this.listeners.get(type) || []
+    const callbacks = AirEvent.listeners.get(type) || []
     callbacks.push(callback)
-    this.listeners.set(type, callbacks)
+    AirEvent.listeners.set(type, callbacks)
   }
 
   /**
