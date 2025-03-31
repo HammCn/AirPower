@@ -1,16 +1,16 @@
 <p align="center">
-  <img width="300" src="./docs/logo.png"/><br>
+  <img width="300" src="./docs/airpower-bg.svg"/>
 </p>
 
 <p align="center">
-<a href="https://gitee.com/air-power/AirPower">Gitee</a> / <a href="https://github.com/HammCn/AirPower">Github</a> / <a href="./CHANGELOG.md">CHANGELOG</a> / <a href="https://www.npmjs.com/package/airpower">NPM</a>
+<a href="https://gitee.com/air-power/AirPower">Gitee</a> / <a href="https://github.com/AirPowerTeam/AirPower">Github</a> / <a href="./CHANGELOG.md">CHANGELOG</a> / <a href="https://www.npmjs.com/package/airpower">NPM</a>
 </p>
 
 ## 🎉 项目介绍
 
 **AirPower**, 一个基于TypeScript的开发工具包, 内置了数据转换、装饰器、时间日期处理、加解密与散列、文件处理、常用枚举和字典、常见数据结构处理等工具。
 
-> 此项目是独立的 **工具包** ，如需体验我们开源的 **Vue3+TypeScript+ElementPlus+Vite** 的 **Web开发工具包**， 请查看 [AirPower4T](https://github.com/HammCn/AirPower4T)
+> 此项目是独立的 **工具包** ，如需体验我们开源的 **Vue3+TypeScript+ElementPlus+Vite** 的 **Web开发工具包**， 请查看 [AirPower4T](https://github.com/AirPowerTeam/AirPower4T)
 
 ## 💻 如何安装
 
