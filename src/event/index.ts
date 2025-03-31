@@ -1,4 +1,4 @@
-import AirEvent from './AirEvent'
+import { AirEvent } from './AirEvent'
 
 export {
   AirEvent,
