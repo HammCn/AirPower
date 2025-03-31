@@ -1,1 +1,5 @@
-export * from './AirEvent'
+import AirEvent from './AirEvent'
+
+export {
+  AirEvent,
+}
