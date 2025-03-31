@@ -17,7 +17,8 @@ export class AirEvent {
    * @param args 参数
    */
   static emit(type: string, ...args: AirAny[]) {
-    const callbacks = AirEvent.listeners.get(type) || []
+    debugger
+    const callbacks = this.listeners.get(type) || []
     callbacks.forEach((callback) => {
       callback(...args)
     })
@@ -29,7 +30,7 @@ export class AirEvent {
    * @param callback 回调方法
    */
   static off(type: string, callback: Function) {
-    const callbacks = AirEvent.listeners.get(type) || []
+    const callbacks = this.listeners.get(type) || []
     const index = callbacks.indexOf(callback)
     if (index !== -1) {
       callbacks.splice(index, 1)
@@ -51,9 +52,10 @@ export class AirEvent {
    * @param callback 回调方法
    */
   static on(type: string, callback: Function) {
-    const callbacks = AirEvent.listeners.get(type) || []
+    debugger
+    const callbacks = this.listeners.get(type) || []
     callbacks.push(callback)
-    AirEvent.listeners.set(type, callbacks)
+    this.listeners.set(type, callbacks)
   }
 
   /**
