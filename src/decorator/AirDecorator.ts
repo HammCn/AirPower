@@ -162,14 +162,12 @@ export class AirDecorator {
    * @param fieldListKey FieldListKey
    * @param fieldConfigKey FieldConfigKey
    * @param keyList 指定的字段数组
-   * @param FieldConfigClass 指定的返回类
    */
   static getFieldConfigList<T extends IFieldConfig>(
     target: AirDecoratorTarget,
     fieldListKey: string,
     fieldConfigKey: string,
     keyList: string[],
-    FieldConfigClass: ClassConstructor<T>,
   ): T[] {
     const fieldConfigList: T[] = []
     if (keyList.length === 0) {
@@ -180,19 +178,14 @@ export class AirDecorator {
       if (!config) {
         continue
       }
-      const defaultConfig = new FieldConfigClass()
       const result: IJson = {}
-      const configKeyList = Object.keys({
-        ...defaultConfig,
-        config,
-      })
+      const configKeyList = Object.keys(config)
       configKeyList.forEach((configKey) => {
         if (configKey === 'key') {
           return
         }
         const fieldConfigValue = this.getFieldConfigValue(target, fieldConfigKey, config.key, configKey)
         if (fieldConfigValue === null || fieldConfigValue === undefined) {
-          result[configKey] = (defaultConfig as IJson)[configKey]
           return
         }
         result[configKey] = fieldConfigValue
