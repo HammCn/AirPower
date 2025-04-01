@@ -9,7 +9,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'airpower',
       formats: ['es'],
-      fileName: format => `airpower.${format}.js`,
+      fileName: () => `airpower.js`,
     },
     rollupOptions: {
       external: [], // 若依赖第三方库（如 lodash），需在此声明
