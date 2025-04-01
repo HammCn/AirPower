@@ -46,9 +46,3 @@ cnpm install airpower
 > 高司令：“嗯？Java? 什么Java?”
 
 如果有更多的需求和建议，欢迎通过本仓库的 `Issues` 提出，也欢迎加入 QQ群 555156313 与我们及时反馈。
-
----
-
-<p align="center">
-ATTENTION: Contributor list is just for fun!!!
-</p>
