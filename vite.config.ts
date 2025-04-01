@@ -12,10 +12,7 @@ export default defineConfig({
       fileName: () => `airpower.js`,
     },
     rollupOptions: {
-      external: [], // 若依赖第三方库（如 lodash），需在此声明
-      output: {
-        globals: {},
-      },
+      external: ['crypto-js', '@types/crypto-js'],
     },
   },
   plugins: [dts()],
