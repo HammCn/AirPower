@@ -1,7 +1,7 @@
 import type { AirEnum } from '../dictionary'
 import type { IJson } from '../transformer'
 import type { AirAny, AirDecoratorData, AirDecoratorTarget, AirEnumKey, ClassConstructor } from '../type'
-import type { AirFieldConfig } from './AirFieldConfig'
+import type { IFieldConfig } from './interface'
 import { AirConstant } from '../config'
 import { AirDictionaryArray } from '../dictionary'
 import { AirClassTransformer } from '../transformer'
@@ -164,7 +164,7 @@ export class AirDecorator {
    * @param keyList 指定的字段数组
    * @param FieldConfigClass 指定的返回类
    */
-  static getFieldConfigList<T extends AirFieldConfig>(
+  static getFieldConfigList<T extends IFieldConfig>(
     target: AirDecoratorTarget,
     fieldListKey: string,
     fieldConfigKey: string,
