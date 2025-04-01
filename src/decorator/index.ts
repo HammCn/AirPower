@@ -1,5 +1,4 @@
 export * from './AirDecorator'
-export * from './AirFieldConfig'
 export * from './Field'
 export * from './interface'
 export * from './Model'
