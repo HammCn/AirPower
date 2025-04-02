@@ -8,7 +8,9 @@
 </p>
 
 <p align="center">
-<a href="https://gitee.com/air-power/AirPower">Gitee</a> / <a href="https://github.com/AirPowerTeam/AirPower">Github</a> / <a href="https://www.npmjs.com/package/airpower">NPM</a>
+<a href="https://github.com/AirPowerTeam/AirPower">Github</a> /
+<a href="https://gitee.com/air-power/AirPower">Gitee</a> / 
+<a href="https://www.npmjs.com/package/airpower">NPM</a>
 </p>
 
 ## 🎉 项目介绍
