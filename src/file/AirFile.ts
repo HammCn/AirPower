@@ -1,4 +1,4 @@
-import { AirConfig, AirConstant } from '../config'
+import { AirConstant } from '../config'
 import { AirI18n } from '../i18n'
 
 /**
@@ -26,19 +26,5 @@ export class AirFile {
       }
     }
     return AirI18n.get().FileTooLarge || '文件过大'
-  }
-
-  /**
-   * ### 获取静态文件的绝对地址
-   * @param url 地址
-   */
-  static getStaticFileUrl(url: string): string {
-    if (!url) {
-      return AirConstant.STRING_EMPTY
-    }
-    if (url.includes(AirConstant.PREFIX_HTTP) || url.includes(AirConstant.PREFIX_HTTPS)) {
-      return url
-    }
-    return AirConfig.staticUrl + url
   }
 }
