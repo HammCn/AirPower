@@ -1,7 +1,7 @@
 {
   "name": "airpower",
   "type": "module",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "AirPower, 一个基于TypeScript的开发工具包, 内置了数据转换、装饰器、时间日期处理、加解密与散列、文件处理、常用枚举和字典、常见数据结构处理等工具。",
   "author": {
     "name": "Hamm",
@@ -10,7 +10,10 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/AirPowerTeam/airpower#readme",
-  "repository": "https://github.com/AirPowerTeam/AirPower",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AirPowerTeam/AirPower.git"
+  },
   "bugs": {
     "url": "https://github.com/AirPowerTeam/airpower/issues"
   },
