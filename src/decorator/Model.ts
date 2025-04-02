@@ -1,16 +1,11 @@
-/**
- * # 自定义类和属性名注解
- * @author Hamm.cn
- */
-
-import type { AirDecoratorTarget } from '../type'
 import type { IModelConfig } from './interface'
+import type { AirDecoratorTarget } from './type'
 import { AirDecorator } from './AirDecorator'
 
 /**
  * ### 类名称 `Key`
  */
-const MODEL_CONFIG_KEY = 'Model'
+export const MODEL_CONFIG_KEY = 'Model'
 
 /**
  * ### 为模型类标记配置项

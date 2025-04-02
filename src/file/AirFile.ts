@@ -7,6 +7,12 @@ import { AirI18n } from '../i18n'
  */
 export class AirFile {
   /**
+   * ### 文件大小进制
+   * 😄
+   */
+  static readonly RADIX_FILE_SIZE = 1024
+
+  /**
    * ### 静态文件地址
    */
   static staticUrl = ''
@@ -26,8 +32,8 @@ export class AirFile {
       return AirI18n.get().FileUnknownSize || '未知大小'
     }
     for (let i = 0; i < this.FILE_UNIT_LIST.length; i += 1) {
-      if (size < AirConstant.RADIX_FILE_SIZE ** (i + 1)) {
-        return `${(size / AirConstant.RADIX_FILE_SIZE ** i).toFixed(fractionDigits)}${this.FILE_UNIT_LIST[i]}`
+      if (size < this.RADIX_FILE_SIZE ** (i + 1)) {
+        return `${(size / this.RADIX_FILE_SIZE ** i).toFixed(fractionDigits)}${this.FILE_UNIT_LIST[i]}`
       }
     }
     return AirI18n.get().FileTooLarge || '文件过大'

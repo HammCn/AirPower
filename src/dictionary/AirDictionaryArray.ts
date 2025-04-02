@@ -1,5 +1,5 @@
-import type { AirColorString, AirEnumKey } from '../type'
 import type { IDictionary } from './IDictionary'
+import type { AirColorString, AirEnumKey } from './type'
 import { AirConstant } from '../config'
 import { AirColor } from './AirColor'
 import { AirDictionary } from './AirDictionary'

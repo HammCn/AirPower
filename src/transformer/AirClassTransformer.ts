@@ -1,6 +1,6 @@
 import type { ITree } from '../tree'
-import type { ClassConstructor } from '../type'
 import type { IJson } from './IJson'
+import type { ClassConstructor } from './type'
 import { AirModel } from '../base'
 
 /**

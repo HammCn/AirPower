@@ -8,6 +8,11 @@ import { AirDesensitizeType } from './AirDesensitizeType'
  */
 export class AirDesensitize {
   /**
+   * ### 默认的脱敏符号
+   */
+  static DEFAULT_MASK = '*'
+
+  /**
    * ### `IPv4` 的块长度
    */
   private static readonly IP_V4_PART_COUNT = 4
@@ -44,7 +49,7 @@ export class AirDesensitize {
    * @param symbol `可选` 脱敏符号
    * @return 脱敏后的 `IPv4` 地址
    */
-  public static desensitizeIpv4Address(ipv4: string, symbol = AirConstant.STRING_ASTERISK): string {
+  public static desensitizeIpv4Address(ipv4: string, symbol = this.DEFAULT_MASK): string {
     const strings = ipv4.split(AirConstant.STRING_DOT)
     if (strings.length !== AirDesensitize.IP_V4_PART_COUNT) {
       return ipv4
@@ -70,7 +75,7 @@ export class AirDesensitize {
     type: AirDesensitizeType,
     head = 0,
     tail = 0,
-    symbol = AirConstant.STRING_ASTERISK,
+    symbol = this.DEFAULT_MASK,
   ): string {
     if (!source) {
       return AirConstant.STRING_EMPTY

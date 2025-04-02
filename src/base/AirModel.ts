@@ -1,6 +1,5 @@
 import type { IFieldConfig, IModelConfig } from '../decorator'
-import type { IJson } from '../transformer'
-import type { ClassConstructor } from '../type'
+import type { ClassConstructor, IJson } from '../transformer'
 import { getFieldConfig, getModelConfig, getToJson, getToModel } from '../decorator'
 
 /**

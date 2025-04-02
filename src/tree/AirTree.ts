@@ -1,11 +1,16 @@
+import type { AirModel } from '../base'
 import type { ITree } from './ITree'
-import { AirConstant } from '../config'
 
 /**
  * # 树结构工具类
  * @author Hamm.cn
  */
 export class AirTree {
+  /**
+   * ### 树节点名称
+   */
+  static STRING_CHILDREN = 'children'
+
   /**
    * ### 平树列表转层级树列表
    * @param list 平树列表
@@ -25,10 +30,10 @@ export class AirTree {
    * @param treeList 层级树列表
    * @returns 平树列表
    */
-  static treeList2List<E extends ITree>(treeList: E[]): E[] {
+  static treeList2List<E extends ITree & AirModel>(treeList: E[]): E[] {
     const list: E[] = []
     treeList.forEach((item) => {
-      const i = item.copy().exclude(AirConstant.STRING_CHILDREN)
+      const i = item.copy().exclude(AirTree.STRING_CHILDREN)
       list.push(i)
       if (item.children && item.children.length > 0) {
         list.push(...this.treeList2List(item.children))

@@ -1,13 +1,14 @@
 import type { AirModel } from '../base'
 import type { IJson } from '../transformer'
-import type { AirAny, AirDecoratorTarget } from '../type'
+import type { AirAny } from '../type'
 import type { IFieldConfig } from './interface'
+import type { AirDecoratorTarget } from './type'
 import { AirDecorator } from './AirDecorator'
 
 /**
  * ### 属性参数配置
  */
-const FIELD_CONFIG_KEY = 'Field'
+export const FIELD_CONFIG_KEY = 'Field'
 
 /**
  * ### 为属性标记配置

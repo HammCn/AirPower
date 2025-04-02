@@ -1,6 +1,5 @@
 import type { IDictionary } from '../dictionary'
 import type { IJson } from '../transformer'
-import { AirConstant } from '../config'
 import { AirDateTimeFormatter } from './AirDateTimeFormatter'
 
 /**
@@ -8,6 +7,66 @@ import { AirDateTimeFormatter } from './AirDateTimeFormatter'
  * @author Hamm.cn
  */
 export class AirDateTime {
+  /**
+   * ### 时间进制
+   */
+  static readonly SECOND_PER_MINUTE = 60
+
+  /**
+   * ### 每小时的秒数
+   */
+  static readonly SECOND_PER_HOUR = this.SECOND_PER_MINUTE ** 2
+
+  /**
+   * ### 每秒的毫秒数
+   */
+  static readonly MILLISECONDS_PER_SECOND = 1000
+
+  /**
+   * ### 每天小时
+   */
+  static readonly HOUR_PER_DAY = 24
+
+  /**
+   * ### 每月天数
+   */
+  static readonly DAY_PER_MONTH = 30
+
+  /**
+   * ### 每年月份
+   */
+  static readonly MONTH_PER_YEAR = 12
+
+  /**
+   * ### 每年天数
+   */
+  static readonly DAY_PER_YEAR = 365
+
+  /**
+   * ### 每天秒数
+   */
+  static readonly SECOND_PER_DAY = this.SECOND_PER_HOUR * this.HOUR_PER_DAY
+
+  /**
+   * ### 每周天数
+   */
+  static readonly DAY_PER_WEEK = 7
+
+  /**
+   * ### 每年平均周
+   */
+  static readonly WEEK_PER_YEAR = 52
+
+  /**
+   * ### 每月平均周
+   */
+  static readonly WEEK_PER_MONTH = 4
+
+  /**
+   * ### 每天秒数
+   */
+  static readonly SECONDS_PER_DAY = this.HOUR_PER_DAY * this.SECOND_PER_HOUR
+
   /**
    * ### 睡会再起来干活
    * 不要忘了`await`，否则没睡醒就起来干活了 :)
@@ -26,7 +85,7 @@ export class AirDateTime {
    * @param date `可选` Date对象/时间字符串 (默认当前时间)
    */
   static getUnixTimeStamps(date?: Date | string): number {
-    return Math.round(this.getMilliTimeStamps(date) / AirConstant.MILLISECONDS_PER_SECOND)
+    return Math.round(this.getMilliTimeStamps(date) / this.MILLISECONDS_PER_SECOND)
   }
 
   /**
@@ -49,7 +108,7 @@ export class AirDateTime {
    * @param formatString `可选` 格式化模板 默认为`AirConfig.dateTimeFormatter`
    */
   static formatFromSecond(timeStamp: number, formatString?: AirDateTimeFormatter | string): string {
-    return this.formatFromDate(new Date(timeStamp * AirConstant.MILLISECONDS_PER_SECOND), formatString)
+    return this.formatFromDate(new Date(timeStamp * this.MILLISECONDS_PER_SECOND), formatString)
   }
 
   /**
@@ -97,7 +156,7 @@ export class AirDateTime {
     const currentTimestamp: number = this.getUnixTimeStamps(new Date())
     let timestamp: number
     if (typeof date === 'number') {
-      timestamp = Number.parseInt((date / AirConstant.MILLISECONDS_PER_SECOND).toString(), 10)
+      timestamp = Number.parseInt((date / this.MILLISECONDS_PER_SECOND).toString(), 10)
     }
     else {
       timestamp = this.getUnixTimeStamps(date)
@@ -112,33 +171,33 @@ export class AirDateTime {
         label: '秒',
       },
       {
-        key: AirConstant.SECOND_PER_MINUTE,
+        key: this.SECOND_PER_MINUTE,
         label: '分钟',
       },
       {
-        key: AirConstant.SECOND_PER_MINUTE ** 2,
+        key: this.SECOND_PER_MINUTE ** 2,
         label: '小时',
       },
       {
-        key: AirConstant.SECONDS_PER_DAY,
+        key: this.SECONDS_PER_DAY,
         label: '天',
       },
       {
-        key: AirConstant.SECONDS_PER_DAY * AirConstant.DAY_PER_WEEK,
+        key: this.SECONDS_PER_DAY * this.DAY_PER_WEEK,
         label: '周',
       },
       {
-        key: AirConstant.SECONDS_PER_DAY * AirConstant.DAY_PER_MONTH,
+        key: this.SECONDS_PER_DAY * this.DAY_PER_MONTH,
         label: '月',
       },
       {
-        key: AirConstant.SECONDS_PER_DAY * AirConstant.DAY_PER_YEAR,
+        key: this.SECONDS_PER_DAY * this.DAY_PER_YEAR,
         label: '年',
       },
     ]
     for (let i = stepDictionary.length - 1; i >= 0; i -= 1) {
       const step = stepDictionary[i]
-      if (timestamp <= currentTimestamp && diff < AirConstant.SECOND_PER_MINUTE) {
+      if (timestamp <= currentTimestamp && diff < this.SECOND_PER_MINUTE) {
         // 过去时间，且小于60s
         return '刚刚'
       }

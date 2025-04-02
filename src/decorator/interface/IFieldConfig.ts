@@ -1,5 +1,6 @@
 import type { AirDictionaryArray, AirEnum } from '../../dictionary'
-import type { AirAny, ClassConstructor } from '../../type'
+import type { ClassConstructor } from '../../transformer'
+import type { AirAny } from '../../type'
 import type { IField } from './IField'
 
 /**

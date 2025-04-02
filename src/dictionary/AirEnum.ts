@@ -1,6 +1,6 @@
-import type { IJson } from '../transformer'
-import type { AirColorString, AirEnumKey, ClassConstructor } from '../type'
+import type { ClassConstructor, IJson } from '../transformer'
 import type { IDictionary } from './IDictionary'
+import type { AirColorString, AirEnumKey } from './type'
 import { AirConstant } from '../config'
 import { AirColor } from './AirColor'
 import { AirDictionaryArray } from './AirDictionaryArray'

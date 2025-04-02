@@ -6,17 +6,9 @@ import { AirLanguage } from './AirLanguage'
  */
 export class AirI18nDefault {
   /**
-   * ### 缓存 `Key`
-   */
-  protected static readonly languageCacheKey = 'air-language'
-
-  /**
    * ### 语言名称
    */
   language = AirLanguage.ChineseSimplified
-
-  /** ### 序号 */
-  ID?: string
 
   /** ### 文件过大 */
   FileTooLarge?: string
