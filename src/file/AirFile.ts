@@ -7,6 +7,11 @@ import { AirI18n } from '../i18n'
  */
 export class AirFile {
   /**
+   * ### 静态文件地址
+   */
+  static staticUrl = ''
+
+  /**
    * ### 文件单位列表
    */
   static readonly FILE_UNIT_LIST = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
@@ -26,5 +31,19 @@ export class AirFile {
       }
     }
     return AirI18n.get().FileTooLarge || '文件过大'
+  }
+
+  /**
+   * ### 获取静态文件的绝对地址
+   * @param url 地址
+   */
+  static getStaticFileUrl(url: string): string {
+    if (!url) {
+      return AirConstant.STRING_EMPTY
+    }
+    if (url.includes(AirConstant.PREFIX_HTTP) || url.includes(AirConstant.PREFIX_HTTPS)) {
+      return url
+    }
+    return AirFile.staticUrl + url
   }
 }
