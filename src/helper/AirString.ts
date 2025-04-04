@@ -2,6 +2,7 @@ import { AirConstant } from '../config'
 
 /**
  * # 字符串处理工具类
+ *
  * @author Hamm.cn
  */
 export class AirString {

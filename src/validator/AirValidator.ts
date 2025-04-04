@@ -4,6 +4,7 @@ import { AirRegExp } from './AirRegExp'
 
 /**
  * # 表单验证工具
+ *
  * @author Hamm.cn
  */
 export class AirValidator {

@@ -1,12 +1,13 @@
 /**
  * # 标准时间格式化
+ *
  * @author Hamm.cn
  */
 export enum AirDateTimeFormatter {
   /**
    * ### e.g. `2022-02-02 22:22:22`
    */
-  YYYY_MM_DD_HH_mm_ss = 'YYYY-MM-DD HH:mm:ss',
+  FULL_DATE_TIME = 'YYYY-MM-DD HH:mm:ss',
 
   /**
    * ### e.g. `15061231312312`
@@ -17,15 +18,45 @@ export enum AirDateTimeFormatter {
   /**
    * ### e.g. `02-02 22:22`
    */
-  MM_DD_HH_mm = 'MM-DD HH:mm',
+  SHORT_DATE_TIME = 'MM-DD HH:mm',
 
   /**
    * ### e.g. `2022-02-02`
    */
-  YYYY_MM_DD = 'YYYY-MM-DD',
+  FULL_DATE = 'YYYY-MM-DD',
 
   /**
    * ### e.g. `22:22:22`
    */
-  HH_mm_ss = 'HH:mm:ss',
+  FULL_TIME = 'HH:mm:ss',
+
+  /**
+   * ### e.g. `2022`
+   */
+  YEAR = 'YYYY',
+
+  /**
+   * ### e.g. `02`
+   */
+  MONTH = 'MM',
+
+  /**
+   * ### e.g. `02`
+   */
+  DAY = 'DD',
+
+  /**
+   * ### e.g. `22`
+   */
+  HOUR = 'HH',
+
+  /**
+   * ### e.g. `22`
+   */
+  MINUTE = 'mm',
+
+  /**
+   * ### e.g. `59`
+   */
+  SECOND = 'ss',
 }

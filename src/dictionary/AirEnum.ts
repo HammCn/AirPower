@@ -7,6 +7,7 @@ import { AirDictionaryArray } from './AirDictionaryArray'
 
 /**
  * # 枚举基类
+ *
  * @author Hamm.cn
  */
 export class AirEnum<K extends AirEnumKey = number> implements IDictionary {

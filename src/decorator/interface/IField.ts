@@ -1,5 +1,6 @@
 /**
  * # 属性字段接口
+ *
  * @author Hamm.cn
  */
 export interface IField {

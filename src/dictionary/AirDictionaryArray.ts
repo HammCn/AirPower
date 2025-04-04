@@ -6,6 +6,7 @@ import { AirDictionary } from './AirDictionary'
 
 /**
  * # 字典数组
+ *
  * @author Hamm.cn
  */
 export class AirDictionaryArray<T extends IDictionary = IDictionary> extends Array<T> {

@@ -9,6 +9,7 @@ import { AirClassTransformer } from '../transformer'
 
 /**
  * # 装饰器助手类
+ *
  * @author Hamm.cn
  */
 export class AirDecorator {

@@ -2,6 +2,7 @@ import { AirLanguage } from './AirLanguage'
 
 /**
  * # 内置的一些 `i18n` 文案
+ *
  * @author Hamm.cn
  */
 export class AirI18nDefault {

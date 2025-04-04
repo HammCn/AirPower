@@ -3,12 +3,12 @@ import { AirI18n } from '../i18n'
 
 /**
  * # 文件助手类
+ *
  * @author Hamm.cn
  */
 export class AirFile {
   /**
    * ### 文件大小进制
-   * 😄
    */
   static readonly RADIX_FILE_SIZE = 1024
 

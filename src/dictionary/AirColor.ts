@@ -1,5 +1,6 @@
 /**
  * # 标准颜色值
+ *
  * @author Hamm.cn
  */
 export enum AirColor {

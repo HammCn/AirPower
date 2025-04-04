@@ -5,6 +5,7 @@ import type { IField } from './IField'
 
 /**
  * # 字段配置
+ *
  * @author Hamm.cn
  */
 export interface IFieldConfig<E extends AirEnum<AirAny> = AirEnum<AirAny>> extends IField {

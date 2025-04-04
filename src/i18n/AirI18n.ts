@@ -3,6 +3,7 @@ import { AirLanguage } from './AirLanguage'
 
 /**
  * # I18n工具库
+ *
  * - 1. `AirI18n.init()` 初始化语言包
  * - 2. `AirI18n.setCurrentLanguage()` 设置当前使用的语言
  * - 3. `AirI18n.get()` 获取当前使用的语言包

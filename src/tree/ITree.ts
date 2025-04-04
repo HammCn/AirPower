@@ -2,6 +2,7 @@ import type { IEntity } from '../base'
 
 /**
  * # 标准树结构
+ *
  * @author Hamm.cn
  */
 export interface ITree extends IEntity {

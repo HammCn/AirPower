@@ -1,5 +1,6 @@
 /**
  * # 国际化语言包枚举
+ *
  * @anchor Hamm
  */
 export enum AirLanguage {

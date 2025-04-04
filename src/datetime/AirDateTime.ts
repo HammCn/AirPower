@@ -4,6 +4,7 @@ import { AirDateTimeFormatter } from './AirDateTimeFormatter'
 
 /**
  * # 时间日期时间戳格式化类
+ *
  * @author Hamm.cn
  */
 export class AirDateTime {
@@ -127,7 +128,7 @@ export class AirDateTime {
    */
   static formatFromDate(date: Date | string, formatString?: AirDateTimeFormatter | string): string {
     if (!formatString) {
-      formatString = AirDateTimeFormatter.YYYY_MM_DD_HH_mm_ss
+      formatString = AirDateTimeFormatter.FULL_DATE_TIME
     }
     if (typeof date !== 'object') {
       date = new Date(date)

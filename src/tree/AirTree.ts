@@ -3,6 +3,7 @@ import type { ITree } from './ITree'
 
 /**
  * # 树结构工具类
+ *
  * @author Hamm.cn
  */
 export class AirTree {

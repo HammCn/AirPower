@@ -2,6 +2,7 @@ import { AirConstant } from '../config'
 
 /**
  * # 版本工具类
+ *
  * @author Hamm.cn
  */
 export class AirVersion {

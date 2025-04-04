@@ -1,5 +1,6 @@
 /**
  * # 断言判断提示
+ *
  * @author Hamm.cn
  */
 export class AirAssert {

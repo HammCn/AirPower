@@ -2,6 +2,7 @@ import { AirConstant } from '../config'
 
 /**
  * # 随机生成数据助手
+ *
  * @author Hamm.cn
  */
 export class AirRand {

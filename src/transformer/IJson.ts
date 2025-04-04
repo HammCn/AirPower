@@ -2,6 +2,7 @@ import type { AirAny } from '../type'
 
 /**
  * # 标准的 `JSON` 数据
+ *
  * @author Hamm.cn
  */
 export interface IJson<V = AirAny> {

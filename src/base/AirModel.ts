@@ -4,6 +4,7 @@ import { getFieldConfig, getModelConfig, getToJson, getToModel } from '../decora
 
 /**
  * # 模型超类
+ *
  * @author Hamm.cn
  */
 export class AirModel {

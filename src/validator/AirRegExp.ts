@@ -1,5 +1,6 @@
 /**
  * # 常见的一些正则枚举
+ *
  * @author Hamm.cn
  */
 export enum AirRegExp {
