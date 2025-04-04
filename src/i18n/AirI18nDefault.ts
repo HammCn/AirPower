@@ -12,8 +12,8 @@ export class AirI18nDefault {
   language = AirLanguage.ChineseSimplified
 
   /** ### 文件过大 */
-  FileTooLarge?: string
+  FileTooLarge = '文件过大'
 
   /** ### 未知的文件大小 */
-  FileUnknownSize?: string
+  FileUnknownSize = '未知的文件大小'
 }
