@@ -90,7 +90,7 @@ export class AirI18n extends AirI18nDefault {
    * ### 添加国际化语言
    * @param languages 语言包列表
    */
-  static addLanguage<T extends AirI18n>(this: ClassConstructor<T>, ...languages: AirI18n[]): void {
+  static addLanguage<T extends AirI18n>(this: ClassConstructor<T>, ...languages: T[]): void {
     if (languages.length === 0) {
       throw new Error('languages is empty')
     }
