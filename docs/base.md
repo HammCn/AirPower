@@ -1,6 +1,6 @@
 ## 📖 基类
 
-**AirPower** 提供了 `AirPower` Entity` 等基类，其中：
+**AirPower** 提供了 `AirPower` `IEntity` 等基类与接口，其中：
 
 ### `AirPower`
 
@@ -28,6 +28,6 @@
 - `getFieldName` 获取类属性标记的名称
 - `getFieldConfig` 获取类属性标记的配置
 
-### `Entity`
+### `IEntity`
 
-`Entity` 指定包含 `id` 属性，继承来自 `AirPower`。
+`IEntity` 指定包含 `id` 属性。
