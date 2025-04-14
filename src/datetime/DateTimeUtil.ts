@@ -1,13 +1,12 @@
 import type { IEnum } from '../enum'
 import type { IJson } from '../transformer'
-import { AirDateTimeFormatter } from './AirDateTimeFormatter'
 
 /**
  * # 时间日期时间戳格式化类
  *
  * @author Hamm.cn
  */
-export class AirDateTime {
+export class DateTimeUtil {
   /**
    * ### 时间进制
    */
@@ -105,31 +104,28 @@ export class AirDateTime {
 
   /**
    * ### 从秒时间戳格式化时间
-   * @param timeStamp 秒时间戳
-   * @param formatString `可选` 格式化模板 默认为`AirConfig.dateTimeFormatter`
+   * @param second 秒时间戳
+   * @param formatString 格式化模板
    */
-  static formatFromSecond(timeStamp: number, formatString?: AirDateTimeFormatter | string): string {
-    return this.formatFromDate(new Date(timeStamp * this.MILLISECONDS_PER_SECOND), formatString)
+  static formatFromSecond(second: number, formatString: string): string {
+    return this.formatFromDate(new Date(second * this.MILLISECONDS_PER_SECOND), formatString)
   }
 
   /**
    * ### 从毫秒时间戳格式化时间
-   * @param timeStamp 毫秒时间戳
-   * @param formatString `可选` 格式化模板 默认为`AirConfig.dateTimeFormatter`
+   * @param milliSecond 毫秒时间戳
+   * @param formatString 格式化模板
    */
-  static formatFromMilliSecond(timeStamp: number, formatString?: AirDateTimeFormatter | string): string {
-    return this.formatFromDate(new Date(timeStamp), formatString)
+  static formatFromMilliSecond(milliSecond: number, formatString: string): string {
+    return this.formatFromDate(new Date(milliSecond), formatString)
   }
 
   /**
    * ### 从字符串或对象格式化时间
    * @param date Date对象或字符串
-   * @param formatString `可选` 格式化模板 默认为`AirConfig.dateTimeFormatter`
+   * @param formatString 格式化模板
    */
-  static formatFromDate(date: Date | string, formatString?: AirDateTimeFormatter | string): string {
-    if (!formatString) {
-      formatString = AirDateTimeFormatter.FULL_DATE_TIME
-    }
+  static formatFromDate(date: Date | string, formatString: string): string {
     if (typeof date !== 'object') {
       date = new Date(date)
     }
@@ -166,7 +162,7 @@ export class AirDateTime {
 
     const suffix = timestamp > currentTimestamp ? '后' : '前'
 
-    const steps: IEnum<number>[] = [
+    const steps: IEnum[] = [
       {
         key: 0,
         label: '秒',

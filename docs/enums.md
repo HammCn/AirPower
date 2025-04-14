@@ -1,6 +1,6 @@
 ## 📖 枚举和字典
 
-**AirPower** 提供了 `IEnum` `AirEnum`  类和接口：
+**AirPower** 提供了 `IEnum` `Enum`  类和接口：
 
 ### `IEnum`
 
@@ -9,9 +9,9 @@
 - `key` 字典的值
 - `label` 字典的描述
 
-### `AirEnum`
+### `Enum`
 
-`AirEnum` 是一个枚举类，提供了一些枚举封装方法
+`Enum` 是一个枚举类，提供了一些枚举封装方法
 
 #### 静态方法
 
@@ -23,9 +23,9 @@
 #### 声明枚举
 
 ```typescript
-export class UserGenderEnum extends AirEnum {
-  static MALE = new UserGenderEnum(1, '男')
-  static FEMALE = new UserGenderEnum(2, '女')
+export class GenderEnum extends Enum {
+  static MALE = new GenderEnum(1, '男')
+  static FEMALE = new GenderEnum(2, '女')
 }
 ```
 

@@ -1,13 +1,13 @@
 /* eslint-disable regexp/no-unused-capturing-group,regexp/no-super-linear-backtracking */
-import { AirConstant } from '../config'
-import { AirRegExp } from './AirRegExp'
+import { Constant } from '../config'
+import { RegExpEnum } from './RegExpEnum'
 
 /**
- * # 表单验证工具
+ * # 验证工具类
  *
  * @author Hamm.cn
  */
-export class AirValidator {
+export class ValidateUtil {
   /**
    * ### 验证是否手机号或座机号
    * @param phoneNumber 号码
@@ -46,7 +46,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isChinese(str: string): boolean {
-    return new RegExp(String.raw`^[${AirRegExp.CHINESE}]+$`).test(str)
+    return new RegExp(String.raw`^[${RegExpEnum.CHINESE}]+$`).test(str)
   }
 
   /**
@@ -54,7 +54,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isOnlyLetter(str: string): boolean {
-    return new RegExp(String.raw`^[${AirRegExp.LETTER}]+$`).test(str)
+    return new RegExp(String.raw`^[${RegExpEnum.LETTER}]+$`).test(str)
   }
 
   /**
@@ -62,7 +62,7 @@ export class AirValidator {
    * @param str 字符串
    */
   static isOnlyNumberAndLetter(str: string): boolean {
-    return new RegExp(String.raw`^[${AirRegExp.LETTER + AirRegExp.NUMBER}]+$`).test(str)
+    return new RegExp(String.raw`^[${RegExpEnum.LETTER + RegExpEnum.NUMBER}]+$`).test(str)
   }
 
   /**
@@ -122,21 +122,21 @@ export class AirValidator {
       return false
     }
 
-    const year = Number.parseInt(str.substring(6), AirConstant.DEFAULT_RADIX)
+    const year = Number.parseInt(str.substring(6), Constant.DEFAULT_RADIX)
     if (year > new Date().getFullYear() || year < 1900) {
       return false
     }
-    const month = Number.parseInt(str.substring(10, 12), AirConstant.DEFAULT_RADIX)
+    const month = Number.parseInt(str.substring(10, 12), Constant.DEFAULT_RADIX)
     if (month > 12 || month < 1) {
       return false
     }
-    const day = Number.parseInt(str.substring(12, 14), AirConstant.DEFAULT_RADIX)
+    const day = Number.parseInt(str.substring(12, 14), Constant.DEFAULT_RADIX)
     if (day > 31 || month < 1) {
       return false
     }
     let sum = 0
     for (let i = 0; i < 17; i += 1) {
-      sum += Number.parseInt(str[i], AirConstant.DEFAULT_RADIX) * (validArray[0][i] as number)
+      sum += Number.parseInt(str[i], Constant.DEFAULT_RADIX) * (validArray[0][i] as number)
     }
 
     // eslint-disable-next-line eqeqeq
@@ -148,8 +148,8 @@ export class AirValidator {
    * @param str 被验证字符串
    * @param list 验证器
    */
-  static validate(str: string, ...list: AirRegExp[]) {
-    let regString = AirConstant.STRING_EMPTY
+  static validate(str: string, ...list: RegExpEnum[]) {
+    let regString = ''
     for (let i = 0; i < list.length; i += 1) {
       regString += list[i]
     }

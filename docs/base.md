@@ -1,10 +1,10 @@
 ## 📖 基类
 
-**AirPower** 提供了 `AirModel` `AirEntity` 等基类，其中：
+**AirPower** 提供了 `AirPower` Entity` 等基类，其中：
 
-### `AirModel`
+### `AirPower`
 
-`AirModel` 是所有参与数据转换类的基类，它提供了一些基础的属性和方法，如：
+`AirPower` 是所有参与数据转换类的基类，它提供了一些基础的属性和方法，如：
 
 #### 静态方法
 
@@ -28,6 +28,6 @@
 - `getFieldName` 获取类属性标记的名称
 - `getFieldConfig` 获取类属性标记的配置
 
-### `AirEntity`
+### `Entity`
 
-`AirEntity` 指定包含 `id` 属性，继承来自 `AirModel`。
+`Entity` 指定包含 `id` 属性，继承来自 `AirPower`。

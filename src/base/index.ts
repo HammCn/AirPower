@@ -1,2 +1,2 @@
-export * from './AirModel'
+export * from './AirPower'
 export * from './IEntity'

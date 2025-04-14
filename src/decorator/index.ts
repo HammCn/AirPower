@@ -1,4 +1,4 @@
-export * from './AirDecorator'
+export * from './DecoratorUtil'
 export * from './Field'
 export * from './interface'
 export * from './Model'

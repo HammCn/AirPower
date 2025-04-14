@@ -1,11 +1,11 @@
 import CryptoJS from 'crypto-js'
 
 /**
- * # 加解密和散列摘要算法助手类
+ * # 加解密和散列摘要算法工具类
  *
  * @author Hamm.cn
  */
-export class AirCrypto {
+export class CryptoUtil {
   /**
    * ### AES加解密使用默认向量
    */
@@ -17,7 +17,7 @@ export class AirCrypto {
    * @param key 密钥
    * @param mode `可选` 加密方式 默认 `CBC`
    * @param padding `可选` 填充方式 默认 `Pkcs7`
-   * @param iv `可选` 向量 默认 `AirConfig.aesCbcIvString`
+   * @param iv `可选` 向量
    */
   static aesEncrypt(
     data: string,
@@ -39,7 +39,7 @@ export class AirCrypto {
    * @param key 密钥
    * @param mode `可选` 加密方式 默认 `CBC`
    * @param padding `可选` 填充方式 默认 `Pkcs7`
-   * @param iv `可选` 向量 默认 `AirConfig.aesCbcIvString`
+   * @param iv `可选` 向量
    */
   static aesDecrypt(
     data: string,

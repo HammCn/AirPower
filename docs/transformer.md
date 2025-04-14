@@ -7,7 +7,7 @@
 可以通过为 `@Field` 标记 `type` 来强制类型转换。
 
 ```typescript
-class User extends AirModel {
+class User extends AirPower {
   @Field({
     type: Number // 强制转换为数字类型
   })
@@ -35,7 +35,7 @@ class User extends AirModel {
 别名转换适用于突然属性名称的变更，如 `nickname` -> `nickName`
 
 ```typescript
-class User extends AirModel {
+class User extends AirPower {
   @Field({
     alias: 'nickName'
   })
@@ -58,10 +58,11 @@ class User extends AirModel {
 此时，我们可以通过类的装饰器 `@Model` 来配置属性前缀：
 
 ```typescript
+
 @Model({
   prefix: 'user_'
 })
-class User extends AirModel {
+class User extends AirPower {
   id!: number
   name!: string
   age!: number
@@ -71,10 +72,11 @@ class User extends AirModel {
 如果，其中的某个属性不需要前缀，可以通过 `@Field` 的 `ignorePrefix` 来忽略：
 
 ```typescript
+
 @Model({
   prefix: 'user_'
 })
-class User extends AirModel {
+class User extends AirPower {
   // 其他需要前缀的属性
   @Field({
     ignorePrefix: true

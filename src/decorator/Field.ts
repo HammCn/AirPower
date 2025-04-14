@@ -1,8 +1,8 @@
-import type { AirModel } from '../base'
+import type { AirPower } from '../base'
 import type { IJson } from '../transformer'
 import type { IFieldConfig } from './interface'
-import type { AirDecoratorTarget } from './type'
-import { AirDecorator } from './AirDecorator'
+import type { DecoratorTarget } from './type'
+import { DecoratorUtil } from './DecoratorUtil'
 
 /**
  * ### 属性参数配置
@@ -14,7 +14,7 @@ export const FIELD_CONFIG_KEY = 'Field'
  * @param config 配置项
  */
 export function Field(config: IFieldConfig = {}) {
-  return (target: AirDecoratorTarget, key: string) => AirDecorator.setFieldConfig(target, key, FIELD_CONFIG_KEY, config)
+  return (target: DecoratorTarget, key: string) => DecoratorUtil.setFieldConfig(target, key, FIELD_CONFIG_KEY, config)
 }
 
 /**
@@ -23,8 +23,8 @@ export function Field(config: IFieldConfig = {}) {
  * @param target 目标类
  * @param key 属性名
  */
-export function getFieldConfig(target: AirDecoratorTarget, key: string): IFieldConfig {
-  return (AirDecorator.getFieldConfig(target, key, FIELD_CONFIG_KEY, true) || {}) as IFieldConfig
+export function getFieldConfig(target: DecoratorTarget, key: string): IFieldConfig {
+  return (DecoratorUtil.getFieldConfig(target, key, FIELD_CONFIG_KEY, true) || {}) as IFieldConfig
 }
 
 /**
@@ -37,8 +37,8 @@ const TO_JSON_KEY = 'ToJson'
  * @param func 方法
  */
 
-export function ToJson<M extends AirModel>(func: (model: M) => unknown) {
-  return (target: AirDecoratorTarget, key: string) => AirDecorator.setFieldConfig(target, key, TO_JSON_KEY, func)
+export function ToJson<M extends AirPower>(func: (model: M) => unknown) {
+  return (target: DecoratorTarget, key: string) => DecoratorUtil.setFieldConfig(target, key, TO_JSON_KEY, func)
 }
 
 /**
@@ -47,8 +47,8 @@ export function ToJson<M extends AirModel>(func: (model: M) => unknown) {
  * @param key 属性名
  */
 
-export function getToJson<M extends AirModel>(target: AirDecoratorTarget, key: string): (model: M) => unknown {
-  return AirDecorator.getFieldConfig(target, key, TO_JSON_KEY)
+export function getToJson<M extends AirPower>(target: DecoratorTarget, key: string): (model: M) => unknown {
+  return DecoratorUtil.getFieldConfig(target, key, TO_JSON_KEY)
 }
 
 /**
@@ -62,7 +62,7 @@ const TO_MODEL_KEY = 'ToModel'
  */
 
 export function ToModel(func: (json: IJson) => unknown) {
-  return (target: AirDecoratorTarget, key: string) => AirDecorator.setFieldConfig(target, key, TO_MODEL_KEY, func)
+  return (target: DecoratorTarget, key: string) => DecoratorUtil.setFieldConfig(target, key, TO_MODEL_KEY, func)
 }
 
 /**
@@ -71,6 +71,6 @@ export function ToModel(func: (json: IJson) => unknown) {
  * @param key 属性名
  */
 
-export function getToModel(target: AirDecoratorTarget, key: string): (json: IJson) => unknown {
-  return AirDecorator.getFieldConfig(target, key, TO_MODEL_KEY)
+export function getToModel(target: DecoratorTarget, key: string): (json: IJson) => unknown {
+  return DecoratorUtil.getFieldConfig(target, key, TO_MODEL_KEY)
 }

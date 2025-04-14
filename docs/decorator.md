@@ -12,7 +12,7 @@
   label: '用户',
   fieldPrefix: 'user_'
 })
-class User extends AirModel {
+class User extends AirPower {
   nickname!: string
 
   age!: number
@@ -39,7 +39,7 @@ console.log(config)
 可以使用 `@Field` 对类的属性进行配置：
 
 ```typescript
-class User extends AirModel {
+class User extends AirPower {
   @Field({
     label: '昵称',
     alias: 'name',

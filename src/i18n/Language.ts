@@ -3,7 +3,7 @@
  *
  * @anchor Hamm
  */
-export enum AirLanguage {
+export enum Language {
   /**
    * ### 英语
    * 国际上最广泛使用的语言之一，也是互联网上的主导语言。

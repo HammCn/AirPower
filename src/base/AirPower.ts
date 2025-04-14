@@ -7,15 +7,15 @@ import { getFieldConfig, getModelConfig, getToJson, getToModel } from '../decora
  *
  * @author Hamm.cn
  */
-export class AirModel {
+export class AirPower {
   /**
    * ### 从 `JSON` 转换到当前类的对象
    * 会自动进行数据别名转换
    * @param json `JSON`
    */
-  static fromJson<T extends AirModel>(this: ClassConstructor<T>, json: IJson = {}): T {
+  static fromJson<T extends AirPower>(this: ClassConstructor<T>, json: IJson = {}): T {
     const instance: T = Object.assign(new this()) as T
-    return AirModel.parse<T>(instance, json)
+    return AirPower.parse<T>(instance, json)
   }
 
   /**
@@ -23,17 +23,17 @@ export class AirModel {
    * 会自动进行数据别名转换
    * @param jsonArray `JSON`数组
    */
-  static fromJsonArray<T extends AirModel>(this: ClassConstructor<T>, jsonArray: IJson | IJson[] = []): T[] {
+  static fromJsonArray<T extends AirPower>(this: ClassConstructor<T>, jsonArray: IJson | IJson[] = []): T[] {
     const instanceList: T[] = []
     if (Array.isArray(jsonArray)) {
       for (let i = 0; i < jsonArray.length; i += 1) {
         const instance: T = Object.assign(new this()) as T
-        instanceList.push(AirModel.parse(instance, jsonArray[i]))
+        instanceList.push(AirPower.parse(instance, jsonArray[i]))
       }
     }
     else {
       const instance: T = Object.assign(new this()) as T
-      instanceList.push(AirModel.parse(instance, jsonArray))
+      instanceList.push(AirPower.parse(instance, jsonArray))
     }
     return instanceList
   }
@@ -44,7 +44,7 @@ export class AirModel {
    * @param instance 实体
    * @param json `JSON`
    */
-  static parse<T extends AirModel>(instance: T, json: IJson = {}): T {
+  static parse<T extends AirPower>(instance: T, json: IJson = {}): T {
     const fieldKeyList = Object.keys(instance)
     const modelConfig = getModelConfig(instance)
     for (const fieldKey of fieldKeyList) {
@@ -76,7 +76,7 @@ export class AirModel {
           for (let i = 0; i < fieldData.length; i += 1) {
             // 如果标记了类 需要递归处理
             if (FieldTypeClass) {
-              fieldValueList[i] = this.parse(new FieldTypeClass() as AirModel, fieldData[i])
+              fieldValueList[i] = this.parse(new FieldTypeClass() as AirPower, fieldData[i])
             }
           }
         }
@@ -107,7 +107,7 @@ export class AirModel {
           break
         default:
           // 是对象 需要递归转换
-          ;(instance as IJson)[fieldKey] = this.parse(new FieldTypeClass() as AirModel, fieldData)
+          ;(instance as IJson)[fieldKey] = this.parse(new FieldTypeClass() as AirPower, fieldData)
       }
     }
 
@@ -159,7 +159,7 @@ export class AirModel {
    * @param recoverBy `可选` 初始化用于覆盖对象实例的 `JSON`
    */
 
-  static newInstance<T extends AirModel>(this: ClassConstructor<T>, recoverBy?: IJson): T {
+  static newInstance<T extends AirPower>(this: ClassConstructor<T>, recoverBy?: IJson): T {
     const instance = Object.assign(new this(), null) as T
     if (recoverBy) {
       return instance.recoverBy(recoverBy)
@@ -208,7 +208,7 @@ export class AirModel {
    * 相同字段才会覆盖上去
    * @param obj 覆盖对象
    */
-  recoverBy(obj: IJson | AirModel): this {
+  recoverBy(obj: IJson | AirPower): this {
     return Object.assign(this, obj)
   }
 
@@ -252,16 +252,16 @@ export class AirModel {
           const jsonList: IJson[] = []
           for (let i = 0; i < fieldData.length; i += 1) {
             if (typeof fieldData[i] === 'object') {
-              jsonList[i] = (fieldData[i] as AirModel).toJson()
+              jsonList[i] = (fieldData[i] as AirPower).toJson()
               continue
             }
-            jsonList[i] = fieldData[i] as AirModel
+            jsonList[i] = fieldData[i] as AirPower
           }
           json[fieldAliasName || fieldKey] = jsonList
           continue
         }
         // 是对象 递归转换
-        json[fieldAliasName || fieldKey] = (fieldData as AirModel).toJson()
+        json[fieldAliasName || fieldKey] = (fieldData as AirPower).toJson()
       }
     }
 

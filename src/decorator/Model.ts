@@ -1,6 +1,6 @@
 import type { IModelConfig } from './interface'
-import type { AirDecoratorTarget } from './type'
-import { AirDecorator } from './AirDecorator'
+import type { DecoratorTarget } from './type'
+import { DecoratorUtil } from './DecoratorUtil'
 
 /**
  * ### 类名称 `Key`
@@ -12,13 +12,13 @@ export const MODEL_CONFIG_KEY = 'Model'
  * @param config 配置项
  */
 export function Model<M extends IModelConfig = IModelConfig>(config: M = {} as M) {
-  return (target: AirDecoratorTarget) => AirDecorator.setClassConfig(target, MODEL_CONFIG_KEY, config)
+  return (target: DecoratorTarget) => DecoratorUtil.setClassConfig(target, MODEL_CONFIG_KEY, config)
 }
 
 /**
  * ### 获取模型类配置项
  * @param target 目标类
  */
-export function getModelConfig<M extends IModelConfig = IModelConfig>(target: AirDecoratorTarget): M {
-  return AirDecorator.getClassConfig(target, MODEL_CONFIG_KEY, {}, true) as M
+export function getModelConfig<M extends IModelConfig = IModelConfig>(target: DecoratorTarget): M {
+  return DecoratorUtil.getClassConfig(target, MODEL_CONFIG_KEY, {}, true) as M
 }

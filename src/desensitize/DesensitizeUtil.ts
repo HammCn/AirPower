@@ -1,16 +1,20 @@
-import { AirConstant } from '../config'
-import { AirDesensitizeType } from './AirDesensitizeType'
+import { DesensitizeType } from './DesensitizeType'
 
 /**
  * # 脱敏助手类
  *
  * @author Hamm.cn
  */
-export class AirDesensitize {
+export class DesensitizeUtil {
   /**
    * ### 默认的脱敏符号
    */
   static DEFAULT_MASK = '*'
+
+  /**
+   * ### IP地址分隔符
+   */
+  private static readonly IP_V4_SEPARATOR = '.'
 
   /**
    * ### `IPv4` 的块长度
@@ -50,14 +54,14 @@ export class AirDesensitize {
    * @return 脱敏后的 `IPv4` 地址
    */
   public static desensitizeIpv4Address(ipv4: string, symbol = this.DEFAULT_MASK): string {
-    const strings = ipv4.split(AirConstant.STRING_DOT)
-    if (strings.length !== AirDesensitize.IP_V4_PART_COUNT) {
+    const strings = ipv4.split(this.IP_V4_SEPARATOR)
+    if (strings.length !== DesensitizeUtil.IP_V4_PART_COUNT) {
       return ipv4
     }
     const temp = symbol + symbol + symbol
     strings[1] = temp
     strings[2] = temp
-    return strings.join(AirConstant.STRING_DOT)
+    return strings.join(this.IP_V4_SEPARATOR)
   }
 
   /**
@@ -72,25 +76,25 @@ export class AirDesensitize {
    */
   public static desensitize(
     source: string,
-    type: AirDesensitizeType,
+    type: DesensitizeType,
     head = 0,
     tail = 0,
     symbol = this.DEFAULT_MASK,
   ): string {
     if (!source) {
-      return AirConstant.STRING_EMPTY
+      throw new Error('Source is required!')
     }
     head = head <= 0 ? type.head : head
     tail = tail <= 0 ? type.tail : tail
     switch (type.key) {
-      case AirDesensitizeType.IP_V4.key:
-        return AirDesensitize.desensitizeIpv4Address(source, symbol)
-      case AirDesensitizeType.CHINESE_NAME.key:
+      case DesensitizeType.IP_V4.key:
+        return DesensitizeUtil.desensitizeIpv4Address(source, symbol)
+      case DesensitizeType.CHINESE_NAME.key:
         if (source.length <= head + tail) {
           tail = 0
         }
         break
-      case AirDesensitizeType.TELEPHONE.key:
+      case DesensitizeType.TELEPHONE.key:
         // 包含区号 前后各留4 不包含则各留2
         // eslint-disable-next-line no-case-declarations
         const isContainRegionCode = source.length > 8 ? 4 : 2

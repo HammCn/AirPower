@@ -1,3 +1,3 @@
-export * from './AirI18n'
-export * from './AirI18nDefault'
-export * from './AirLanguage'
+export * from './I18n'
+export * from './I18nDefault'
+export * from './Language'

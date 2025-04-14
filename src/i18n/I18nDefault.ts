@@ -1,15 +1,15 @@
-import { AirLanguage } from './AirLanguage'
+import { Language } from './Language'
 
 /**
  * # 内置的一些 `i18n` 文案
  *
  * @author Hamm.cn
  */
-export class AirI18nDefault {
+export class I18nDefault {
   /**
    * ### 语言名称
    */
-  language = AirLanguage.ChineseSimplified
+  language = Language.ChineseSimplified
 
   /** ### 文件过大 */
   FileTooLarge = '文件过大'

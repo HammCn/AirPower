@@ -1,13 +1,13 @@
-import type { AirEnum } from './AirEnum'
+import type { Enum } from './Enum'
 
 /**
  * ### 枚举 `Key` 的类型
  */
-export type AirEnumKey = string | number | boolean
+export type EnumKey = string | number | boolean
 
 /**
  * ### 枚举类
  */
-export type AirEnumClass<K extends AirEnumKey = number, E extends AirEnum<K> = AirEnum<K>> = {
-  new(key?: K, label?: string): E
-} & typeof AirEnum<K>
+export type EnumConstructor<K extends EnumKey = number, E extends Enum<K> = Enum<K>> = {
+  new(key: K, label?: string): E
+} & typeof Enum<K>

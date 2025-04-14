@@ -1,14 +1,14 @@
 import type { ITree } from '../tree'
 import type { IJson } from './IJson'
 import type { ClassConstructor } from './type'
-import { AirModel } from '../base'
+import { AirPower } from '../base'
 
 /**
  * # 转换类型助手
  *
  * @author Hamm.cn
  */
-export class AirClassTransformer {
+export class ClassTransformer {
   /**
    * ### 复制一个新的 `JSON` 对象
    * @param json JSON
@@ -40,8 +40,8 @@ export class AirClassTransformer {
    * @param json JSON
    * @param TargetClass 目标类
    */
-  static parse<T extends AirModel>(json: IJson, TargetClass: ClassConstructor<T>): T {
-    return AirModel.parse(new TargetClass(), json)
+  static parse<T extends AirPower>(json: IJson, TargetClass: ClassConstructor<T>): T {
+    return AirPower.parse(new TargetClass(), json)
   }
 
   /**
@@ -49,7 +49,7 @@ export class AirClassTransformer {
    * @param jsonArray JSON数组
    * @param TargetClass 目标类
    */
-  static parseArray<T extends AirModel>(jsonArray: IJson[], TargetClass: ClassConstructor<T>): T[] {
+  static parseArray<T extends AirPower>(jsonArray: IJson[], TargetClass: ClassConstructor<T>): T[] {
     return jsonArray.map(json => this.parse(json, TargetClass))
   }
 
@@ -58,7 +58,7 @@ export class AirClassTransformer {
    * @param from 来源类对象实例
    * @param TargetClass 目标类
    */
-  static copy<F extends AirModel, M extends AirModel>(from: F, TargetClass: ClassConstructor<M>): M {
+  static copy<F extends AirPower, M extends AirPower>(from: F, TargetClass: ClassConstructor<M>): M {
     return this.parse(from.toJson(), TargetClass)
   }
 
@@ -67,7 +67,7 @@ export class AirClassTransformer {
    *
    * @param TargetClass 目标类
    */
-  static newInstance<T extends AirModel>(TargetClass: ClassConstructor<T>): T {
+  static newInstance<T extends AirPower>(TargetClass: ClassConstructor<T>): T {
     return new TargetClass()
   }
 }

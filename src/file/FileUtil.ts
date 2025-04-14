@@ -1,12 +1,11 @@
-import { AirConstant } from '../config'
-import { AirI18n } from '../i18n'
+import { I18n } from '../i18n'
 
 /**
- * # 文件助手类
+ * # 文件工具类
  *
  * @author Hamm.cn
  */
-export class AirFile {
+export class FileUtil {
   /**
    * ### 文件大小进制
    */
@@ -16,6 +15,16 @@ export class AirFile {
    * ### 静态文件地址
    */
   static staticUrl = ''
+
+  /**
+   * ### `http://`
+   */
+  static readonly PREFIX_HTTP = 'http://'
+
+  /**
+   * ### `https://`
+   */
+  static readonly PREFIX_HTTPS = 'https://'
 
   /**
    * ### 文件单位列表
@@ -29,14 +38,14 @@ export class AirFile {
    */
   static getFileSizeFriendly(size: number, fractionDigits = 2): string {
     if (size <= 0) {
-      return AirI18n.get().FileUnknownSize
+      return I18n.get().FileUnknownSize
     }
     for (let i = 0; i < this.FILE_UNIT_LIST.length; i += 1) {
       if (size < this.RADIX_FILE_SIZE ** (i + 1)) {
         return `${(size / this.RADIX_FILE_SIZE ** i).toFixed(fractionDigits)}${this.FILE_UNIT_LIST[i]}`
       }
     }
-    return AirI18n.get().FileTooLarge
+    return I18n.get().FileTooLarge
   }
 
   /**
@@ -45,11 +54,11 @@ export class AirFile {
    */
   static getStaticFileUrl(url: string): string {
     if (!url) {
-      return AirConstant.STRING_EMPTY
+      throw new Error('URL is required!')
     }
-    if (url.includes(AirConstant.PREFIX_HTTP) || url.includes(AirConstant.PREFIX_HTTPS)) {
+    if (url.includes(this.PREFIX_HTTP) || url.includes(this.PREFIX_HTTPS)) {
       return url
     }
-    return AirFile.staticUrl + url
+    return FileUtil.staticUrl + url
   }
 }

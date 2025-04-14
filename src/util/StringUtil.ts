@@ -1,11 +1,9 @@
-import { AirConstant } from '../config'
-
 /**
  * # 字符串处理工具类
  *
  * @author Hamm.cn
  */
-export class AirString {
+export class StringUtil {
   /**
    * ### 单码元长度
    */
@@ -53,19 +51,19 @@ export class AirString {
    * @param to 截取结束位置
    */
   static slice(str: string, from = 0, to = this.getLength(str) - 1): string {
-    let s = AirConstant.STRING_EMPTY
     if (from < 0) {
-      throw new Error('AirString.get() Error: from error')
+      throw new Error('Error: from error')
     }
     if (to < 0) {
-      throw new Error('AirString.get() Error: to error')
+      throw new Error('Error: to error')
     }
     if (from > this.getLength(str) - 1) {
-      throw new Error('AirString.get() Error: from out of range')
+      throw new Error('Error: from out of range')
     }
     if (to > this.getLength(str) - 1) {
-      throw new Error('AirString.get() Error: to out of range')
+      throw new Error('Error: to out of range')
     }
+    let s = ''
     for (let i = from; i <= to; i += 1) {
       s += this.get(str, i)
     }

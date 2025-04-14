@@ -3,7 +3,7 @@
  *
  * @author Hamm.cn
  */
-export enum AirRegExp {
+export enum RegExpEnum {
   /**
    * ### 字母
    * `a-z A-Z`

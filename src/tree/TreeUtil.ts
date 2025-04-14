@@ -1,4 +1,4 @@
-import type { AirModel } from '../base'
+import type { AirPower } from '../base'
 import type { ITree } from './ITree'
 
 /**
@@ -6,7 +6,7 @@ import type { ITree } from './ITree'
  *
  * @author Hamm.cn
  */
-export class AirTree {
+export class TreeUtil {
   /**
    * ### 树节点名称
    */
@@ -31,10 +31,10 @@ export class AirTree {
    * @param treeList 层级树列表
    * @returns 平树列表
    */
-  static treeList2List<E extends ITree & AirModel>(treeList: E[]): E[] {
+  static treeList2List<E extends ITree & AirPower>(treeList: E[]): E[] {
     const list: E[] = []
     treeList.forEach((item) => {
-      const i = item.copy().exclude(AirTree.STRING_CHILDREN)
+      const i = item.copy().exclude(TreeUtil.STRING_CHILDREN)
       list.push(i)
       if (item.children && item.children.length > 0) {
         list.push(...this.treeList2List(item.children))
