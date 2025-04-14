@@ -7,7 +7,7 @@ import { AirConstant } from '../config'
  *
  * @author Hamm.cn
  */
-export class AirEnum<K extends AirEnumKey = number> implements IEnum {
+export class AirEnum<K extends AirEnumKey = number> implements IEnum<K> {
   /**
    * ### 枚举的值
    */
@@ -66,7 +66,7 @@ export class AirEnum<K extends AirEnumKey = number> implements IEnum {
    * ### 查找一个枚举选项
    * @param key `Key`
    */
-  static get<E extends AirEnum<K>, K extends AirEnumKey = number>(this: AirEnumClass<E, K>, key: K): E | null {
+  static get<K extends AirEnumKey = number, E extends AirEnum<K> = AirEnum<K>>(this: AirEnumClass<K, E>, key: K): E | null {
     return this.toArray().find((item: E) => item.key === key) || null
   }
 
@@ -74,7 +74,7 @@ export class AirEnum<K extends AirEnumKey = number> implements IEnum {
    * ### 将枚举转为数组
    * @returns 枚举数组
    */
-  static toArray<E extends AirEnum<K>, K extends AirEnumKey = number>(this: AirEnumClass<E, K>): E[] {
+  static toArray<K extends AirEnumKey = number, E extends AirEnum<K> = AirEnum<K>>(this: AirEnumClass<K, E>): E[] {
     return Object.values(this).filter((item): item is E => item instanceof this)
   }
 

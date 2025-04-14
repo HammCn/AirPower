@@ -5,7 +5,7 @@ import type { AirEnumKey } from './type'
  *
  * @author Hamm.cn
  */
-export interface IEnum<K extends AirEnumKey = AirEnumKey> {
+export interface IEnum<K extends AirEnumKey = number> {
   /**
    * ### 字典的值
    */

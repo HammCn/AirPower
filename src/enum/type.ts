@@ -8,6 +8,6 @@ export type AirEnumKey = string | number | boolean
 /**
  * ### 枚举类
  */
-export type AirEnumClass<E extends AirEnum<K>, K extends AirEnumKey = number> = {
+export type AirEnumClass<K extends AirEnumKey = number, E extends AirEnum<K> = AirEnum<K>> = {
   new(key?: K, label?: string): E
 } & typeof AirEnum<K>

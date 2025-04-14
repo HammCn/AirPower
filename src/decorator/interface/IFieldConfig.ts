@@ -1,4 +1,4 @@
-import type { AirEnum, AirEnumClass } from '../../enum'
+import type { AirEnumClass } from '../../enum'
 import type { ClassConstructor } from '../../transformer'
 import type { IField } from './IField'
 
@@ -7,11 +7,11 @@ import type { IField } from './IField'
  *
  * @author Hamm.cn
  */
-export interface IFieldConfig<E extends AirEnum = AirEnum> extends IField {
+export interface IFieldConfig extends IField {
   /**
    * ### 配置字典
    */
-  enums?: AirEnumClass<E>
+  enums?: AirEnumClass
 
   /**
    * ### 是否忽略类上的前缀
