@@ -1,13 +1,13 @@
-## 📖 装饰器文档
+# 📖 装饰器文档
 
 **AirPower** 提供了一些湿滑的装饰器，对数据转换、类和属性的扩展配置等提供了一些便捷的开发帮助。
 
-### @Model 类配置
+## @Model 类配置
 
 可以使用 `@Model()` 为类标记可读的 `label` 以及数据转换时候的统一前缀 `fieldPrefix`：
 
 ```typescript
-
+// 配置装饰器
 @Model({
   label: '用户',
   fieldPrefix: 'user_'
@@ -34,7 +34,7 @@ console.log(config)
 - **label**: 类的标签，如 `用户`
 - **fieldPrefix**: 统一属性的前缀，如 `user_`，将在 [数据转换](./transformer.md) 中使用到。
 
-### @Field 属性配置
+## @Field 属性配置
 
 可以使用 `@Field` 对类的属性进行配置：
 
@@ -65,7 +65,7 @@ console.log(config)
 }
 ```
 
-```@Field()``` 中支持很多数据转换的配置，如：
+### ```@Field()``` 中支持很多数据转换的配置，如：
 
 - **alias**: 字段别名，用于数据转换时候的映射
 - **label**: 字段描述

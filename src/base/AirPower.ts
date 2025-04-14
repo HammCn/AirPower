@@ -160,7 +160,7 @@ export class AirPower {
    */
 
   static newInstance<T extends AirPower>(this: ClassConstructor<T>, recoverBy?: IJson): T {
-    const instance = Object.assign(new this(), null) as T
+    const instance = new this()
     if (recoverBy) {
       return instance.recoverBy(recoverBy)
     }

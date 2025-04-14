@@ -54,6 +54,16 @@ export class Enum<K extends EnumKey = number> implements IEnum<K> {
   }
 
   /**
+   * ### 获取一个枚举的标签
+   * @param key `Key`
+   * @param defaultLabel 默认标签
+   */
+  static getLabel<K extends EnumKey = number, E extends Enum<K> = Enum<K>>(this: EnumConstructor<K, E>, key: K, defaultLabel = '-'): string {
+    const item = this.get(key)
+    return item?.label || defaultLabel
+  }
+
+  /**
    * ### 将枚举转为数组
    * @returns 枚举数组
    */

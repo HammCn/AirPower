@@ -1,6 +1,8 @@
-## 工具库
+# 工具库
 
-### CryptoUtil 编码和加解密
+**AirPower** 提供了一些常用的工具类，你可以直接使用。
+
+## CryptoUtil 编码和加解密
 
 内置了 `AES加解密`、`SHA1`、`MD5`、`Base64` 等前端常用算法，可直接使用。
 
@@ -13,7 +15,7 @@ CryptoUtil.base64Encode()
 CryptoUtil.base64Decode()
 ```
 
-### DateTimeUtil 时间与日期
+## DateTimeUtil 时间与日期
 
 提供了日期时间在前端常用的一些转换方法：
 
@@ -34,7 +36,7 @@ DateTimeUtil.getFriendlyDateTime('2022-02-02 23:59:59') // 三天前
 DateTimeFormatter.YYYY_MM_DD_HH_mm_ss.formatXXX(xxx)
 ```
 
-### DecoratorUtil 装饰器
+## DecoratorUtil 装饰器
 
 装饰器助手类提供了一些设置和读取配置项的方法：
 
@@ -64,7 +66,7 @@ DecoratorUtil.getFieldConfigList()
 DecoratorUtil.getFieldConfigValue()
 ```
 
-### FileUtil 文件
+## FileUtil 文件
 
 提供了一些常用文件处理方法
 
@@ -76,7 +78,7 @@ FileUtil.getFileSizeFriendly()
 FileUtil.getAbsoluteFileUrl()
 ```
 
-### RandomUtil 随机生成
+## RandomUtil 随机生成
 
 提供了一些常用随机生成方法
 
@@ -100,7 +102,7 @@ RandomUtil.getRandNumberAndCharString()
 RandomUtil.getRandNumberAndMixedCharString()
 ```
 
-### StringUtil 字符串常见处理
+## StringUtil 字符串常见处理
 
 提供了一些字符串处理的常见方法
 
