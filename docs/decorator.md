@@ -7,6 +7,7 @@
 可以使用 `@Model()` 为类标记可读的 `label` 以及数据转换时候的统一前缀 `fieldPrefix`：
 
 ```typescript
+
 @Model({
   label: '用户',
   fieldPrefix: 'user_'
@@ -71,4 +72,4 @@ console.log(config)
 - **type**: 字段类型，如 `Number` `String` `RoleEntity` 等，将递归数据转换
 - **array**: 是否是数组类型，将强制转换为数组类型
 - **ignorePrefix**: 这个属性是否忽略类标记的 `fieldPrefix`
-- **dictionary**: 字典配置，用于数据转换时候的映射
+- **enums**: 枚举字典配置，用于数据转换时候的映射

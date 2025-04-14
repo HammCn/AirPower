@@ -1,8 +1,6 @@
-import type { AirAny } from '../type'
-
 /**
  * ### 类包装
  */
-export interface ClassConstructor<T = AirAny> {
-  new(...args: AirAny[]): T
+export interface ClassConstructor<T = unknown> {
+  new(...args: unknown[]): T
 }

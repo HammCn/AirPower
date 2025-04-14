@@ -1,6 +1,5 @@
 import type { AirModel } from '../base'
 import type { IJson } from '../transformer'
-import type { AirAny } from '../type'
 import type { IFieldConfig } from './interface'
 import type { AirDecoratorTarget } from './type'
 import { AirDecorator } from './AirDecorator'
@@ -38,7 +37,7 @@ const TO_JSON_KEY = 'ToJson'
  * @param func 方法
  */
 
-export function ToJson<M extends AirModel>(func: (model: M) => AirAny) {
+export function ToJson<M extends AirModel>(func: (model: M) => unknown) {
   return (target: AirDecoratorTarget, key: string) => AirDecorator.setFieldConfig(target, key, TO_JSON_KEY, func)
 }
 
@@ -48,7 +47,7 @@ export function ToJson<M extends AirModel>(func: (model: M) => AirAny) {
  * @param key 属性名
  */
 
-export function getToJson<M extends AirModel>(target: AirDecoratorTarget, key: string): (model: M) => AirAny {
+export function getToJson<M extends AirModel>(target: AirDecoratorTarget, key: string): (model: M) => unknown {
   return AirDecorator.getFieldConfig(target, key, TO_JSON_KEY)
 }
 
@@ -62,7 +61,7 @@ const TO_MODEL_KEY = 'ToModel'
  * @param func 方法
  */
 
-export function ToModel(func: (json: IJson) => AirAny) {
+export function ToModel(func: (json: IJson) => unknown) {
   return (target: AirDecoratorTarget, key: string) => AirDecorator.setFieldConfig(target, key, TO_MODEL_KEY, func)
 }
 
@@ -72,6 +71,6 @@ export function ToModel(func: (json: IJson) => AirAny) {
  * @param key 属性名
  */
 
-export function getToModel(target: AirDecoratorTarget, key: string): (json: IJson) => AirAny {
+export function getToModel(target: AirDecoratorTarget, key: string): (json: IJson) => unknown {
   return AirDecorator.getFieldConfig(target, key, TO_MODEL_KEY)
 }

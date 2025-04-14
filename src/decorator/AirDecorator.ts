@@ -1,10 +1,7 @@
-import type { AirEnum, AirEnumKey } from '../dictionary'
-import type { ClassConstructor, IJson } from '../transformer'
-import type { AirAny } from '../type'
+import type { IJson } from '../transformer'
 import type { IFieldConfig } from './interface'
 import type { AirDecoratorData, AirDecoratorTarget } from './type'
 import { AirConstant } from '../config'
-import { AirDictionaryArray } from '../dictionary'
 import { AirClassTransformer } from '../transformer'
 
 /**
@@ -13,22 +10,6 @@ import { AirClassTransformer } from '../transformer'
  * @author Hamm.cn
  */
 export class AirDecorator {
-  /**
-   * ### 获取一个字典
-   * @param dictionary
-   */
-  static getDictionary(
-    dictionary: ClassConstructor<AirEnum<AirEnumKey>> | AirDictionaryArray | undefined,
-  ): AirDictionaryArray | undefined {
-    if (!dictionary) {
-      return dictionary
-    }
-    if (dictionary instanceof AirDictionaryArray) {
-      return dictionary
-    }
-    return (dictionary as AirAny).toDictionary()
-  }
-
   /**
    * ### 设置一个类配置项
    * @param target 目标实体类

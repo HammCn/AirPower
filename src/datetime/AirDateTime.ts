@@ -1,4 +1,4 @@
-import type { IDictionary } from '../dictionary'
+import type { IEnum } from '../enum'
 import type { IJson } from '../transformer'
 import { AirDateTimeFormatter } from './AirDateTimeFormatter'
 
@@ -166,7 +166,7 @@ export class AirDateTime {
 
     const suffix = timestamp > currentTimestamp ? '后' : '前'
 
-    const stepDictionary: IDictionary<number>[] = [
+    const steps: IEnum<number>[] = [
       {
         key: 0,
         label: '秒',
@@ -196,8 +196,8 @@ export class AirDateTime {
         label: '年',
       },
     ]
-    for (let i = stepDictionary.length - 1; i >= 0; i -= 1) {
-      const step = stepDictionary[i]
+    for (let i = steps.length - 1; i >= 0; i -= 1) {
+      const step = steps[i]
       if (timestamp <= currentTimestamp && diff < this.SECOND_PER_MINUTE) {
         // 过去时间，且小于60s
         return '刚刚'

@@ -1,4 +1,4 @@
-import { AirEnum } from '../dictionary'
+import { AirEnum } from '../enum'
 
 /**
  * # 脱敏类型
