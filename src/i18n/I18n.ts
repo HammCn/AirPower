@@ -1,4 +1,4 @@
-import type { ClassConstructor } from '../transformer'
+import type { I18nClassConstructor } from './type'
 import { I18nDefault } from './I18nDefault'
 import { Language } from './Language'
 
@@ -81,21 +81,22 @@ export class I18n extends I18nDefault {
    * @returns 翻译后的字符串
    */
   static get<T extends I18n>(
-    this: ClassConstructor<T>,
+    this: I18nClassConstructor<T>,
   ): T {
-    return (I18n.currentLanguagePackage || new I18n()) as T
+    this.initDefaultLanguage()
+    return (this.currentLanguagePackage || new I18n()) as T
   }
 
   /**
    * ### 添加国际化语言
    * @param languages 语言包列表
    */
-  static addLanguage<T extends I18n>(this: ClassConstructor<T>, ...languages: T[]): void {
+  static addLanguage<T extends I18n>(this: I18nClassConstructor<T>, ...languages: T[]): void {
     if (languages.length === 0) {
       throw new Error('languages is empty')
     }
     // 添加语言
-    languages.push(JSON.parse(JSON.stringify(new this())))
+    this.initDefaultLanguage()
     languages.forEach((item) => {
       I18n.languages.push(item)
     })
@@ -110,5 +111,15 @@ export class I18n extends I18nDefault {
   static setCurrentLanguage(language: Language): void {
     this.currentLanguage = language
     this.currentLanguagePackage = this.languages.find(item => item.language === this.currentLanguage) || this.languages[0]
+  }
+
+  /**
+   * ### 初始化默认语言
+   */
+  private static initDefaultLanguage<T extends I18n>(this: I18nClassConstructor<T>) {
+    if (this.languages.length === 0) {
+      this.languages.push(JSON.parse(JSON.stringify(new this())))
+      this.setCurrentLanguage(this.languages[0].language)
+    }
   }
 }
