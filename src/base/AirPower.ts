@@ -176,8 +176,8 @@ export class AirPower {
   }
 
   /**
-   * ### 暴露部分类的字段
-   * @param fields 字段列表
+   * ### 暴露部分类的属性
+   * @param fields 属性列表
    */
   expose(...fields: string[]): this {
     const fieldList = Object.keys(this)
@@ -190,8 +190,8 @@ export class AirPower {
   }
 
   /**
-   * ### 排除部分类的字段
-   * @param fields 字段列表
+   * ### 排除部分类的属性
+   * @param fields 属性列表
    */
   exclude(...fields: string[]): this {
     const fieldList = Object.keys(this)
@@ -205,7 +205,7 @@ export class AirPower {
 
   /**
    * ### 用指定的数据对当前实例进行覆盖
-   * 相同字段才会覆盖上去
+   * 相同属性才会覆盖上去
    * @param obj 覆盖对象
    */
   recoverBy(obj: IJson | AirPower): this {

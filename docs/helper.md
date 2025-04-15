@@ -50,19 +50,19 @@ DecoratorUtil.setClassConfig()
 // 递归获取指定类的配置项
 DecoratorUtil.getClassConfig()
 
-// 设置一个字段配置项
+// 设置一个属性配置项
 DecoratorUtil.setFieldConfig()
 
-// 获取类指定字段的指定类型的配置
+// 获取类指定属性的指定类型的配置
 DecoratorUtil.getFieldConfig()
 
-// 获取类标记了装饰器的字段列表
+// 获取类标记了装饰器的属性列表
 DecoratorUtil.getFieldList()
 
-// 获取目标类指定字段列表的配置项列表
+// 获取目标类指定属性列表的配置项列表
 DecoratorUtil.getFieldConfigList()
 
-// 获取目标类上指定字段的某个配置的值
+// 获取目标类上指定属性的某个配置的值
 DecoratorUtil.getFieldConfigValue()
 ```
 

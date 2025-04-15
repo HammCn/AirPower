@@ -3,7 +3,7 @@ import type { ClassConstructor } from '../../transformer'
 import type { IField } from './IField'
 
 /**
- * # 字段配置
+ * # 属性配置
  *
  * @author Hamm.cn
  */

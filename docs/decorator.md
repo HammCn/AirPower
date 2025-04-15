@@ -67,9 +67,9 @@ console.log(config)
 
 ### ```@Field()``` 中支持很多数据转换的配置，如：
 
-- **alias**: 字段别名，用于数据转换时候的映射
-- **label**: 字段描述
-- **type**: 字段类型，如 `Number` `String` `RoleEntity` 等，将递归数据转换
+- **alias**: 属性别名，用于数据转换时候的映射
+- **label**: 属性描述
+- **type**: 属性类型，如 `Number` `String` `RoleEntity` 等，将递归数据转换
 - **array**: 是否是数组类型，将强制转换为数组类型
 - **ignorePrefix**: 这个属性是否忽略类标记的 `fieldPrefix`
 - **enums**: 枚举字典配置，用于数据转换时候的映射

@@ -1,20 +1,18 @@
 /**
- * # 属性字段接口
+ * # 属性根接口
  *
  * @author Hamm.cn
  */
 export interface IField {
   /**
-   * ### 字段标题
-   * 此字段无需传入, 将自动从被标记类的属性上读取
+   * ### 属性key
+   * 无需传入, 将自动从被标记类的属性上读取
    * @deprecated
    */
   key?: string
 
   /**
-   * ### 字段标题
-   * ---
-   * 优先级：(`Table.label` = `Search.label` = `Form.label`) > `Field.label` > `Key`
+   * ### 属性的标签
    */
   label?: string
 }

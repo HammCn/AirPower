@@ -60,9 +60,9 @@ export class DecoratorUtil {
   }
 
   /**
-   * ### 设置一个字段配置项
+   * ### 设置一个属性配置项
    * @param target 目标类
-   * @param key 字段
+   * @param key 属性
    * @param fieldConfigKey 配置项索引键值
    * @param fieldConfig 配置的参数
    * @param fieldListKey `可选` 类配置项列表索引值
@@ -81,9 +81,9 @@ export class DecoratorUtil {
   }
 
   /**
-   * ### 获取类指定字段的指定类型的配置
+   * ### 获取类指定属性的指定类型的配置
    * @param target 目标类
-   * @param key 字段
+   * @param key 属性
    * @param fieldConfigKey FieldConfigKey
    * @param isObject `可选` 是否对象配置
    */
@@ -124,7 +124,7 @@ export class DecoratorUtil {
   }
 
   /**
-   * ### 获取类标记了装饰器的字段列表
+   * ### 获取类标记了装饰器的属性列表
    * @param target 目标类
    * @param fieldConfigKey FieldConfigKey
    * @param list `递归参数` 无需传入
@@ -140,11 +140,11 @@ export class DecoratorUtil {
   }
 
   /**
-   * ### 获取目标类指定字段列表的配置项列表
+   * ### 获取目标类指定属性列表的配置项列表
    * @param target 目标类
    * @param fieldListKey FieldListKey
    * @param fieldConfigKey FieldConfigKey
-   * @param keyList 指定的字段数组
+   * @param keyList 指定的属性数组
    */
   static getFieldConfigList<T extends IFieldConfig>(
     target: DecoratorTarget,
@@ -182,10 +182,10 @@ export class DecoratorUtil {
   }
 
   /**
-   * ### 获取目标类上指定字段的某个配置的值
+   * ### 获取目标类上指定属性的某个配置的值
    * @param target 目标类
    * @param fieldConfigKey FieldConfigKey
-   * @param key 字段
+   * @param key 属性
    * @param configKey 配置Key
    */
   static getFieldConfigValue(
@@ -221,9 +221,9 @@ export class DecoratorUtil {
   }
 
   /**
-   * ### 设置一个字段的包含装饰器索引
+   * ### 设置一个属性的包含装饰器索引
    * @param target 目标类
-   * @param key 字段
+   * @param key 属性
    * @param fieldListKey 类配置项列表索引值
    */
   private static addFieldDecoratorKey(target: DecoratorTarget, key: string, fieldListKey: string) {
