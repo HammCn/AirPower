@@ -30,7 +30,7 @@ export class Enum<K extends EnumKey = number> implements IEnum<K> {
   }
 
   /**
-   * ### 创建一个枚举
+   * ### 创建一个只包含 `key` 的枚举
    * @param key `Key`
    */
   static key<K extends EnumKey = number, E extends Enum<K> = Enum<K>>(this: EnumConstructor<K, E>, key: K): E {
@@ -38,7 +38,7 @@ export class Enum<K extends EnumKey = number> implements IEnum<K> {
   }
 
   /**
-   * ### 创建一个枚举
+   * ### 创建一个 `key` 和 `label` 相同的字符串枚举
    * @param label 标签
    */
   static label<E extends Enum<string> = Enum<string>>(this: EnumConstructor<string, E>, label: string): E {
