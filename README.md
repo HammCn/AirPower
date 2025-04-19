@@ -26,7 +26,7 @@ cnpm install @airpower/transformer
 # 📖 使用说明
 
 ```ts
-import {IgnorePrefix, Prefix, Transformer, Type} from '../src'
+import {IgnorePrefix, Prefix, Transformer, Type} from '@airpower/transformer'
 
 @Prefix('role____')
 class Role extends Transformer {
