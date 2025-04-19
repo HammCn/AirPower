@@ -1,0 +1,57 @@
+{
+  "name": "@airpower/transformer",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "AirPower-Transformer 是一个基于 TypeScript 的数据转换器，提供了从 JSON 对象到 类实例 对象之间互相转换的系列装饰器和方法。",
+  "author": {
+    "name": "Hamm",
+    "email": "admin@hamm.cn",
+    "url": "https://github.com/HammCn"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/AirPowerTeam/AirPower-Transformer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AirPowerTeam/AirPower-Transformer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AirPowerTeam/AirPower-Transformer/issues"
+  },
+  "keywords": [
+    "AirPower",
+    "class-transformer",
+    "typescript",
+    "transformer",
+    "bean",
+    "bean-copy",
+    "oop",
+    "class"
+  ],
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "assets"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext .ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.11.0",
+    "@types/node": "^22.13.14",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
