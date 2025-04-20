@@ -13,8 +13,7 @@ export class Transformer {
    * @param json `JSON`
    */
   static fromJson<T extends Transformer>(this: ITransformerConstructor<T>, json: IJson = {}): T {
-    const instance: T = new this()
-    return Transformer.parse<T>(json, instance)
+    return Transformer.parse<T>(json, this)
   }
 
   /**
@@ -26,24 +25,23 @@ export class Transformer {
     const instanceList: T[] = []
     if (Array.isArray(jsonArray)) {
       for (let i = 0; i < jsonArray.length; i += 1) {
-        const instance: T = new this()
-        instanceList.push(Transformer.parse(jsonArray[i], instance))
+        instanceList.push(Transformer.parse(jsonArray[i], this))
       }
     }
     else {
-      const instance: T = new this()
-      instanceList.push(Transformer.parse(jsonArray, instance))
+      instanceList.push(Transformer.parse(jsonArray, this))
     }
     return instanceList
   }
 
   /**
    * ### 创建一个当前类的实例
+   * @param Class 类
    * @param recoverBy `可选` 初始化用于覆盖对象实例的 `JSON`
    */
 
-  static newInstance<T extends Transformer>(this: ITransformerConstructor<T>, recoverBy?: IJson): T {
-    const instance = new this()
+  static newInstance<T extends Transformer>(Class: ITransformerConstructor<T>, recoverBy?: IJson): T {
+    const instance = new Class()
     if (recoverBy) {
       return instance.recoverBy(recoverBy)
     }
@@ -54,9 +52,10 @@ export class Transformer {
    * ### 转换 `JSON` 为实体
    * 会自动进行数据别名转换
    * @param json `JSON`
-   * @param instance 实体
+   * @param Class 实体类
    */
-  static parse<T extends Transformer>(json: IJson = {}, instance: T): T {
+  static parse<T extends Transformer>(json: IJson = {}, Class: ITransformerConstructor<T>): T {
+    const instance = new Class()
     const fieldList = Object.keys(instance)
     for (const field of fieldList) {
       const jsonKey = this.getJsonKey(instance, field)
@@ -83,7 +82,7 @@ export class Transformer {
           for (let i = 0; i < fieldData.length; i += 1) {
             // 如果标记了类 需要递归处理
             if (FieldTypeClass) {
-              fieldValueList[i] = this.parse(fieldData[i], new FieldTypeClass())
+              fieldValueList[i] = this.parse(fieldData[i], FieldTypeClass)
             }
           }
         }
@@ -114,7 +113,7 @@ export class Transformer {
           break
         default:
           // 是对象 需要递归转换
-          ;(instance as IJson)[field] = this.parse(fieldData, new FieldTypeClass())
+          ;(instance as IJson)[field] = this.parse(fieldData, FieldTypeClass)
       }
     }
 
