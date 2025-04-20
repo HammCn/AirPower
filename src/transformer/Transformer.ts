@@ -14,7 +14,7 @@ export class Transformer {
    */
   static fromJson<T extends Transformer>(this: ITransformerConstructor<T>, json: IJson = {}): T {
     const instance: T = new this()
-    return Transformer.parse<T>(instance, json)
+    return Transformer.parse<T>(json, instance)
   }
 
   /**
@@ -27,12 +27,12 @@ export class Transformer {
     if (Array.isArray(jsonArray)) {
       for (let i = 0; i < jsonArray.length; i += 1) {
         const instance: T = new this()
-        instanceList.push(Transformer.parse(instance, jsonArray[i]))
+        instanceList.push(Transformer.parse(jsonArray[i], instance))
       }
     }
     else {
       const instance: T = new this()
-      instanceList.push(Transformer.parse(instance, jsonArray))
+      instanceList.push(Transformer.parse(jsonArray, instance))
     }
     return instanceList
   }
@@ -53,15 +53,15 @@ export class Transformer {
   /**
    * ### 转换 `JSON` 为实体
    * 会自动进行数据别名转换
-   * @param instance 实体
    * @param json `JSON`
+   * @param instance 实体
    */
-  private static parse<T extends Transformer>(instance: T, json: IJson = {}): T {
+  static parse<T extends Transformer>(json: IJson = {}, instance: T): T {
     const fieldList = Object.keys(instance)
     for (const field of fieldList) {
       const jsonKey = this.getJsonKey(instance, field)
       const fieldData = json[jsonKey]
-            ;(instance as IJson)[field] = fieldData
+      ;(instance as IJson)[field] = fieldData
 
       const toClass = getToClass(instance, field)
       if (toClass !== undefined) {
@@ -83,7 +83,7 @@ export class Transformer {
           for (let i = 0; i < fieldData.length; i += 1) {
             // 如果标记了类 需要递归处理
             if (FieldTypeClass) {
-              fieldValueList[i] = this.parse(new FieldTypeClass() as Transformer, fieldData[i])
+              fieldValueList[i] = this.parse(fieldData[i], new FieldTypeClass())
             }
           }
         }
@@ -114,7 +114,7 @@ export class Transformer {
           break
         default:
           // 是对象 需要递归转换
-          ;(instance as IJson)[field] = this.parse(new FieldTypeClass() as Transformer, fieldData)
+          ;(instance as IJson)[field] = this.parse(fieldData, new FieldTypeClass())
       }
     }
 
