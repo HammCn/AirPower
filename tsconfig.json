@@ -6,7 +6,6 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "esModuleInterop": false,
     "moduleDetection": "force",
     "useDefineForClassFields": true,
     "emitDecoratorMetadata": true,
@@ -24,12 +23,12 @@
     "declarationDir": "types",
     "noEmit": true,
     "outDir": "dist",
+    "esModuleInterop": false,
     "isolatedModules": true,
     "skipLibCheck": true,
     "noUncheckedSideEffectImports": true
   },
   "include": [
-    "src",
-    "vite.config.ts"
+    "src"
   ]
 }
