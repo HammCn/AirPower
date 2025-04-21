@@ -60,7 +60,7 @@ export class Transformer {
     for (const field of fieldList) {
       const jsonKey = this.getJsonKey(instance, field)
       const fieldData = json[jsonKey]
-      ;(instance as IJson)[field] = fieldData
+            ;(instance as IJson)[field] = fieldData
 
       const toClass = getToClass(instance, field)
       if (toClass !== undefined) {

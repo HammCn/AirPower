@@ -1,5 +1,5 @@
 import type { ITransformerConstructor, Transformer } from '../transformer'
-import type { DecoratorTarget } from '../type/type'
+import type { DecoratorTarget } from '../type'
 import { DecoratorUtil } from '../transformer'
 
 /**

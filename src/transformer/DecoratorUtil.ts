@@ -1,4 +1,4 @@
-import type { DecoratorData, DecoratorTarget } from '../type/type'
+import type { DecoratorData, DecoratorTarget } from '../type'
 import { Transformer } from './index'
 
 /**
