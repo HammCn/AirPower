@@ -1,4 +1,5 @@
-import type { DecoratorTarget } from '../type'
+import type { ITransformerConstructor, Transformer } from '../transformer'
+import type { DecoratorTarget, TransformerField } from '../type'
 import { DecoratorUtil } from '../transformer'
 
 /**
@@ -20,6 +21,9 @@ export function Alias(alias: string) {
  * @param target 目标类
  * @param key 属性名
  */
-export function getAlias(target: DecoratorTarget, key: string): string {
-  return (DecoratorUtil.getFieldConfig(target, key, KEY) || '').toString()
+export function getAlias<T extends Transformer>(
+  target: ITransformerConstructor<T> | T,
+  key: TransformerField<T>,
+): string {
+  return (DecoratorUtil.getFieldConfig(target, key.toString(), KEY) || '').toString()
 }

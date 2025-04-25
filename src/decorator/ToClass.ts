@@ -1,5 +1,5 @@
-import type { IJson } from '../transformer'
-import type { DecoratorTarget } from '../type'
+import type { IJson, ITransformerConstructor, Transformer } from '../transformer'
+import type { DecoratorTarget, TransformerField } from '../type'
 import { DecoratorUtil } from '../transformer'
 
 const KEY = `${DecoratorUtil.DecoratorKeyPrefix}[ToClass]`
@@ -19,6 +19,9 @@ export function ToClass(func: (json: IJson) => unknown) {
  * @param key 属性名
  */
 
-export function getToClass(target: DecoratorTarget, key: string): (json: IJson) => unknown {
-  return DecoratorUtil.getFieldConfig(target, key, KEY)
+export function getToClass<T extends Transformer>(
+  target: ITransformerConstructor<T> | T,
+  key: TransformerField<T>,
+): (json: IJson) => unknown {
+  return DecoratorUtil.getFieldConfig(target, key.toString(), KEY)
 }

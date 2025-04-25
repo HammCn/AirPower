@@ -1,3 +1,4 @@
+import type { ITransformerConstructor, Transformer } from '../transformer'
 import type { DecoratorTarget } from '../type'
 import { DecoratorUtil } from '../transformer'
 
@@ -18,6 +19,6 @@ export function Prefix(prefix: string) {
  * ### 获取类转换的前缀
  * @param target 目标类
  */
-export function getPrefix(target: DecoratorTarget): string {
+export function getPrefix<T extends Transformer>(target: ITransformerConstructor<T> | T): string {
   return DecoratorUtil.getClassConfig(target, KEY, '')
 }

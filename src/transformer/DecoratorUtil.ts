@@ -32,8 +32,8 @@ export class DecoratorUtil {
   static getClassConfig(
     target: DecoratorTarget,
     classConfigKey: string,
-        defaultValue: unknown = undefined,
-        isObject = false,
+    defaultValue: unknown = undefined,
+    isObject = false,
   ): DecoratorData {
     let classConfig = Reflect.get(target, classConfigKey)
     if (!isObject) {
@@ -93,7 +93,7 @@ export class DecoratorUtil {
     target: DecoratorTarget,
     key: string,
     fieldConfigKey: string,
-        isObject = false,
+    isObject = false,
   ): DecoratorData {
     if (typeof target !== 'object') {
       target = target.prototype

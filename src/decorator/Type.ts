@@ -1,5 +1,5 @@
 import type { ITransformerConstructor, Transformer } from '../transformer'
-import type { DecoratorTarget } from '../type'
+import type { DecoratorTarget, TransformerField } from '../type'
 import { DecoratorUtil } from '../transformer'
 
 /**
@@ -28,8 +28,11 @@ export function Type<T extends Transformer>(type: ITransformerConstructor<T>, ar
  * @param target 目标类
  * @param key 属性名
  */
-export function getType<T extends Transformer>(target: DecoratorTarget, key: string): ITransformerConstructor<T> | undefined {
-  return DecoratorUtil.getFieldConfig(target, key, KEY) || undefined
+export function getType<T extends Transformer>(
+  target: ITransformerConstructor<T> | T,
+  key: TransformerField<T>,
+): ITransformerConstructor<T> | undefined {
+  return DecoratorUtil.getFieldConfig(target, key.toString(), KEY) || undefined
 }
 
 /**
@@ -38,6 +41,9 @@ export function getType<T extends Transformer>(target: DecoratorTarget, key: str
  * @param target 目标类
  * @param key 属性名
  */
-export function getArray(target: DecoratorTarget, key: string): boolean {
-  return !!DecoratorUtil.getFieldConfig(target, key, KEY_ARRAY)
+export function getArray<T extends Transformer>(
+  target: ITransformerConstructor<T> | T,
+  key: TransformerField<T>,
+): boolean {
+  return !!DecoratorUtil.getFieldConfig(target, key.toString(), KEY_ARRAY)
 }
