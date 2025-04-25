@@ -35,6 +35,9 @@ export class DecoratorUtil {
     defaultValue: unknown = undefined,
     isObject = false,
   ): DecoratorData {
+    if (typeof target !== 'object') {
+      target = target.prototype
+    }
     let classConfig = Reflect.get(target, classConfigKey)
     if (!isObject) {
       // 普通配置
@@ -132,6 +135,9 @@ export class DecoratorUtil {
    * @param list `递归参数` 无需传入
    */
   static getFieldList(target: DecoratorTarget, fieldConfigKey: string, list: string[] = []): string[] {
+    if (typeof target !== 'object') {
+      target = target.prototype
+    }
     const fieldList: string[] = Reflect.get(target, fieldConfigKey) || []
     fieldList.forEach(item => list.includes(item) || list.push(item))
     const superClass = Reflect.getPrototypeOf(target)
@@ -148,6 +154,9 @@ export class DecoratorUtil {
    * @param value 配置值
    */
   private static setProperty(target: DecoratorTarget, key: string, value: unknown) {
+    if (typeof target !== 'object') {
+      target = target.prototype
+    }
     Reflect.defineProperty(target, key, {
       enumerable: false,
       value,
@@ -163,6 +172,9 @@ export class DecoratorUtil {
    * @param fieldListKey 类配置项列表索引值
    */
   private static addFieldDecoratorKey(target: DecoratorTarget, key: string, fieldListKey: string) {
+    if (typeof target !== 'object') {
+      target = target.prototype
+    }
     const list: string[] = Reflect.get(target, fieldListKey) || []
     list.push(key)
     this.setProperty(target, fieldListKey, list)
