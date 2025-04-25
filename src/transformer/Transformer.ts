@@ -60,7 +60,7 @@ export class Transformer {
     for (const field of fieldList) {
       const jsonKey = this.getJsonKey(instance, field)
       const fieldData = json[jsonKey]
-            ;(instance as IJson)[field] = fieldData
+      ;(instance as IJson)[field] = fieldData
 
       const toClass = getToClass(instance, field)
       if (toClass !== undefined) {
@@ -165,7 +165,7 @@ export class Transformer {
    * ### 暴露部分类的属性
    * @param fields 属性列表
    */
-  expose(...fields: string[]): this {
+  expose(...fields: Array<(keyof this) | string>): this {
     const fieldList = Object.keys(this)
     for (const field of fieldList) {
       if (!fields.includes(field)) {
@@ -179,7 +179,7 @@ export class Transformer {
    * ### 排除部分类的属性
    * @param fields 属性列表
    */
-  exclude(...fields: string[]): this {
+  exclude(...fields: Array<(keyof this) | string>): this {
     const fieldList = Object.keys(this)
     for (const field of fieldList) {
       if (fields.includes(field)) {
