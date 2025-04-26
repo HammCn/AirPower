@@ -98,7 +98,7 @@ export class DecoratorUtil {
     fieldConfigKey: string,
     isObject = false,
   ): DecoratorData {
-    let fieldConfig = Reflect.get(Class.prototype, `${fieldConfigKey}[${field.toString()}]`)
+    let fieldConfig: any = Reflect.get(new Class(), `${fieldConfigKey}[${field.toString()}]`)
     const SuperClass = Reflect.getPrototypeOf(Class) as (ITransformerConstructor<T> | null)
     if (!isObject) {
       // 普通配置
@@ -137,7 +137,7 @@ export class DecoratorUtil {
     fieldConfigKey: string,
     list: string[] = [],
   ): string[] {
-    const fieldList: string[] = Reflect.get(Class.prototype, fieldConfigKey) || []
+    const fieldList: string[] = (Reflect.get(new Class(), fieldConfigKey) || []) as string[]
     fieldList.forEach(item => list.includes(item) || list.push(item))
     const SuperClass = Reflect.getPrototypeOf(Class) as (ITransformerConstructor<T> | null)
     if (!SuperClass || SuperClass.prototype.constructor.name === Transformer.name) {
