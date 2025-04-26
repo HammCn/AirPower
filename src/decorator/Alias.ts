@@ -1,29 +1,33 @@
 import type { ITransformerConstructor, Transformer } from '../transformer'
-import type { DecoratorTarget, TransformerField } from '../type'
+import type { TransformerField } from '../type'
 import { DecoratorUtil } from '../transformer'
 
 /**
  * ### KEY
  */
-const KEY = `${DecoratorUtil.DecoratorKeyPrefix}[Alias]`
+const KEY = '[Alias]'
 
 /**
  * ### 为属性配置别名
  * @param alias 别名
  */
-export function Alias(alias: string) {
-  return (target: DecoratorTarget, key: string) => DecoratorUtil.setFieldConfig(target, key, KEY, alias)
+export function Alias<
+  T extends Transformer,
+>(alias: string) {
+  return (instance: T, field: keyof T) => {
+    DecoratorUtil.setFieldConfig(instance, field, KEY, alias)
+  }
 }
 
 /**
  * ### 获取属性的别名
  * @returns 别名
- * @param target 目标类
- * @param key 属性名
+ * @param Class 目标类
+ * @param field 属性名
  */
 export function getAlias<T extends Transformer>(
-  target: ITransformerConstructor<T> | T,
-  key: TransformerField<T>,
+  Class: ITransformerConstructor<T>,
+  field: TransformerField<T>,
 ): string {
-  return (DecoratorUtil.getFieldConfig(target, key.toString(), KEY) || '').toString()
+  return (DecoratorUtil.getFieldConfig(Class, field, KEY) || '').toString()
 }

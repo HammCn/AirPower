@@ -1,28 +1,33 @@
 import type { ITransformerConstructor, Transformer } from '../transformer'
-import type { DecoratorTarget, TransformerField } from '../type'
+import type { TransformerField } from '../type'
 import { DecoratorUtil } from '../transformer'
 
 /**
  * ### KEY
  */
-const KEY = `${DecoratorUtil.DecoratorKeyPrefix}[IgnorePrefix]`
+const KEY = '[IgnorePrefix]'
 
 /**
  * ### 属性忽略前缀
  */
-export function IgnorePrefix() {
-  return (target: DecoratorTarget, key: string) => DecoratorUtil.setFieldConfig(target, key, KEY, true)
+export function IgnorePrefix<
+  T extends Transformer,
+>() {
+  return (
+    instance: T,
+    field: keyof T,
+  ) => DecoratorUtil.setFieldConfig(instance, field, KEY, true)
 }
 
 /**
  * ### 获取属性是否忽略前缀
  * @returns 布尔
- * @param target 目标类
- * @param key 属性名
+ * @param Class 目标类
+ * @param field 属性名
  */
 export function getIgnorePrefix<T extends Transformer>(
-  target: ITransformerConstructor<T> | T,
-  key: TransformerField<T>,
+  Class: ITransformerConstructor<T>,
+  field: TransformerField<T>,
 ): boolean {
-  return !!DecoratorUtil.getFieldConfig(target, key.toString(), KEY)
+  return !!DecoratorUtil.getFieldConfig(Class, field, KEY)
 }

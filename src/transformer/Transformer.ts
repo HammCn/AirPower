@@ -54,15 +54,18 @@ export class Transformer {
    * @param json `JSON`
    * @param Class 实体类
    */
-  static parse<T extends Transformer>(json: IJson = {}, Class: ITransformerConstructor<T>): T {
+  static parse<T extends Transformer>(
+    json: IJson = {},
+    Class: ITransformerConstructor<T>,
+  ): T {
     const instance = new Class()
     const fieldList = Object.keys(instance)
     for (const field of fieldList) {
-      const jsonKey = this.getJsonKey(instance, field)
+      const jsonKey = this.getJsonKey(Class, field)
       const fieldData = json[jsonKey]
       ;(instance as IJson)[field] = fieldData
 
-      const toClass = getToClass(instance, field)
+      const toClass = getToClass(Class, field)
       if (toClass !== undefined) {
         // 标记了手动转换到类实例的自定义方法
         try {
@@ -73,8 +76,8 @@ export class Transformer {
           continue
         }
       }
-      const FieldTypeClass = getType(instance, field)
-      const isArray = getArray(instance, field)
+      const FieldTypeClass = getType(Class, field)
+      const isArray = getArray(Class, field)
       if (isArray) {
         // 是数组 循环转换
         const fieldValueList: IJson[] = []
@@ -119,7 +122,7 @@ export class Transformer {
 
     // 最后删除无用的数据
     for (const fieldKey of fieldList) {
-      const alias = getAlias(instance, fieldKey) || fieldKey
+      const alias = getAlias(Class, fieldKey) || fieldKey
       if (alias === fieldKey) {
         continue
       }
@@ -130,21 +133,25 @@ export class Transformer {
 
   /**
    * ### 获取 JSON 的 key
-   * @param instance 目标实例
+   * @param Class 目标实例
    * @param field 属性 key
    */
-  private static getJsonKey<T extends Transformer>(instance: T, field: string): string {
-    const alias = getAlias(instance, field)
+  private static getJsonKey<
+    T extends Transformer,
+  >(Class: ITransformerConstructor<T>,
+    field: string,
+  ): string {
+    const alias = getAlias(Class, field)
     if (alias) {
       // 优先使用别名
       return alias
     }
-    const prefix = getPrefix(instance)
+    const prefix = getPrefix(Class)
     if (!prefix) {
       // 没有全局前缀
       return field
     }
-    const ignorePrefix = getIgnorePrefix(instance, field)
+    const ignorePrefix = getIgnorePrefix(Class, field)
     if (!ignorePrefix) {
       // 没有忽略前缀 则自动拼接前缀
       return prefix + field
@@ -203,6 +210,7 @@ export class Transformer {
    * 会自动进行数据别名转换
    */
   toJson(): IJson {
+    const Class = this.constructor as ITransformerConstructor<this>
     // 读取类的所有属性
     const fieldList = Object.keys(this)
     const json: IJson = {}
@@ -212,9 +220,9 @@ export class Transformer {
         // 如果属性值为 null 或 undefined 则不转换到JSON
         continue
       }
-      const jsonKey = Transformer.getJsonKey(this, field)
+      const jsonKey = Transformer.getJsonKey(Class, field)
       json[jsonKey] = data
-      const toJson = getToJson(this, field)
+      const toJson = getToJson(Class, field)
 
       if (toJson !== undefined) {
         // 如果标记了自定义转换JSON的方法
