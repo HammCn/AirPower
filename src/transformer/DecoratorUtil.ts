@@ -71,7 +71,6 @@ export class DecoratorUtil {
    * @param field 属性
    * @param fieldConfigKey 配置项索引键值
    * @param fieldConfig 配置的参数
-   * @param fieldListKey `可选` 类配置项列表索引值
    */
   static setFieldConfig<
     T extends Transformer,
@@ -80,11 +79,7 @@ export class DecoratorUtil {
     field: keyof T,
     fieldConfigKey: string,
     fieldConfig: unknown,
-    fieldListKey?: string,
   ) {
-    if (fieldListKey) {
-      this.addFieldDecoratorKey(instance, field, fieldListKey)
-    }
     this.setProperty(instance, `${fieldConfigKey}[${field.toString()}]`, fieldConfig)
   }
 
@@ -170,23 +165,5 @@ export class DecoratorUtil {
       writable: false,
       configurable: true,
     })
-  }
-
-  /**
-   * ### 设置一个属性的包含装饰器索引
-   * @param instance 目标类
-   * @param field 属性
-   * @param propertyKey 类配置项列表索引值
-   */
-  private static addFieldDecoratorKey<
-    T extends Transformer,
-  >(
-    instance: T,
-    field: keyof T,
-    propertyKey: string,
-  ) {
-    const list: Array<keyof T> = (Reflect.get(instance, propertyKey) || []) as Array<keyof T>
-    list.push(field)
-    this.setProperty(instance, propertyKey, list)
   }
 }
