@@ -9,11 +9,6 @@ import { Transformer } from './index'
  */
 export class DecoratorUtil {
   /**
-   * ### 装饰器前缀
-   */
-  static readonly DecoratorKeyPrefix = '[AirPower]'
-
-  /**
    * ### 设置一个类配置项
    * @param Class 目标类
    * @param classConfigKey 配置项索引键值
