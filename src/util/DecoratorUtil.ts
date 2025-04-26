@@ -1,6 +1,6 @@
+import type { ITransformerConstructor } from '../transformer'
 import type { DecoratorData, TransformerField } from '../type'
-import type { ITransformerConstructor } from './index'
-import { Transformer } from './index'
+import { Transformer } from '../transformer'
 
 /**
  * # 装饰器工具类

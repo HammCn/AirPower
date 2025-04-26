@@ -1,6 +1,6 @@
 import type { IJson, ITransformerConstructor, Transformer } from '../transformer'
 import type { TransformerField } from '../type'
-import { DecoratorUtil } from '../transformer'
+import { DecoratorUtil } from '../util'
 
 const KEY = '[ToClass]'
 

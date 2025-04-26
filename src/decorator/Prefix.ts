@@ -1,5 +1,5 @@
 import type { ITransformerConstructor, Transformer } from '../transformer'
-import { DecoratorUtil } from '../transformer'
+import { DecoratorUtil } from '../util'
 
 /**
  * ### KEY
@@ -29,5 +29,5 @@ export function getPrefix<
 >(
   Class: ITransformerConstructor<T>,
 ): string {
-  return DecoratorUtil.getClassConfig(Class, KEY, '')
+  return DecoratorUtil.getClassConfig(Class, KEY) || ''
 }
