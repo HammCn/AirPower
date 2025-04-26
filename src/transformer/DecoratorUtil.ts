@@ -28,7 +28,6 @@ export class DecoratorUtil {
    * ### 递归获取指定类的配置项
    * @param Class 目标类
    * @param classConfigKey 配置项的Key
-   * @param defaultValue `可选` 类装饰器请传入配置项实例
    * @param isObject `可选` 是否是对象配置
    */
   static getClassConfig<
@@ -36,7 +35,6 @@ export class DecoratorUtil {
   >(
     Class: ITransformerConstructor<T>,
     classConfigKey: string,
-    defaultValue: unknown = undefined,
     isObject = false,
   ): DecoratorData {
     let classConfig = Reflect.get(Class, classConfigKey)
@@ -56,11 +54,11 @@ export class DecoratorUtil {
     // 对象配置
     const SuperClass = Reflect.getPrototypeOf(Class)
     if (!SuperClass || SuperClass.constructor.name === Transformer.name) {
-      return defaultValue
+      return classConfig
     }
 
     return {
-      ...this.getClassConfig((SuperClass as ITransformerConstructor<T>), classConfigKey, defaultValue, isObject),
+      ...this.getClassConfig((SuperClass as ITransformerConstructor<T>), classConfigKey, isObject),
       ...classConfig,
     }
   }
@@ -116,34 +114,12 @@ export class DecoratorUtil {
     fieldConfig = fieldConfig || {}
     // 没有查询到配置
     if (!SuperClass || SuperClass.prototype.constructor.name === Transformer.name) {
-      return {}
+      return fieldConfig
     }
     return {
       ...this.getFieldConfig(SuperClass, field, fieldConfigKey, true),
       ...fieldConfig,
     }
-  }
-
-  /**
-   * ### 获取类标记了装饰器的属性列表
-   * @param Class 目标类
-   * @param fieldConfigKey FieldConfigKey
-   * @param list `递归参数` 无需传入
-   */
-  static getFieldList<
-    T extends Transformer,
-  >(
-    Class: ITransformerConstructor<T>,
-    fieldConfigKey: string,
-    list: string[] = [],
-  ): string[] {
-    const fieldList: string[] = (Reflect.get(new Class(), fieldConfigKey) || []) as string[]
-    fieldList.forEach(item => list.includes(item) || list.push(item))
-    const SuperClass = Reflect.getPrototypeOf(Class) as (ITransformerConstructor<T> | null)
-    if (!SuperClass || SuperClass.prototype.constructor.name === Transformer.name) {
-      return list
-    }
-    return this.getFieldList((SuperClass as ITransformerConstructor<T>), fieldConfigKey, list)
   }
 
   /**
