@@ -38,12 +38,12 @@ export class DecoratorUtil {
     isObject = false,
   ): DecoratorData {
     let classConfig: any = Reflect.get(new Class(), classConfigKey)
+    const SuperClass = Reflect.getPrototypeOf(Class) as (ITransformerConstructor<T> | null)
     if (!isObject) {
       // 普通配置
       if (classConfig) {
         return classConfig
       }
-      const SuperClass = Reflect.getPrototypeOf(Class) as (ITransformerConstructor<T> | null)
       if (!SuperClass || SuperClass.prototype.constructor.name === Transformer.name) {
         return undefined
       }
@@ -52,8 +52,7 @@ export class DecoratorUtil {
 
     classConfig = classConfig || {}
     // 对象配置
-    const SuperClass = Reflect.getPrototypeOf(Class)
-    if (!SuperClass || SuperClass.constructor.name === Transformer.name) {
+    if (!SuperClass || SuperClass.prototype.constructor.name === Transformer.name) {
       return classConfig
     }
 
