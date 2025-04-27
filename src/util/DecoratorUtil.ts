@@ -37,7 +37,7 @@ export class DecoratorUtil {
     classConfigKey: string,
     isObject = false,
   ): DecoratorData {
-    let classConfig = Reflect.get(Class, classConfigKey)
+    let classConfig: any = Reflect.get(new Class(), classConfigKey)
     if (!isObject) {
       // 普通配置
       if (classConfig) {
