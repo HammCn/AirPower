@@ -57,7 +57,7 @@ export class DecoratorUtil {
     }
 
     return {
-      ...this.getClassConfig((SuperClass as ITransformerConstructor<T>), classConfigKey, isObject),
+      ...this.getClassConfig(SuperClass, classConfigKey, isObject),
       ...classConfig,
     }
   }
