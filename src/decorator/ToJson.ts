@@ -8,7 +8,6 @@ const KEY = '[ToJson]'
  * ### 自定义转换到 `JSON` 的方法
  * @param func 方法
  */
-
 export function ToJson<
   T extends Transformer,
 >(func: (
@@ -25,7 +24,6 @@ export function ToJson<
  * @param Class 目标类
  * @param field 属性名
  */
-
 export function getToJson<
   T extends Transformer,
 >(

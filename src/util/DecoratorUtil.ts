@@ -3,7 +3,7 @@ import type { DecoratorData, TransformerField } from '../type'
 import { Transformer } from '../transformer'
 
 /**
- * # 装饰器工具类
+ * ### 装饰器工具类
  *
  * @author Hamm.cn
  */

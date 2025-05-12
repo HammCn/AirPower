@@ -2,7 +2,7 @@ import type { IJson, ITransformerConstructor } from './index.ts'
 import { getAlias, getArray, getIgnorePrefix, getPrefix, getToClass, getToJson, getType } from '../decorator'
 
 /**
- * # 转换器
+ * ### 转换器
  *
  * @author Hamm.cn
  */
