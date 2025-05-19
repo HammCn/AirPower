@@ -176,7 +176,7 @@ export class Transformer {
     const fieldList = Object.keys(this)
     for (const field of fieldList) {
       if (!fields.includes(field)) {
-        ;(this as IJson)[field] = undefined
+        delete (this as IJson)[field]
       }
     }
     return this
@@ -190,7 +190,7 @@ export class Transformer {
     const fieldList = Object.keys(this)
     for (const field of fieldList) {
       if (fields.includes(field)) {
-        ;(this as IJson)[field] = undefined
+        delete (this as IJson)[field]
       }
     }
     return this
